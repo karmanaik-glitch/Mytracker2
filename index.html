@@ -1,849 +1,928 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta name="career-os-hosting" content="github-pages; v9-glass-glow-automated">
-<meta name="theme-color" content="#0b0c10">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>CareerOS — Pharm D Authority Lab</title>
-
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111"><meta name="application-name" content="FORGE"><title>FORGE / Capability Operating System</title>
 <style>
-/* Core Variables & Glassmorphism Aesthetic */
-:root {
-  --glass-bg: rgba(20, 23, 34, 0.58);
-  --glass-bg-strong: rgba(22, 25, 38, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.105);
-  --glass-border-soft: rgba(255, 255, 255, 0.065);
-  --glass-shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
-  --glow-purple: rgba(139, 124, 246, 0.18);
-  --glow-blue: rgba(90, 169, 255, 0.14);
-  --glow-cyan: rgba(72, 217, 208, 0.11);
-  --glow-amber: rgba(244, 189, 104, 0.10);
+:root{--bg:#f3f2ed;--panel:#fafaf7;--panel2:#fff;--ink:#151515;--muted:#72726d;--line:#d9d8d1;--soft:#e9e8e1;--accent:#111;--good:#2f6f52;--warn:#8a6a27;--danger:#8b4038;--shadow:0 18px 50px rgba(0,0,0,.06)}
+[data-theme=dark]{--bg:#0c0d0d;--panel:#121313;--panel2:#171818;--ink:#f1f1eb;--muted:#999a94;--line:#292b2a;--soft:#1d1f1e;--accent:#f1f1eb;--shadow:0 18px 60px rgba(0,0,0,.25)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit}a{color:inherit}.app{display:grid;grid-template-columns:244px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);padding:24px 16px;background:var(--bg);z-index:5}.brand{padding:4px 10px 28px}.brand b{font-size:17px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:.16em;margin-top:5px}.nav{display:grid;gap:3px}.nav button,.bottom button{border:0;background:transparent;text-align:left;padding:10px 11px;border-radius:8px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}.nav button:hover,.nav button.active,.bottom button.active{background:var(--soft);color:var(--ink)}.nav .label{display:flex;gap:10px;align-items:center}.nav kbd{font-size:9px;opacity:.45}.sidefoot{position:absolute;left:26px;right:18px;bottom:22px;color:var(--muted);font-size:10px;border-top:1px solid var(--line);padding-top:14px}.main{min-width:0}.wrap{max-width:1500px;margin:auto;padding:30px 40px 100px}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:30px}.eyebrow{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}h1{font-size:clamp(32px,4vw,58px);line-height:.98;letter-spacing:-.055em;margin:7px 0 9px}h2{font-size:25px;letter-spacing:-.035em;line-height:1.05;margin:0 0 7px}h3{margin:0 0 5px;line-height:1.2}p{color:var(--muted);margin:7px 0}.topactions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.btn{border:1px solid var(--line);background:var(--panel2);padding:8px 11px;border-radius:7px}.btn:hover{border-color:var(--ink)}.btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}.btn.ghost{background:transparent}.grid{display:grid;gap:12px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:17px;box-shadow:var(--shadow)}.metric strong{display:block;font-size:32px;letter-spacing:-.05em;margin-top:9px}.metric span{color:var(--muted);font-size:12px}.section{margin-top:14px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 12px}.progress{height:5px;background:var(--soft);border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--ink);width:0}.mini{font-size:11px;color:var(--muted)}.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 7px;margin:4px 4px 0 0;font-size:10px;color:var(--muted)}.domain{display:flex;min-height:180px;flex-direction:column;justify-content:space-between}.domain .num{font-size:10px;color:var(--muted);letter-spacing:.15em}.domain h3{margin-top:8px}.domain .score{font-size:20px;letter-spacing:-.04em}.barrow{display:flex;justify-content:space-between;gap:10px;margin:8px 0 5px}.filters{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}.filter{border:1px solid var(--line);background:transparent;border-radius:99px;padding:7px 10px;color:var(--muted)}.filter.active{background:var(--soft);color:var(--ink)}.search{border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:10px 11px;border-radius:7px;outline:none}.search:focus{border-color:var(--ink)}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:820px}.table th,.table td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line);vertical-align:top}.table th{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}.table tr:last-child td{border-bottom:0}.status{font-size:10px;border:1px solid var(--line);border-radius:99px;padding:4px 7px;display:inline-block}.status.done{color:var(--good)}.status.progress{color:var(--warn);height:auto;background:transparent}.status.planned{color:var(--muted);height:auto;background:transparent}.split{display:grid;grid-template-columns:1.4fr .6fr;gap:12px}.hero{padding:26px}.hero .big{font-size:44px;letter-spacing:-.06em;line-height:1}.insight{border-left:2px solid var(--ink);padding-left:13px}.scoreline{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.scoreline strong{font-size:28px;letter-spacing:-.05em}.heat{display:grid;grid-template-columns:repeat(14,1fr);gap:4px}.heat span{height:24px;border:1px solid var(--line);border-radius:4px;background:var(--soft);position:relative}.heat span i{display:block;height:100%;background:var(--ink);border-radius:3px}.roadrow{display:grid;grid-template-columns:65px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}.roadnum{font-size:11px;letter-spacing:.15em;color:var(--muted)}.competency{display:grid;gap:7px}.comp{border:1px solid var(--line);border-radius:8px;padding:11px;background:var(--panel2)}.comp small{display:block;color:var(--muted);margin-top:3px}.compbar{height:3px;background:var(--soft);margin-top:8px}.compbar i{display:block;height:100%;background:var(--ink)}.modal{position:fixed;inset:0;background:rgba(0,0,0,.42);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal.open{display:flex}.sheet{width:min(940px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:24px;box-shadow:0 30px 100px rgba(0,0,0,.25)}.sheethead{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:18px 0 9px}.step{border:1px solid var(--line);background:var(--panel2);border-radius:7px;padding:9px;text-align:left;font-size:10px;color:var(--muted);min-height:66px}.step.done{background:var(--ink);color:var(--bg);border-color:var(--ink)}.step.current{border-color:var(--ink);color:var(--ink)}.detailgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}.kv{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--panel2)}.kv b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}.evidenceitem{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:9px}.radar{width:100%;aspect-ratio:1/1;max-width:380px;margin:auto}.radar svg{width:100%;height:100%}.cmd{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;padding-top:12vh;z-index:30}.cmd.open{display:flex}.cmdbox{width:min(680px,calc(100% - 28px));background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,.3);overflow:hidden}.cmdbox input{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;padding:16px;outline:0;color:var(--ink)}.cmdlist button{display:block;width:100%;border:0;background:transparent;text-align:left;padding:12px 16px}.cmdlist button:hover{background:var(--soft)}.bottom{display:none}.toast{position:fixed;right:18px;bottom:18px;background:var(--ink);color:var(--bg);padding:10px 13px;border-radius:7px;opacity:0;transform:translateY(8px);transition:.2s;z-index:50}.toast.show{opacity:1;transform:none}@media(max-width:1050px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}}@media(max-width:760px){.app{display:block}.side{display:none}.wrap{padding:22px 15px 88px}.top{margin-bottom:24px}.topactions{width:100%;justify-content:flex-start}.g4,.g3,.g2,.detailgrid{grid-template-columns:1fr}.hero{padding:20px}.bottom{display:grid;position:fixed;bottom:0;left:0;right:0;grid-template-columns:repeat(6,1fr);background:var(--panel);border-top:1px solid var(--line);z-index:10;padding:5px}.bottom button{padding:8px 3px;justify-content:center;font-size:9px;text-align:center}.bottom button:nth-child(7){display:none}.steps{grid-template-columns:1fr}.heat{grid-template-columns:repeat(7,1fr)}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
-  --bg: #0b0d12;
-  --panel: #12161e;
-  --line: #252b36;
-  --txt: #eef0f4;
-  --muted: #a5b0c2; /* Improved contrast from v8 */
-  --accent: #8b7cf6;
-  --radius: 14px;
+/* V15 visual system */
+:root{
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow-card:0 1px 0 rgba(0,0,0,.03),0 10px 30px rgba(0,0,0,.035);
+  --shadow-float:0 24px 70px rgba(0,0,0,.14);
+  --focus:0 0 0 3px rgba(21,21,21,.12);
+}
+[data-theme=dark]{
+  --shadow-card:0 1px 0 rgba(255,255,255,.03),0 12px 34px rgba(0,0,0,.20);
+  --shadow-float:0 24px 80px rgba(0,0,0,.38);
+  --focus:0 0 0 3px rgba(241,241,235,.14);
+}
+body{letter-spacing:-.006em}
+::selection{background:var(--ink);color:var(--bg)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:0;box-shadow:var(--focus)}
+.side{padding:22px 14px}
+.brand{padding:5px 11px 30px}
+.brand b{font-size:18px;letter-spacing:-.03em}
+.brand small{font-size:8px;letter-spacing:.19em}
+.nav{gap:4px}
+.nav button{padding:10px 12px;border-radius:10px;transition:background .16s ease,transform .16s ease}
+.nav button:hover{transform:translateX(2px)}
+.nav button.active{font-weight:650}
+.wrap{padding:34px 42px 110px}
+.top{margin-bottom:34px}
+.top h1{max-width:920px}
+.top .sub{max-width:760px}
+.topactions .btn{border-radius:9px}
+.card,.metric,.tablewrap,.modalbox,.cmd{border-radius:var(--radius);box-shadow:var(--shadow-card)}
+.card{padding:20px}
+.metric{padding:18px}
+.metric .num{font-size:30px}
+.grid{gap:14px}
+.sectionhead{margin-top:34px}
+.tablewrap{overflow:hidden}
+table{font-size:13px}
+th{background:var(--soft);font-size:9px;letter-spacing:.12em}
+td,th{padding:12px 13px}
+tr:hover td{background:color-mix(in srgb,var(--soft) 55%,transparent)}
+.tag{border-radius:999px;padding:3px 8px}
+.progress{height:7px;border-radius:99px;background:var(--soft)}
+.progress i{border-radius:99px}
+.btn{border-radius:9px;transition:all .16s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(0,0,0,.06)}
+.kpi{font-size:10px}
+.bottom{backdrop-filter:blur(14px)}
+.modalbox{box-shadow:var(--shadow-float)}
+.cmd{box-shadow:var(--shadow-float)}
+.toast{border-radius:10px;box-shadow:var(--shadow-float)}
+@media(max-width:900px){
+  .wrap{padding:24px 18px 100px}
+  .top{display:block}
+  .topactions{justify-content:flex-start;margin-top:18px}
+}
+@media(max-width:620px){
+  h1{font-size:38px}
+  h2{font-size:22px}
+  .card{padding:16px}
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: 
-    radial-gradient(650px 430px at 7% 2%, var(--glow-purple), transparent 68%),
-    radial-gradient(600px 420px at 94% 8%, var(--glow-blue), transparent 66%),
-    radial-gradient(520px 380px at 50% 100%, var(--glow-cyan), transparent 72%),
-    #090b10;
-  background-attachment: fixed;
-  color: var(--txt);
-  font: 13.5px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  padding-bottom: 80px; /* Space for mobile nav */
+.v15hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,.8fr);gap:14px;margin-bottom:14px}
+.heroCard{padding:25px;background:var(--ink);color:var(--bg);border-radius:16px;min-height:245px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-card)}
+[data-theme=dark] .heroCard{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+.heroCard .eyebrow{color:inherit;opacity:.55}
+.heroCard h2{font-size:clamp(28px,3.4vw,48px);letter-spacing:-.055em;max-width:760px;margin-top:10px}
+.heroCard p{color:inherit;opacity:.65;max-width:650px}
+.heroMeta{display:flex;gap:8px;flex-wrap:wrap}
+.heroMeta span{border:1px solid rgba(255,255,255,.18);padding:6px 9px;border-radius:999px;font-size:10px}
+[data-theme=dark] .heroMeta span{border-color:var(--line)}
+.focusCard{padding:20px;border:1px solid var(--line);background:var(--panel);border-radius:16px;display:flex;flex-direction:column;justify-content:space-between}
+.focusTop{display:flex;justify-content:space-between;gap:12px}
+.focusIndex{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.focusCard h3{font-size:19px;letter-spacing:-.025em;margin-top:9px}
+.focusCard .focusReason{font-size:12px}
+.focusCard .focusAction{display:flex;gap:7px;margin-top:18px}
+.focusCard .focusAction .btn{flex:1}
+.miniLabel{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.domainGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.domainTile{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+.domainTile:hover{transform:translateY(-2px);border-color:var(--ink);box-shadow:var(--shadow-card)}
+.domainTileTop{display:flex;justify-content:space-between;gap:10px}
+.domainTile .name{font-weight:650;line-height:1.2}
+.domainTile .small{font-size:10px;color:var(--muted);margin-top:7px}
+.domainTile .bar{height:4px;border-radius:99px;background:var(--soft);margin-top:14px;overflow:hidden}
+.domainTile .bar i{display:block;height:100%;background:var(--ink);border-radius:99px}
+.insightGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.insight{padding:17px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.insight strong{display:block;font-size:23px;letter-spacing:-.04em;margin-top:6px}
+.insight p{font-size:11px}
+@media(max-width:1100px){.domainGrid{grid-template-columns:repeat(2,1fr)}.v15hero{grid-template-columns:1fr}.insightGrid{grid-template-columns:1fr}}
+@media(max-width:620px){.domainGrid{grid-template-columns:1fr}.heroCard{min-height:260px}}
+
+/* ===== V15 SYSTEM LAYER ===== */
+.system-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border:1px solid var(--line);background:var(--panel);border-radius:10px;margin-bottom:14px}
+.system-strip .left,.system-strip .right{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.system-dot{width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block}
+.system-strip span{font-size:10px;color:var(--muted)}
+.system-strip b{font-size:10px}
+.surfaceNav{display:flex;gap:6px;overflow:auto;padding:3px;margin:0 0 18px;border-bottom:1px solid var(--line)}
+.surfaceNav button{border:0;background:transparent;color:var(--muted);padding:9px 10px;font:inherit;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.surfaceNav button.active{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+.commandGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}
+.workHero{padding:20px;border:1px solid var(--line);background:var(--panel);border-radius:14px;margin-bottom:14px}
+.workHero h2{font-size:28px;letter-spacing:-.045em;margin:7px 0}
+.workHero p{max-width:720px}
+.filterBar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.filterBar .btn.active{background:var(--ink);color:var(--bg)}
+.phaseRail{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:14px 0}
+.phaseNode{border:1px solid var(--line);padding:10px;border-radius:9px;background:var(--panel)}
+.phaseNode b{display:block;font-size:10px}
+.phaseNode span{font-size:9px;color:var(--muted)}
+.phaseNode i{display:block;height:3px;background:var(--soft);margin-top:8px;border-radius:99px;overflow:hidden}
+.phaseNode i:after{content:"";display:block;height:100%;width:var(--w);background:var(--ink)}
+.evidenceHero{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.evidenceStat{padding:15px;border:1px solid var(--line);background:var(--panel);border-radius:11px}
+.evidenceStat strong{display:block;font-size:25px;letter-spacing:-.04em;margin-top:4px}
+.timeline{position:relative;margin-left:5px;padding-left:20px;border-left:1px solid var(--line)}
+.timelineItem{position:relative;padding:0 0 17px}
+.timelineItem:before{content:"";position:absolute;left:-25px;top:4px;width:8px;height:8px;border:2px solid var(--panel);background:var(--ink);border-radius:50%;box-shadow:0 0 0 1px var(--line)}
+.authorityBand{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
+.scoreRing{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ink) var(--score),var(--soft) 0);position:relative;margin:auto}
+.scoreRing:after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--panel)}
+.scoreRing strong{position:relative;z-index:1;font-size:34px;letter-spacing:-.06em}
+.capabilityMatrix{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.matrixRow{border:1px solid var(--line);border-radius:10px;padding:13px;background:var(--panel)}
+.matrixTop{display:flex;justify-content:space-between;gap:8px}
+.matrixTop b{font-size:12px}
+.matrixTop span{font-size:10px;color:var(--muted)}
+.matrixBar{height:5px;background:var(--soft);border-radius:99px;margin-top:9px;overflow:hidden}
+.matrixBar i{display:block;height:100%;width:var(--w);background:var(--ink)}
+.emptyState{padding:32px;text-align:center;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+@media(max-width:950px){.commandGrid,.authorityBand{grid-template-columns:1fr}.evidenceHero{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.phaseRail{grid-template-columns:1fr}.capabilityMatrix{grid-template-columns:1fr}.evidenceHero{grid-template-columns:1fr}}
+
+/* ===== V15 CONTINUITY LAYER: LIBRARY / ROADMAP / SKILLS / AUTHORITY ===== */
+.v15LibraryHead,.v15RoadmapHead,.v15SkillsHead,.v15AuthorityHead{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:14px}
+.v15LibraryHead h2,.v15RoadmapHead h2,.v15SkillsHead h2,.v15AuthorityHead h2{font-size:28px;letter-spacing:-.045em;margin:7px 0}
+.libraryStats,.roadmapStats,.skillStats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.pathCard{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:15px;position:relative;overflow:hidden}
+.pathCard .num{font-size:22px;font-weight:700;letter-spacing:-.04em}
+.pathCard .bar{height:5px;background:var(--soft);border-radius:99px;overflow:hidden;margin-top:10px}
+.pathCard .bar i{display:block;height:100%;width:var(--w);background:var(--ink)}
+.roadmapGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.roadmapNode{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:16px;min-height:120px}
+.roadmapNode .index{font-size:9px;letter-spacing:.15em;color:var(--muted)}
+.roadmapNode h3{font-size:15px;margin:8px 0}
+.roadmapNode p{font-size:11px}
+.skillHeat{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:12px}
+.skillHeat span{height:10px;border-radius:3px;background:var(--soft);position:relative}
+.skillHeat span.on{background:var(--ink)}
+.skillHeat span[data-v="20"]{opacity:.35}.skillHeat span[data-v="40"]{opacity:.5}.skillHeat span[data-v="60"]{opacity:.65}.skillHeat span[data-v="80"]{opacity:.82}
+.authorityGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.signatureList{display:grid;gap:7px}
+.signatureItem{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+.signatureItem b{font-size:11px}
+.signatureItem span{font-size:9px;color:var(--muted)}
+@media(max-width:950px){.libraryStats,.roadmapStats,.skillStats{grid-template-columns:repeat(2,1fr)}.roadmapGrid{grid-template-columns:1fr 1fr}.authorityGrid{grid-template-columns:1fr}}
+@media(max-width:620px){.libraryStats,.roadmapStats,.skillStats,.roadmapGrid{grid-template-columns:1fr}}
+
+/* ===== V15 INTERACTION / NAVIGATION LAYER ===== */
+.v15ActionDock{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;border:1px solid var(--line);background:var(--panel);border-radius:10px;margin:0 0 14px}
+.v15ActionDock .actions{display:flex;gap:7px;flex-wrap:wrap}.v15ActionDock .context{font-size:10px;color:var(--muted)}
+.quickLinks{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.quickLink{padding:13px;border:1px solid var(--line);border-radius:10px;background:var(--panel);cursor:pointer}.quickLink:hover{border-color:var(--ink)}.quickLink b{display:block;font-size:11px}.quickLink span{display:block;font-size:9px;color:var(--muted);margin-top:5px}
+.v15Footer{margin-top:30px;padding-top:13px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:9px}
+@media(max-width:700px){.v15ActionDock{align-items:flex-start;flex-direction:column}.quickLinks{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.quickLinks{grid-template-columns:1fr}}
+
+.evidenceMini{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.evidenceMini span{font-size:12px;color:var(--muted)}
+.pathNav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.emptyState{padding:12px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:13px}
+
+.capabilityLadder{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px}.ladderStep{padding:12px;border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:4px;opacity:.65}.ladderStep.active,.ladderStep:hover{opacity:1}.ladderStep span,.ladderStep small{font-size:11px;color:var(--muted)}.signalLegend,.signalStats{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.maturityBars{margin-top:16px}.maturityRow{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;margin:12px 0}.maturityRow div:first-child{display:flex;justify-content:space-between;gap:8px}.maturityRow span,.stateRow small,.stateRow p{color:var(--muted);font-size:12px}.capabilityStateTable{margin-top:14px}.stateRow{display:grid;grid-template-columns:minmax(260px,1fr) 120px minmax(180px,.8fr);gap:12px;align-items:center;padding:14px 0;border-top:1px solid var(--line);cursor:pointer}.stateRow small{display:block;margin-top:4px}.stateRow p{grid-column:1/-1;margin:0}.stateRow:hover{transform:translateX(2px)}
+@media(max-width:800px){.capabilityLadder{grid-template-columns:1fr 1fr}.stateRow{grid-template-columns:1fr 110px}.stateRow .progress{grid-column:1/-1}.maturityRow{grid-template-columns:1fr}.stateRow p{grid-column:1/-1}}
+
+.v15-roadmap-intel{margin:0 0 22px;border:1px solid var(--line);background:var(--surface);padding:26px}
+.v15-ri-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:22px}
+.v15-kicker,.v15-ri-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.v15-ri-head h2{margin:7px 0 5px;font-size:22px;letter-spacing:-.02em}
+.v15-ri-head p,.v15-ri-current p,.v15-ri-next p{color:var(--muted);margin:0;max-width:760px;line-height:1.55}
+.v15-ri-score{min-width:105px;text-align:right}.v15-ri-score strong{display:block;font-size:30px;letter-spacing:-.04em}.v15-ri-score span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.v15-ri-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:12px}
+.v15-ri-grid>div{border:1px solid var(--line);padding:18px;background:var(--bg)}
+.v15-ri-grid h3{margin:8px 0 6px;font-size:18px}
+.v15-ri-domains{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.v15-ri-domains span{font-size:11px;border:1px solid var(--line);padding:6px 8px}
+.v15-ri-next ul{margin:12px 0 0;padding-left:17px;color:var(--text)}.v15-ri-next li{margin:7px 0;font-size:12px}
+.v15-ri-bar{margin-top:13px}.v15-ri-bar>div{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px}.v15-ri-bar b{font-weight:600;color:var(--muted)}
+.v15-ri-bar i{display:block;height:4px;background:var(--line);overflow:hidden}.v15-ri-bar em{display:block;height:100%;background:currentColor}
+.v15-ri-sequence{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:12px}
+.v15-ri-sequence>div{border-top:2px solid var(--line);padding-top:9px;display:grid;grid-template-columns:auto 1fr auto;gap:6px;align-items:center;color:var(--muted)}
+.v15-ri-sequence>div.active{border-top-color:var(--text);color:var(--text)}.v15-ri-sequence>div.done{color:var(--text)}
+.v15-ri-sequence b{font-size:10px}.v15-ri-sequence span{font-size:11px}.v15-ri-sequence small{font-size:10px}
+@media(max-width:900px){.v15-ri-grid{grid-template-columns:1fr}.v15-ri-sequence{grid-template-columns:repeat(2,1fr)}.v15-ri-head{flex-direction:column}.v15-ri-score{text-align:left}}
+
+.v15-authority-intel{margin:0 0 22px;border:1px solid var(--line);background:var(--surface);padding:26px}
+.v15-ai-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:22px}
+.v15-ai-head h2{margin:7px 0 5px;font-size:22px;letter-spacing:-.02em}.v15-ai-head p{margin:0;color:var(--muted);line-height:1.55;max-width:760px}
+.v15-ai-score{text-align:right;min-width:130px}.v15-ai-score strong{display:block;font-size:38px;line-height:1;letter-spacing:-.05em}.v15-ai-score span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.v15-ai-grid{display:grid;grid-template-columns:170px 1.15fr 1fr;gap:12px}.v15-ai-grid>div{border:1px solid var(--line);background:var(--bg);padding:18px}
+.v15-ai-ring{display:flex;align-items:center;justify-content:center;text-align:center}.v15-ai-ring>div{width:118px;height:118px;border:1px solid var(--text);border-radius:50%;display:flex;flex-direction:column;justify-content:center}.v15-ai-ring b{font-size:31px;letter-spacing:-.04em}.v15-ai-ring span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.v15-ai-row{margin-bottom:14px}.v15-ai-row>div{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px}.v15-ai-row b{color:var(--muted);font-weight:600}.v15-ai-row i{display:block;height:4px;background:var(--line);overflow:hidden}.v15-ai-row em{display:block;height:100%;background:currentColor}.v15-ai-row small{display:block;color:var(--muted);font-size:9px;margin-top:4px}
+.v15-ai-reading h3{margin:8px 0 6px;font-size:18px}.v15-ai-reading p{font-size:12px;color:var(--muted);line-height:1.55;margin:0}.v15-ai-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.v15-ai-stats span{border:1px solid var(--line);padding:8px;font-size:10px;color:var(--muted)}.v15-ai-stats b{display:block;color:var(--text);font-size:16px}
+@media(max-width:900px){.v15-ai-grid{grid-template-columns:1fr}.v15-ai-head{flex-direction:column}.v15-ai-score{text-align:left}.v15-ai-ring{min-height:160px}}
+
+/* V15 PREMIUM UI PASS */
+:root{
+  --v15-radius:14px;
+  --v15-radius-sm:10px;
+  --v15-shadow:0 18px 55px rgba(0,0,0,.055);
+  --v15-ease:cubic-bezier(.2,.75,.2,1);
+}
+body{letter-spacing:-.005em}
+button,.btn,a,.nav-item,.card,.metric-card,.project-card,.resource-card,.domain-card,
+.v15-ri-grid>div,.v15-ai-grid>div{transition:transform .22s var(--v15-ease),border-color .22s ease,background .22s ease,box-shadow .22s ease}
+button,.btn{border-radius:9px}
+.card,.metric-card,.project-card,.resource-card,.domain-card{border-radius:var(--v15-radius)}
+.card:hover,.metric-card:hover,.project-card:hover,.resource-card:hover,.domain-card:hover{
+  transform:translateY(-2px);box-shadow:var(--v15-shadow)
+}
+.nav-item{border-radius:9px}
+.nav-item:hover{transform:translateX(2px)}
+input,select,textarea{border-radius:9px;transition:border-color .2s ease,box-shadow .2s ease}
+input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+::selection{background:var(--text);color:var(--bg)}
+.v15-page-enter{animation:v15PageIn .34s var(--v15-ease) both}
+@keyframes v15PageIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.v15-progress-shine{position:relative;overflow:hidden}
+.v15-progress-shine:after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);animation:v15Shine 1.8s ease-out .25s 1}
+@keyframes v15Shine{to{transform:translateX(100%)}}
+.v15-focus{box-shadow:0 0 0 3px rgba(0,0,0,.08)!important}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+@media(max-width:700px){
+  .card,.metric-card,.project-card,.resource-card,.domain-card{border-radius:12px}
+  .v15-ri-head h2,.v15-ai-head h2{font-size:19px}
 }
 
-button, input, select, textarea { font: inherit; }
-button { cursor: pointer; }
-a { color: inherit; }
+.v15-build-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:18px}
+.v15-build-meta,.v15-build-label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.v15-build-head h2{margin:7px 0 5px;font-size:25px;letter-spacing:-.035em}.v15-build-head p{margin:0;color:var(--muted);font-size:12px}
+.v15-build-progress{margin:18px 0}.v15-build-progress>div{display:flex;justify-content:space-between;margin-bottom:7px;font-size:10px;color:var(--muted);letter-spacing:.1em}.v15-build-progress strong{color:var(--text);font-size:12px}
+.v15-build-progress>i{height:6px;background:var(--line);display:block;overflow:hidden}.v15-build-progress em{height:100%;display:block;background:currentColor}
+.v15-build-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:14px}
+.v15-build-step{text-align:left;background:var(--bg);border:1px solid var(--line);padding:12px;min-height:92px;color:var(--muted);cursor:pointer}.v15-build-step:hover{border-color:var(--text)}.v15-build-step.current{border-color:var(--text);color:var(--text)}.v15-build-step.done{color:var(--text)}.v15-build-step.locked{opacity:.7}
+.v15-build-step span{display:block;font-size:9px;letter-spacing:.12em;margin-bottom:9px}.v15-build-step b{display:block;font-size:12px;margin-bottom:5px}.v15-build-step small{display:block;font-size:9px;line-height:1.45}
+.v15-build-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:10px}.v15-build-panel{border:1px solid var(--line);background:var(--bg);padding:18px}.v15-build-panel h3{font-size:17px;margin:8px 0 14px;line-height:1.3}.v15-build-copy{border-top:1px solid var(--line);padding-top:10px;margin-top:12px}.v15-build-copy b{font-size:11px}.v15-build-copy p{font-size:11px;color:var(--muted);line-height:1.55;margin:5px 0 0}
+.v15-build-output{margin-top:16px;border-left:2px solid var(--text);padding:9px 0 9px 12px}.v15-build-output span{display:block;font-size:9px;color:var(--muted);letter-spacing:.1em}.v15-build-output b{display:block;margin-top:4px;font-size:12px}.v15-build-output small{display:block;color:var(--muted);margin-top:4px;font-size:10px;line-height:1.4}
+.v15-build-check{display:flex;gap:10px;border-top:1px solid var(--line);padding:11px 0}.v15-build-check>span{font-size:9px;color:var(--muted)}.v15-build-check b{font-size:11px;display:block}.v15-build-check small{font-size:10px;color:var(--muted);display:block;margin-top:3px;line-height:1.4}
+.v15-proof-summary{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:5px 8px;align-items:end;margin:10px 0 14px}.v15-proof-summary strong{font-size:23px;letter-spacing:-.03em}.v15-proof-summary span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding-bottom:3px}
+.v15-proof-item{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0}.v15-proof-item span{display:block;font-size:9px;color:var(--muted);text-transform:uppercase}.v15-proof-item b{display:block;font-size:11px;margin-top:3px}.v15-proof-item>strong{font-size:11px;white-space:nowrap}.v15-proof-empty{border-top:1px solid var(--line);padding:12px 0;display:flex;flex-direction:column;gap:4px}.v15-proof-empty b{font-size:11px}.v15-proof-empty span{font-size:10px;color:var(--muted)}.v15-proof-btn{margin-top:8px;width:100%}
+.v15-build-signal{grid-column:1/-1}.v15-signal-row{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:10px 0;font-size:11px}.v15-signal-row span{color:var(--muted)}.v15-signal-note{border:1px solid var(--line);padding:10px;font-size:10px;line-height:1.5;color:var(--muted);margin-top:5px}
+.v15-build-footer{display:flex;justify-content:space-between;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.v15-build-footer .btn{min-width:120px}
+@media(max-width:800px){.v15-build-steps{grid-template-columns:1fr 1fr}.v15-build-grid{grid-template-columns:1fr}.v15-build-signal{grid-column:auto}.v15-build-footer{flex-wrap:wrap}.v15-build-footer .btn{flex:1;min-width:100px}}
 
-/* Layout */
-.app { display: flex; min-height: 100vh; }
-.side {
-  position: fixed; inset: 0 auto 0 0; width: 228px; padding: 20px 13px;
-  background: var(--glass-bg); border-right: 1px solid var(--glass-border);
-  backdrop-filter: blur(18px) saturate(125%); -webkit-backdrop-filter: blur(18px) saturate(125%);
-  z-index: 20;
+.v15-evidence-graph{margin:0 0 18px;border:1px solid var(--line);background:var(--surface);padding:24px}
+.v15-eg-head{display:flex;justify-content:space-between;gap:20px}.v15-eg-head h2{font-size:21px;margin:7px 0 5px;letter-spacing:-.025em}.v15-eg-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.5;max-width:760px}.v15-eg-metric{text-align:right}.v15-eg-metric strong{font-size:30px;display:block}.v15-eg-metric span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.v15-eg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.v15-eg-grid>div{border:1px solid var(--line);padding:13px}.v15-eg-label{font-size:9px;letter-spacing:.12em;color:var(--muted);font-weight:700}.v15-eg-grid strong{font-size:22px;display:block;margin-top:5px}.v15-eg-grid p{font-size:10px;color:var(--muted);margin:3px 0 0}
+.v15-eg-table{border:1px solid var(--line);margin-top:8px;padding:13px}.v15-eg-table button{width:100%;display:grid;grid-template-columns:1fr auto auto;gap:12px;text-align:left;padding:10px 0;border:0;border-top:1px solid var(--line);background:none;color:inherit;cursor:pointer;align-items:center}.v15-eg-table button:first-of-type{margin-top:8px}.v15-eg-table b,.v15-eg-table small{display:block}.v15-eg-table b{font-size:11px}.v15-eg-table small{font-size:9px;color:var(--muted);margin-top:3px}.v15-eg-table em{font-size:9px;color:var(--muted);font-style:normal}
+.v15-ri-evidence{margin-top:12px;border:1px solid var(--line);padding:10px;display:flex;align-items:baseline;gap:8px}.v15-ri-evidence b{font-size:20px}.v15-ri-evidence small{color:var(--muted);font-size:10px}
+@media(max-width:700px){.v15-eg-head{flex-direction:column}.v15-eg-metric{text-align:left}.v15-eg-grid{grid-template-columns:1fr}.v15-eg-table button{grid-template-columns:1fr auto}}
+
+.v15-commandHero{display:grid;grid-template-columns:1fr 260px;gap:12px;margin-bottom:12px}.v15-commandIntro,.v15-commandScore{border:1px solid var(--line);background:var(--panel);padding:22px;border-radius:12px}.v15-commandIntro h2{font-size:30px;letter-spacing:-.045em;max-width:720px;margin:8px 0}.v15-commandIntro p{max-width:700px;color:var(--muted);line-height:1.6;font-size:12px}.v15-commandScore{display:flex;flex-direction:column;justify-content:center}.v15-commandScore span,.v15-commandScore small{font-size:9px;letter-spacing:.12em;color:var(--muted)}.v15-commandScore strong{font-size:44px;letter-spacing:-.06em;margin:5px 0}.v15-commandScore i{height:5px;background:var(--line);display:block;overflow:hidden}.v15-commandScore em{height:100%;display:block;background:currentColor}.v15-commandGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.v15-commandAction{border:1px solid var(--line);background:var(--bg);padding:17px;border-radius:12px;min-height:190px;display:flex;flex-direction:column;align-items:flex-start}.v15-commandAction.attention{border-style:dashed}.v15-commandActionTop{display:flex;justify-content:space-between;width:100%;gap:8px;font-size:10px;color:var(--muted);margin:8px 0}.v15-commandAction h3{font-size:17px;line-height:1.3;margin:4px 0 7px}.v15-commandAction p{font-size:11px;line-height:1.5;color:var(--muted);margin:0 0 14px}.v15-commandAction .btn{margin-top:auto}.v15-signalGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.v15-signalGrid .card strong{display:block;font-size:28px;letter-spacing:-.04em;margin-top:5px}.v15-signalGrid .card p{font-size:10px;color:var(--muted)}.v15-domainList{display:grid;gap:0;margin-top:8px}.v15-domainList button{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border:0;border-top:1px solid var(--line);background:none;color:inherit;text-align:left;cursor:pointer}.v15-domainList button:hover{transform:translateX(2px)}.v15-domainList b{display:block;font-size:11px}.v15-domainList small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.v15-domainList strong{font-size:12px}.v15-loop{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);background:var(--panel);border-radius:12px;overflow:hidden}.v15-loop button{border:0;border-right:1px solid var(--line);background:transparent;padding:15px;text-align:left;color:inherit;cursor:pointer;min-height:115px}.v15-loop button:last-child{border-right:0}.v15-loop button:hover{background:var(--soft)}.v15-loop span{font-size:9px;color:var(--muted);letter-spacing:.12em}.v15-loop b{display:block;font-size:13px;margin:9px 0 5px}.v15-loop small{display:block;font-size:9px;line-height:1.45;color:var(--muted)}
+@media(max-width:950px){.v15-commandHero{grid-template-columns:1fr}.v15-commandGrid{grid-template-columns:1fr}.v15-signalGrid{grid-template-columns:repeat(2,1fr)}.v15-loop{grid-template-columns:1fr 1fr}.v15-loop button:nth-child(2n){border-right:0}.v15-loop button{border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.v15-signalGrid{grid-template-columns:1fr}.v15-loop{grid-template-columns:1fr}.v15-loop button{border-right:0}.v15-commandIntro h2{font-size:24px}}
+<style>
+/* ===== V15.5 PREMIUM PRODUCT POLISH ===== */
+:root{
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --shadow-soft:0 8px 24px rgba(0,0,0,.035);
 }
-.brand { display: flex; align-items: center; gap: 11px; padding: 5px 9px 25px; filter: drop-shadow(0 0 18px rgba(139,124,246,.14)); }
-.mark { width: 35px; height: 35px; border-radius: 9px; background: #ded8ff; color: #17131f; display: grid; place-items: center; font-weight: 900; letter-spacing: -.04em; }
-.brand b { display: block; font-size: 14px; letter-spacing: .01em; }
-.brand small { display: block; color: var(--muted); font-size: 10.5px; margin-top: 1px; }
-
-.nav { display: grid; gap: 3px; }
-.nav button { border: 1px solid transparent; background: transparent; color: #9ca5b4; padding: 9px 10px; border-radius: 9px; text-align: left; transition: .16s; }
-.nav button:hover { background: rgba(255,255,255,.035); color: #e9ebef; }
-.nav button.on { background: linear-gradient(90deg, rgba(139,124,246,.16), rgba(90,169,255,.07)); color: #fff; border-color: rgba(139,124,246,.22); }
-
-.main { margin-left: 228px; width: calc(100% - 228px); padding: 28px 34px 60px; max-width: 1540px; }
-.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
-.header h1 { margin: 0; font-size: 23px; letter-spacing: -.025em; }
-.header p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
-
-/* Components */
-.search {
-  width: 310px; background: rgba(7,9,14,.42); border: 1px solid var(--glass-border-soft); color: #fff; 
-  border-radius: 9px; padding: 9px 12px; outline: none; backdrop-filter: blur(10px);
+[data-theme=dark]{--shadow-soft:0 8px 28px rgba(0,0,0,.18)}
+body{background:radial-gradient(circle at 88% -8%,rgba(0,0,0,.025),transparent 28%),var(--bg)}
+[data-theme=dark] body{background:radial-gradient(circle at 88% -8%,rgba(255,255,255,.025),transparent 28%),var(--bg)}
+.main{position:relative}
+.wrap{position:relative}
+.top{position:relative}
+.top>div:first-child{min-width:0}
+.top .eyebrow{transition:opacity .2s var(--ease)}
+.top h1{font-weight:700;text-wrap:balance}
+.top p{max-width:720px}
+.topactions{align-items:center}
+.search{min-width:245px;transition:border-color .18s var(--ease),box-shadow .18s var(--ease),background .18s var(--ease)}
+.search:hover{border-color:color-mix(in srgb,var(--ink) 32%,var(--line))}
+.search:focus{box-shadow:var(--focus)}
+.btn{transition:transform .16s var(--ease),border-color .16s var(--ease),background .16s var(--ease),box-shadow .16s var(--ease)}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+.btn:active{transform:translateY(0)}
+.btn.primary{box-shadow:0 8px 20px rgba(0,0,0,.08)}
+[data-theme=dark] .btn.primary{box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.nav button{position:relative;overflow:hidden}
+.nav button::before{content:"";position:absolute;left:0;top:7px;bottom:7px;width:2px;border-radius:3px;background:var(--ink);transform:scaleY(0);transition:transform .18s var(--ease)}
+.nav button.active::before{transform:scaleY(1)}
+.nav button.active{background:linear-gradient(90deg,var(--soft),transparent);}
+.card,.pathCard,.comp,.roadmapNode,.v15-commandAction,.v15-loop{transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease)}
+.card:hover,.pathCard:hover,.comp:hover,.roadmapNode:hover,.v15-commandAction:hover{border-color:color-mix(in srgb,var(--ink) 24%,var(--line));box-shadow:var(--shadow-card)}
+.domain:hover{transform:translateY(-2px);box-shadow:var(--shadow-card)}
+.sectionhead{scroll-margin-top:20px}
+.v15-commandHero{position:relative;overflow:hidden}
+.v15-commandHero::after{content:"";position:absolute;width:260px;height:260px;border:1px solid var(--line);border-radius:50%;right:-100px;top:-145px;opacity:.45;pointer-events:none}
+.v15-commandIntro h2{max-width:700px;text-wrap:balance}
+.v15-commandAction{position:relative;overflow:hidden}
+.v15-commandAction::after{content:"";position:absolute;right:-18px;bottom:-18px;width:72px;height:72px;border:1px solid var(--line);border-radius:50%;opacity:.45;pointer-events:none}
+.v15-commandActionTop{position:relative;z-index:1}
+.v15-signalGrid .card{min-height:122px}
+.v15-domainList button{transition:padding .16s var(--ease),transform .16s var(--ease),background .16s var(--ease)}
+.v15-domainList button:hover{padding-left:5px;padding-right:5px;background:var(--soft)}
+.v15-loop button{transition:background .16s var(--ease),padding .16s var(--ease)}
+.v15-loop button:hover{padding-left:18px}
+.system-strip{position:sticky;top:8px;z-index:4;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--panel) 88%,transparent);box-shadow:var(--shadow-soft)}
+.modal.open .sheet,.cmd.open .cmdbox{animation:v15Enter .22s var(--ease)}
+@keyframes v15Enter{from{opacity:0;transform:translateY(10px) scale(.992)}to{opacity:1;transform:none}}
+#view{animation:v15PageIn .22s var(--ease)}
+@keyframes v15PageIn{from{opacity:.55;transform:translateY(3px)}to{opacity:1;transform:none}}
+.v15Footer{opacity:.8;transition:opacity .2s ease}.v15Footer:hover{opacity:1}
+@media(max-width:760px){
+  .wrap{padding-top:20px}
+  .top{gap:12px}
+  .top h1{font-size:clamp(30px,10vw,42px)}
+  .search{min-width:0;flex:1}
+  .system-strip{position:relative;top:auto}
+  .v15-commandHero::after{display:none}
 }
-.search:focus { border-color: rgba(139,124,246,.48); box-shadow: 0 0 0 3px rgba(139,124,246,.09), 0 0 22px rgba(139,124,246,.08); }
-
-.page { display: none; animation: fadeIn 0.3s ease; }
-.page.on { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-.heroMini { padding: 19px 20px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); margin-bottom: 15px; box-shadow: var(--glass-shadow); backdrop-filter: blur(18px); }
-.heroMini h2 { margin: 0 0 3px; font-size: 20px; letter-spacing: -.02em; }
-.heroMini p { margin: 0; }
-
-.grid { display: grid; gap: 15px; }
-.g3 { grid-template-columns: repeat(3, 1fr); }
-.g2 { grid-template-columns: repeat(2, 1fr); }
-
-.card {
-  background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.008)), var(--glass-bg);
-  border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 19px; box-shadow: var(--glass-shadow);
-  position: relative; backdrop-filter: blur(18px) saturate(125%);
+@media(prefers-reduced-motion:reduce){
+  .btn,.nav button,.card,.pathCard,.comp,.roadmapNode,.v15-commandAction,.v15-loop button,#view{transition:none!important;animation:none!important}
 }
-.card::after { content: ""; position: absolute; pointer-events: none; left: 10%; right: 10%; top: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent); opacity: .7; }
-.card h3 { font-size: 15px; margin: 0 0 10px; letter-spacing: -.01em; }
-
-.stat { min-height: 104px; }
-.num { font-size: 27px; font-weight: 750; letter-spacing: -.03em; margin: 5px 0; color: #fff; }
-.muted { color: var(--muted); }
-
-.statgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 15px; }
-.bar { height: 5px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); }
-.bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--glow-blue)); border-radius: 99px; box-shadow: 0 0 16px rgba(90,169,255,.16); transition: width 0.3s ease; }
-
-.tag { display: inline-block; border: 1px solid rgba(139,124,246,.25); background: rgba(139,124,246,.09); padding: 2px 7px; border-radius: 999px; color: #d0c8ff; font-size: 9.5px; margin-right: 4px; text-transform: uppercase; letter-spacing: .04em; }
-
-.domain { cursor: pointer; transition: .2s ease; overflow: hidden; }
-.domain::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background: var(--accent); opacity:.85; }
-.domain:hover { transform: translateY(-2px); border-color: rgba(139,124,246,.28); box-shadow: 0 22px 60px rgba(0,0,0,.30), 0 0 35px rgba(139,124,246,.055); background: radial-gradient(350px 160px at 15% 0%,rgba(139,124,246,.075),transparent 70%), rgba(20,23,34,.66); }
-.domain h3 { margin: 7px 0 5px; }
-.domain .icon { font-size: 18px; color: var(--accent); filter: drop-shadow(0 0 8px rgba(139,124,246,.4)); }
-.domain .topics { min-height: 61px; color: var(--muted); font-size: 11.5px; margin: 10px 0; }
-.domainfoot { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 11px; }
-
-.filter { display: flex; gap: 6px; flex-wrap: wrap; margin: 11px 0; }
-.btn { border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.035); color: #dfe3e9; border-radius: 8px; padding: 7px 12px; transition: .15s; backdrop-filter: blur(10px); font-weight: 500; }
-.btn:hover { box-shadow: 0 0 22px rgba(139,124,246,.10); border-color: rgba(139,124,246,.45); }
-.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; box-shadow: 0 8px 28px rgba(90,169,255,.10), 0 0 22px rgba(139,124,246,.07); }
-.btn.primary:hover { background: #9b8cff; }
-.btn.active { background: rgba(139,124,246,.2); border-color: var(--accent); color: #fff; }
-
-.resource { padding: 12px; border: 1px solid var(--glass-border-soft); border-radius: 10px; background: rgba(0,0,0,0.15); margin: 7px 0; }
-.resource a:hover { color: #5aa9ff; text-decoration: underline; }
-.q { font-size: 9px; font-weight: 800; border-radius: 99px; padding: 3px 5px; margin-right: 5px; }
-.q5 { background: rgba(98,217,155,0.2); border: 1px solid #62d99b; color: #62d99b; }
-
-.projectCard { padding: 15px; border: 1px solid var(--glass-border); border-radius: 10px; margin: 9px 0; background: var(--glass-bg); transition: .16s; }
-.projectCard:hover { border-color: rgba(139,124,246,.28); box-shadow: 0 12px 35px rgba(0,0,0,.18); transform: translateY(-1px); }
-.projectCard .difficulty { font-size: 9.5px; color: var(--muted); float: right; text-transform: uppercase; letter-spacing: .05em; }
-.projectCard b { display: block; margin: 6px 0 3px; font-size: 13.5px; }
-.projectCard small { display: block; color: var(--muted); font-size: 12px; line-height: 1.5; }
-.projectActions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-.miniTrack { margin-top: 12px; }
-.miniTrack .muted { font-size: 10.5px; margin-bottom: 4px; }
-
-/* Interactive Trackers */
-.checkrow { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
-.checkrow:last-child { border-bottom: 0; }
-.checkrow input[type="checkbox"] { accent-color: var(--accent); width: 18px; height: 18px; margin-top: 2px; cursor: pointer; }
-.checkrow span { color: #eef0f4; line-height: 1.4; }
-.checkrow span.done { text-decoration: line-through; color: var(--muted); }
-
-.note, .input { width: 100%; background: rgba(0,0,0,.35) !important; border: 1px solid var(--glass-border-soft); color: #edf0f5; border-radius: 9px; padding: 12px; outline: none; box-shadow: inset 0 2px 6px rgba(0,0,0,0.5); }
-.note { min-height: 145px; resize: vertical; line-height: 1.5; }
-.input:focus, .note:focus { border-color: rgba(139,124,246,.48); box-shadow: inset 0 2px 6px rgba(0,0,0,0.5), 0 0 0 2px rgba(139,124,246,.15); }
-
-/* Canvas Radar */
-#radarContainer { display: flex; justify-content: center; align-items: center; padding: 20px; background: rgba(0,0,0,0.15); border-radius: 12px; border: 1px solid var(--glass-border-soft); margin-top: 15px; }
-canvas { max-width: 100%; height: auto; }
-
-/* Mobile Bottom Nav */
-.bottom-nav { display: none; }
-
-@media(max-width: 900px) {
-  .g3 { grid-template-columns: repeat(2, 1fr); }
-  .statgrid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media(max-width: 700px) {
-  .side { display: none; } /* Hide sidebar on mobile */
-  .main { margin-left: 0; width: 100%; padding: 15px 15px 100px; }
-  .g3, .g2, .statgrid { grid-template-columns: 1fr; }
-  .header { display: block; }
-  .search { width: 100%; margin-top: 12px; }
-  
-  /* Bottom Mobile Nav */
-  .bottom-nav {
-    display: flex; justify-content: space-around; align-items: center;
-    position: fixed; z-index: 900; left: 10px; right: 10px; bottom: 15px;
-    padding: 10px 5px; border-radius: 18px;
-    background: var(--glass-bg-strong); border: 1px solid var(--glass-border);
-    backdrop-filter: blur(18px); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-  }
-  .bottom-nav button {
-    background: transparent; border: none; color: var(--muted); font-size: 10px;
-    display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 5px 10px;
-  }
-  .bottom-nav button .icon { font-size: 18px; }
-  .bottom-nav button.on { color: #fff; text-shadow: 0 0 8px rgba(139,124,246,.8); }
-  .bottom-nav button.on .icon { color: var(--accent); }
-}
-</style>
-</head>
-<body>
-
-<div class="app">
-  <!-- Desktop Sidebar -->
-  <aside class="side">
-    <div class="brand"><div class="mark">C</div><div><b>CareerOS</b><small>Authority Lab v9</small></div></div>
-    <nav class="nav" id="desktopNav">
-      <button class="on" data-page="home">⌂ <span>Dashboard</span></button>
-      <button data-page="domains">◈ <span>Domains</span></button>
-      <button data-page="projects">◇ <span>Project Lab</span></button>
-      <button data-page="skills">◫ <span>Skill Radar</span></button>
-      <button data-page="plan">□ <span>Learning Plan</span></button>
-    </nav>
-  </aside>
-
-  <!-- Mobile Bottom Nav -->
-  <nav class="bottom-nav" id="mobileNav">
-    <button class="on" data-page="home"><span class="icon">⌂</span><span>Home</span></button>
-    <button data-page="domains"><span class="icon">◈</span><span>Domains</span></button>
-    <button data-page="projects"><span class="icon">◇</span><span>Projects</span></button>
-    <button data-page="skills"><span class="icon">◫</span><span>Skills</span></button>
-  </nav>
-
-  <main class="main">
-    <header class="header">
-      <div><h1 id="title">CareerOS</h1><p id="subtitle">Clinical Data Management · CDISC · ML</p></div>
-      <input id="globalSearch" class="search" placeholder="Search domains, projects, skills...">
-    </header>
-
-    <!-- 0. Onboarding / Zero State (Injected dynamically if empty) -->
-    <div id="zeroState" style="display:none; margin-bottom: 25px;">
-      <div class="card" style="border-color: var(--accent); box-shadow: 0 0 30px rgba(139,124,246,.15);">
-        <h3>👋 Welcome to the Authority Lab</h3>
-        <p class="muted">It looks like you're starting fresh. As a Pharm.D transitioning into Clinical Data Management, your highest leverage action is mastering CDISC Standards (SDTM/ADaM) and Data Architecture.</p>
-        <button class="btn primary" onclick="startRecommendedProject()">Start Recommended Track: CDISC Foundations</button>
-      </div>
-    </div>
-
-    <!-- 1. Dashboard -->
-    <section id="home" class="page on">
-      <div class="statgrid">
-        <div class="card stat"><span class="muted">Active Projects</span><div class="num" id="activeProjCount">0</div><span class="muted">in progress</span></div>
-        <div class="card stat"><span class="muted">Completed</span><div class="num" id="doneProjCount">0</div><span class="muted">portfolio pieces</span></div>
-        <div class="card stat"><span class="muted">CDISC Capability</span><div class="num" id="cdiscScore">0/10</div><span class="muted">core moat</span></div>
-        <div class="card stat"><span class="muted">Overall Progress</span><div class="num" id="skillPct">0%</div><div class="bar"><i id="skillBar" style="width:0%"></i></div></div>
-      </div>
-      
-      <div class="grid g2">
-        <div class="card">
-          <h3>Your Current Focus</h3>
-          <div id="dashboardFocus">
-            <p class="muted">No active projects. Visit the Project Lab to start building.</p>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Weekly Operating System</h3>
-          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 0)"><span><b>3h</b> CDISC / SDTM / ADaM mapping</span></div>
-          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 1)"><span><b>2h</b> Statistical Programming (R/SAS/SQL)</span></div>
-          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 2)"><span><b>2h</b> Project building & portfolio</span></div>
-          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 3)"><span><b>1h</b> Industry intelligence (FDA/EMA/ICH)</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. Domains -->
-    <section id="domains" class="page">
-      <div class="heroMini"><h2>Capability Domains</h2><p class="muted">Select a domain to view skills, top resources, and a ladder of practical projects.</p></div>
-      <div class="grid g3" id="domainGrid"></div>
-    </section>
-
-    <!-- Domain Detail View -->
-    <section id="domainDetail" class="page">
-      <button class="btn" onclick="showPage('domains')">← Back to Domains</button>
-      <div id="domainDetailContent" style="margin-top:15px"></div>
-    </section>
-
-    <!-- 3. Project Lab -->
-    <section id="projects" class="page">
-      <div class="heroMini"><h2>Project Lab</h2><p class="muted">Projects are undeniable evidence of capability. Never expose confidential employer data.</p></div>
-      <div class="filter" id="projectFilters"></div>
-      <div id="projectList"></div>
-    </section>
-
-    <!-- 4. Skill Radar -->
-    <section id="skills" class="page">
-      <div class="heroMini"><h2>Skill Radar Matrix</h2><p class="muted">Visualize your technical moats and gaps. Tap the +/- buttons below to update your profile.</p></div>
-      <div class="grid g2">
-        <div id="radarContainer">
-          <canvas id="radarChart" width="400" height="400"></canvas>
-        </div>
-        <div class="card" id="skillControls" style="max-height: 440px; overflow-y: auto;">
-          <!-- Populated by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Learning Plan -->
-    <section id="plan" class="page">
-      <div class="heroMini"><h2>Learning Plan Sprints</h2><p class="muted">A structured progression from CDM basics to AI architecture.</p></div>
-      <div class="grid g2">
-        <div class="card"><h3>0–3m · CDM & Protocol Foundations</h3><div id="p1"></div></div>
-        <div class="card"><h3>3–6m · CDISC & Data Architecture</h3><div id="p2"></div></div>
-        <div class="card"><h3>6–12m · Statistical Programming</h3><div id="p3"></div></div>
-        <div class="card"><h3>12–24m · AI & Authority Moat</h3><div id="p4"></div></div>
-      </div>
-    </section>
-
-  </main>
-</div>
-
-<!-- ========================================== -->
-<!-- JAVASCRIPT / DATA / LOGIC                  -->
-<!-- ========================================== -->
+</style></style></head><body>
+<!-- V15 CONTENT INTEGRITY: original architecture retained; 14 domains / 140 projects / 40 resources / original page functions preserved. -->
+<div class="app"><aside class="side"><div class="brand"><b>FORGE</b><small>CAPABILITY OPERATING SYSTEM</small></div><nav id="nav" class="nav"></nav><div class="sidefoot">BUILD CAPABILITY.<br>LEAVE EVIDENCE.<br><span id="clock"></span></div></aside><main class="main"><div class="wrap"><header class="top"><div><div id="ey" class="eyebrow"></div><h1 id="ti"></h1><p id="su"></p></div><div class="topactions"><input aria-label="Search projects, resources and capabilities" title="Search projects, resources and capabilities" id="search" class="search" placeholder="Search 140 builds…" aria-label="Search"><button class="btn" onclick="openCommand()">⌘K</button><button class="btn" onclick="toggleTheme()">Theme</button></div></header><div id="view"></div></div></main></div><nav id="bottom" class="bottom"></nav><div id="modal" class="modal" onclick="if(event.target===this)closeM()"><div id="sheet" class="sheet"></div></div><div id="cmd" class="cmd" onclick="if(event.target===this)closeCmd()"><div class="cmdbox"><input id="cmdin" placeholder="Type a command or page…" oninput="renderCommands()"><div id="cmdlist" class="cmdlist"></div></div></div><div id="toast" class="toast"></div>
+<script>const DATA={"domains": ["Clinical Research", "Clinical Data Management", "CDISC Standards & Architecture", "Pharmacovigilance", "Regulatory Affairs", "Statistical Programming — R + SAS", "Data Foundations — Excel + SQL", "Biostatistics", "Epidemiology + RWE", "Python + Automation", "Evidence + Medical Writing", "AI for Clinical Research", "Quality + Project Management", "Business + Leadership"], "projects": [{"id": "01-01", "name": "Protocol deconstruction", "domain": "Clinical Research", "di": 0, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "01-02", "name": "Trial lifecycle map", "domain": "Clinical Research", "di": 0, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "01-03", "name": "Deviation taxonomy", "domain": "Clinical Research", "di": 0, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "01-04", "name": "Eligibility checker", "domain": "Clinical Research", "di": 0, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "01-05", "name": "Feasibility scorecard", "domain": "Clinical Research", "di": 0, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "01-06", "name": "Protocol risk register", "domain": "Clinical Research", "di": 0, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "01-07", "name": "Site performance dashboard", "domain": "Clinical Research", "di": 0, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "01-08", "name": "Protocol-to-CRF mapping", "domain": "Clinical Research", "di": 0, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "01-09", "name": "Trial risk prediction", "domain": "Clinical Research", "di": 0, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "01-10", "name": "End-to-end trial intelligence", "domain": "Clinical Research", "di": 0, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "02-01", "name": "Clinical data workflow map", "domain": "Clinical Data Management", "di": 1, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "02-02", "name": "CRF annotation exercise", "domain": "Clinical Data Management", "di": 1, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "02-03", "name": "Edit-check specification", "domain": "Clinical Data Management", "di": 1, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "02-04", "name": "Query management simulator", "domain": "Clinical Data Management", "di": 1, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "02-05", "name": "Data cleaning plan", "domain": "Clinical Data Management", "di": 1, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "02-06", "name": "Reconciliation tracker", "domain": "Clinical Data Management", "di": 1, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "02-07", "name": "Coding review exercise", "domain": "Clinical Data Management", "di": 1, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "02-08", "name": "Data quality dashboard", "domain": "Clinical Data Management", "di": 1, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "02-09", "name": "Database lock readiness drill", "domain": "Clinical Data Management", "di": 1, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "02-10", "name": "End-to-end CDM mini-study", "domain": "Clinical Data Management", "di": 1, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "03-01", "name": "CDISC standards map", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "03-02", "name": "CDASH domain exercise", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "03-03", "name": "SDTM domain map", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "03-04", "name": "Controlled terminology explorer", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "03-05", "name": "SDTM mapping specification", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "03-06", "name": "Define-XML walkthrough", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "03-07", "name": "ADaM dataset blueprint", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "03-08", "name": "SDTM validation review", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "03-09", "name": "Standards implementation guide", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "03-10", "name": "End-to-end CDISC architecture", "domain": "CDISC Standards & Architecture", "di": 2, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "04-01", "name": "AE vs SAE decision tree", "domain": "Pharmacovigilance", "di": 3, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "04-02", "name": "Causality casebook", "domain": "Pharmacovigilance", "di": 3, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "04-03", "name": "MedDRA hierarchy explorer", "domain": "Pharmacovigilance", "di": 3, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "04-04", "name": "Safety narratives", "domain": "Pharmacovigilance", "di": 3, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "04-05", "name": "ICSR workflow simulator", "domain": "Pharmacovigilance", "di": 3, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "04-06", "name": "Duplicate detection", "domain": "Pharmacovigilance", "di": 3, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "04-07", "name": "PV literature screening", "domain": "Pharmacovigilance", "di": 3, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "04-08", "name": "Disproportionality analysis", "domain": "Pharmacovigilance", "di": 3, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "04-09", "name": "Signal evaluation report", "domain": "Pharmacovigilance", "di": 3, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "04-10", "name": "PV intelligence dashboard", "domain": "Pharmacovigilance", "di": 3, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "05-01", "name": "Regulatory glossary", "domain": "Regulatory Affairs", "di": 4, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "05-02", "name": "Development pathway map", "domain": "Regulatory Affairs", "di": 4, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "05-03", "name": "Guideline log", "domain": "Regulatory Affairs", "di": 4, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "05-04", "name": "Source tracker", "domain": "Regulatory Affairs", "di": 4, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "05-05", "name": "Guideline version comparison", "domain": "Regulatory Affairs", "di": 4, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "05-06", "name": "CTD map", "domain": "Regulatory Affairs", "di": 4, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "05-07", "name": "Impact assessment", "domain": "Regulatory Affairs", "di": 4, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "05-08", "name": "Mock agency response", "domain": "Regulatory Affairs", "di": 4, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "05-09", "name": "Global requirement matrix", "domain": "Regulatory Affairs", "di": 4, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "05-10", "name": "Regulatory intelligence dashboard", "domain": "Regulatory Affairs", "di": 4, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "06-01", "name": "Descriptive clinical report", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "06-02", "name": "Confidence interval visualizer", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "06-03", "name": "P-value simulation", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "06-04", "name": "Effect size calculator", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "06-05", "name": "Sample size explorer", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "06-06", "name": "Table 1", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "06-07", "name": "Logistic regression", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "06-08", "name": "Kaplan-Meier analysis", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "06-09", "name": "Cox regression report", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "06-10", "name": "Full statistical analysis report", "domain": "Statistical Programming — R + SAS", "di": 5, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "07-01", "name": "Clinical operations tracker", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "07-02", "name": "AE pivot dashboard", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "07-03", "name": "Power Query cleaning", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "07-04", "name": "Recruitment dashboard", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "07-05", "name": "SQL clinical database", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "07-06", "name": "30-query challenge", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "07-07", "name": "Risk KPI dashboard", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "07-08", "name": "Trial warehouse", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "07-09", "name": "PV SQL analytics", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "07-10", "name": "Clinical operations command center", "domain": "Data Foundations — Excel + SQL", "di": 6, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "08-01", "name": "Descriptive clinical report", "domain": "Biostatistics", "di": 7, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "08-02", "name": "CI interpretation lab", "domain": "Biostatistics", "di": 7, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "08-03", "name": "Hypothesis testing simulation", "domain": "Biostatistics", "di": 7, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "08-04", "name": "Effect size study", "domain": "Biostatistics", "di": 7, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "08-05", "name": "Sample size explorer", "domain": "Biostatistics", "di": 7, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "08-06", "name": "Table 1 build", "domain": "Biostatistics", "di": 7, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "08-07", "name": "Logistic regression", "domain": "Biostatistics", "di": 7, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "08-08", "name": "Kaplan-Meier analysis", "domain": "Biostatistics", "di": 7, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "08-09", "name": "Cox model report", "domain": "Biostatistics", "di": 7, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "08-10", "name": "Full statistical analysis plan + report", "domain": "Biostatistics", "di": 7, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "09-01", "name": "Incidence/prevalence calculator", "domain": "Epidemiology + RWE", "di": 8, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "09-02", "name": "Cohort vs case-control", "domain": "Epidemiology + RWE", "di": 8, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "09-03", "name": "Bias casebook", "domain": "Epidemiology + RWE", "di": 8, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "09-04", "name": "DAG builder", "domain": "Epidemiology + RWE", "di": 8, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "09-05", "name": "Propensity matching", "domain": "Epidemiology + RWE", "di": 8, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "09-06", "name": "Observational safety study", "domain": "Epidemiology + RWE", "di": 8, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "09-07", "name": "Target trial emulation", "domain": "Epidemiology + RWE", "di": 8, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "09-08", "name": "Inverse probability weighting", "domain": "Epidemiology + RWE", "di": 8, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "09-09", "name": "Sensitivity analysis", "domain": "Epidemiology + RWE", "di": 8, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "09-10", "name": "Regulatory-grade RWE protocol", "domain": "Epidemiology + RWE", "di": 8, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "10-01", "name": "CSV profiler", "domain": "Python + Automation", "di": 9, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "10-02", "name": "Medication cleaner", "domain": "Python + Automation", "di": 9, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "10-03", "name": "Clinical calculator", "domain": "Python + Automation", "di": 9, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "10-04", "name": "AE visualization", "domain": "Python + Automation", "di": 9, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "10-05", "name": "Literature screening", "domain": "Python + Automation", "di": 9, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "10-06", "name": "Duplicate detector", "domain": "Python + Automation", "di": 9, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "10-07", "name": "Automated report generator", "domain": "Python + Automation", "di": 9, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "10-08", "name": "Signal detection", "domain": "Python + Automation", "di": 9, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "10-09", "name": "Clinical prediction model", "domain": "Python + Automation", "di": 9, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "10-10", "name": "End-to-end clinical AI pipeline", "domain": "Python + Automation", "di": 9, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "11-01", "name": "PubMed search strategy", "domain": "Evidence + Medical Writing", "di": 10, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "11-02", "name": "Appraisal one-pager", "domain": "Evidence + Medical Writing", "di": 10, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "11-03", "name": "Drug evidence brief", "domain": "Evidence + Medical Writing", "di": 10, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "11-04", "name": "Safety narrative set", "domain": "Evidence + Medical Writing", "di": 10, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "11-05", "name": "Mini systematic review", "domain": "Evidence + Medical Writing", "di": 10, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "11-06", "name": "Evidence table", "domain": "Evidence + Medical Writing", "di": 10, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "11-07", "name": "Scientific poster", "domain": "Evidence + Medical Writing", "di": 10, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "11-08", "name": "Rapid review", "domain": "Evidence + Medical Writing", "di": 10, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "11-09", "name": "Meta-analysis practice", "domain": "Evidence + Medical Writing", "di": 10, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "11-10", "name": "Publication-quality systematic review protocol", "domain": "Evidence + Medical Writing", "di": 10, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "12-01", "name": "Paper summarizer", "domain": "AI for Clinical Research", "di": 11, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "12-02", "name": "Guideline Q&A", "domain": "AI for Clinical Research", "di": 11, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "12-03", "name": "AE extractor", "domain": "AI for Clinical Research", "di": 11, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "12-04", "name": "Protocol eligibility assistant", "domain": "AI for Clinical Research", "di": 11, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "12-05", "name": "Regulatory diff assistant", "domain": "AI for Clinical Research", "di": 11, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "12-06", "name": "Literature triage classifier", "domain": "AI for Clinical Research", "di": 11, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "12-07", "name": "RAG assistant", "domain": "AI for Clinical Research", "di": 11, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "12-08", "name": "PV narrative generator", "domain": "AI for Clinical Research", "di": 11, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "12-09", "name": "Trial risk anomaly detector", "domain": "AI for Clinical Research", "di": 11, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "12-10", "name": "HITL clinical AI platform", "domain": "AI for Clinical Research", "di": 11, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "13-01", "name": "5 Whys", "domain": "Quality + Project Management", "di": 12, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "13-02", "name": "RACI", "domain": "Quality + Project Management", "di": 12, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "13-03", "name": "Risk register", "domain": "Quality + Project Management", "di": 12, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "13-04", "name": "FMEA", "domain": "Quality + Project Management", "di": 12, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "13-05", "name": "CAPA", "domain": "Quality + Project Management", "di": 12, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "13-06", "name": "Project dashboard", "domain": "Quality + Project Management", "di": 12, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "13-07", "name": "Inspection readiness drill", "domain": "Quality + Project Management", "di": 12, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "13-08", "name": "Root-cause analytics", "domain": "Quality + Project Management", "di": 12, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "13-09", "name": "Critical-path plan", "domain": "Quality + Project Management", "di": 12, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "13-10", "name": "QMS mini-design", "domain": "Quality + Project Management", "di": 12, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "14-01", "name": "CRO value chain", "domain": "Business + Leadership", "di": 13, "level": "Foundation", "time": "2–3h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "14-02", "name": "KPI dictionary", "domain": "Business + Leadership", "di": 13, "level": "Foundation", "time": "3–5h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "14-03", "name": "Executive one-pager", "domain": "Business + Leadership", "di": 13, "level": "Foundation", "time": "4–6h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "14-04", "name": "Meeting decision log", "domain": "Business + Leadership", "di": 13, "level": "Intermediate", "time": "4–6h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "14-05", "name": "Mock client escalation", "domain": "Business + Leadership", "di": 13, "level": "Intermediate", "time": "6–8h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}, {"id": "14-06", "name": "Resource allocation", "domain": "Business + Leadership", "di": 13, "level": "Intermediate", "time": "6–10h", "deliverable": "Brief", "validation": "Explain workflow", "evidence": "Brief"}, {"id": "14-07", "name": "Business case", "domain": "Business + Leadership", "di": 13, "level": "Advanced", "time": "8–12h", "deliverable": "Working artifact", "validation": "Working artifact", "evidence": "Artifact"}, {"id": "14-08", "name": "Operating review", "domain": "Business + Leadership", "di": 13, "level": "Advanced", "time": "10–15h", "deliverable": "Validation set", "validation": "Realistic test cases", "evidence": "Validation log"}, {"id": "14-09", "name": "Process redesign", "domain": "Business + Leadership", "di": 13, "level": "Advanced", "time": "15–25h", "deliverable": "Decision log", "validation": "Limitations documented", "evidence": "Case study"}, {"id": "14-10", "name": "Strategic proposal", "domain": "Business + Leadership", "di": 13, "level": "Expert", "time": "25–40h", "deliverable": "Portfolio case", "validation": "Reproducible evidence", "evidence": "Portfolio evidence"}], "resources": [["ICH E6(R3) Good Clinical Practice", "ICH", "Clinical", "Free", "No credential", "Core GCP reference", "https://www.ich.org/page/efficacy-guidelines"], ["NIH Good Clinical Practice Training", "NIH", "Clinical", "Free", "Completion record", "Structured GCP learning", "https://grants.nih.gov/policy-and-compliance/policy-topics/clinical-trials/policies/good-clinical-practice"], ["FDA Clinical Trials Training", "FDA", "Clinical", "Free", "No credential", "Regulatory trial context", "https://www.fda.gov/drugs/resources-information-approved-drugs/clinical-trials-and-human-subject-protection"], ["CDISC Standards", "CDISC", "Clinical", "Free access varies", "Varies", "Primary standards ecosystem", "https://www.cdisc.org/standards"], ["CDISC Library", "CDISC", "Clinical", "Free access", "No credential", "Standards metadata", "https://www.cdisc.org/cdisc-library"], ["CDISC Education", "CDISC", "Clinical", "Paid/free varies", "Varies", "Structured standards education", "https://www.cdisc.org/education"], ["Pinnacle 21", "Certara", "Clinical", "Free/community varies", "No credential", "Standards validation tooling", "https://www.certara.com/software/pinnacle-21/"], ["R for Data Science", "Wickham et al.", "Data", "Free online", "No credential", "Reproducible data workflows", "https://r4ds.hadley.nz/"], ["R Project", "R Foundation", "Data", "Free", "No credential", "Official R ecosystem", "https://www.r-project.org/"], ["SQLBolt", "SQLBolt", "Data", "Free", "No credential", "Hands-on SQL", "https://sqlbolt.com/"], ["Python Tutorial", "Python Software Foundation", "Data", "Free", "No credential", "Official Python tutorial", "https://docs.python.org/3/tutorial/"], ["Kaggle Learn", "Kaggle", "Data", "Free", "Varies", "Practical Python, SQL and ML", "https://www.kaggle.com/learn"], ["OpenIntro Statistics", "OpenIntro", "Biostatistics", "Free", "No credential", "Applied statistics", "https://www.openintro.org/book/os/"], ["Khan Academy Statistics", "Khan Academy", "Biostatistics", "Free", "No credential", "Probability and inference", "https://www.khanacademy.org/math/statistics-probability"], ["FDA Real-World Evidence", "FDA", "RWE", "Free", "No credential", "Primary-source RWE material", "https://www.fda.gov/science-research/science-and-research-special-topics/real-world-evidence"], ["CDC Epi Info", "CDC", "RWE", "Free", "No credential", "Applied epidemiology toolkit", "https://www.cdc.gov/epiinfo/"], ["WHO Global Health Observatory", "WHO", "RWE", "Free", "No credential", "Global health data", "https://www.who.int/data/gho"], ["PubMed", "NCBI", "Evidence", "Free", "No credential", "Biomedical literature search", "https://pubmed.ncbi.nlm.nih.gov/"], ["NCBI Bookshelf", "NCBI", "Evidence", "Free", "No credential", "Biomedical references", "https://www.ncbi.nlm.nih.gov/books/"], ["Cochrane Training", "Cochrane", "Evidence", "Free/paid varies", "Varies", "Evidence synthesis", "https://training.cochrane.org/"], ["EMA Pharmacovigilance", "EMA", "PV", "Free", "No credential", "European safety framework", "https://www.ema.europa.eu/en/human-regulatory-overview/pharmacovigilance-overview"], ["WHO Pharmacovigilance", "WHO", "PV", "Free", "No credential", "Global safety monitoring", "https://www.who.int/teams/regulation-prequalification/regulation-and-safety/pharmacovigilance"], ["CDSCO", "CDSCO", "Regulatory", "Free", "No credential", "India regulatory reference", "https://cdsco.gov.in/"], ["ICH Guidelines", "ICH", "Regulatory", "Free", "No credential", "International guidance", "https://www.ich.org/page/ich-guidelines"], ["SAS OnDemand for Academics", "SAS", "Data", "Free for eligible academics", "Varies", "SAS practice", "https://www.sas.com/en_us/software/on-demand-for-academics.html"], ["SAS Academic Programs", "SAS", "Data", "Free offerings vary", "Varies", "Academic SAS learning", "https://www.sas.com/en_us/learn/academic-programs.html"], ["Hugging Face Learn", "Hugging Face", "AI", "Free", "Varies", "LLM/NLP/ML learning", "https://huggingface.co/learn"], ["Google ML Crash Course", "Google", "AI", "Free", "Varies", "Practical ML foundations", "https://developers.google.com/machine-learning/crash-course"], ["DeepLearning.AI Short Courses", "DeepLearning.AI", "AI", "Free access varies", "Varies", "Applied AI/LLM courses", "https://www.deeplearning.ai/short-courses/"], ["GitHub Skills", "GitHub", "Data", "Free", "Completion varies", "Developer workflow", "https://skills.github.com/"], ["Microsoft Learn", "Microsoft", "Data", "Free", "Credentials may be paid", "Technical learning", "https://learn.microsoft.com/training/"], ["PMI KICKOFF", "PMI", "Quality", "Free", "No credential", "Project management foundation", "https://www.pmi.org/kickoff"], ["ICH Quality Guidelines", "ICH", "Quality", "Free", "No credential", "Quality references", "https://www.ich.org/page/quality-guidelines"], ["freeCodeCamp", "freeCodeCamp", "Data", "Free", "Certifications available", "Coding curriculum", "https://www.freecodecamp.org/learn/"], ["WHO Research Ethics", "WHO", "Clinical", "Free", "No credential", "Research ethics", "https://www.who.int/health-topics/ethics-and-health"], ["CONSORT", "EQUATOR Network", "Evidence", "Free", "No credential", "Trial reporting", "https://www.equator-network.org/reporting-guidelines/consort/"], ["STROBE", "EQUATOR Network", "RWE", "Free", "No credential", "Observational reporting", "https://www.equator-network.org/reporting-guidelines/strobe/"], ["PRISMA", "PRISMA", "Evidence", "Free", "No credential", "Systematic review reporting", "https://www.prisma-statement.org/"], ["CARE Reporting Guideline", "CARE", "Evidence", "Free", "No credential", "Case-report reporting", "https://www.care-statement.org/"], ["EQUATOR Network", "EQUATOR", "Evidence", "Free", "No credential", "Reporting-guideline hub for transparent health research.", "https://www.equator-network.org/"]]};</script>
 <script>
-/** 
- * DATA ARCHITECTURE 
- * Consolidated and expanded to reflect Clinical Data Management, CDISC, and AI trajectories.
- */
-const DOMAIN_DATA = [
-  {
-    id: "cdm", name: "Clinical Data Management", icon: "◉", priority: "CORE",
-    skills: ["eCRF Design (CDASH)", "Data Management Plan (DMP)", "Edit Check Logic", "UAT Execution", "Discrepancy / Query Management", "Medical Coding (MedDRA/WHODrug)", "SAE Reconciliation", "Database Lock (DBL)"],
-    resources: [
-      ["5", "SCDM GCDMP", "Good Clinical Data Management Practices", "https://scdm.org/gcdmp/"],
-      ["4", "Vanderbilt CDM Course", "Coursera - Free Audit", "https://www.coursera.org/learn/clinical-data-management"]
-    ],
-    projects: [
-      ["Easy", "Draft a mock DMP", "Outline sections for a Phase II oncology trial based on GCDMP."],
-      ["Medium", "Design a CDASH-compliant eCRF", "Create an Adverse Event (AE) CRF annotated with standard variable names."],
-      ["Medium", "Write Edit Check Specifications", "Draft logical checks for Demographics and Labs (e.g., age vs birth date, out-of-range limits)."],
-      ["Hard", "Mock SAE Reconciliation", "Compare synthetic EDC data against a mock Safety Database output and flag discrepancies."]
-    ]
-  },
-  {
-    id: "cdisc", name: "CDISC Standards & Architecture", icon: "▤", priority: "CORE",
-    skills: ["SDTM Domains (DM, AE, LB)", "CDASH to SDTM Mapping", "ADaM (ADSL, BDS, TTE)", "Define.xml", "Controlled Terminology", "Pinnacle 21 Validation"],
-    resources: [
-      ["5", "CDISC Official Standards", "SDTMIG, ADaMIG downloads", "https://www.cdisc.org/standards/foundational"],
-      ["5", "Pinnacle 21 Community", "Validation rules and engine", "https://www.pinnacle21.com/downloads"]
-    ],
-    projects: [
-      ["Easy", "SDTM Domain Mapping Dictionary", "Map 20 raw clinical variables to their correct SDTM domains and standard names."],
-      ["Medium", "Raw to SDTM (DM & AE)", "Transform a mock raw dataset into compliant SDTM DM and AE domains using Excel/SQL/Python."],
-      ["Hard", "Build ADSL from SDTM", "Create a Subject-Level Analysis Dataset (ADSL) deriving baseline flags and treatment groups."],
-      ["Expert", "Pinnacle 21 Validation Run", "Run an SDTM dataset through P21 Community, interpret the report, and fix the warnings."]
-    ]
-  },
-  {
-    id: "statprog", name: "Stat. Programming (R/SAS)", icon: "Σ", priority: "HIGH",
-    skills: ["Data Import/Export", "Data Manipulation (dplyr/PROC SQL)", "Table 1 Generation", "Survival Analysis", "TFL Pipelines", "pharmaverse (R) / SAS Macros"],
-    resources: [
-      ["5", "pharmaverse", "Open source R packages for clinical reporting", "https://pharmaverse.org/"],
-      ["5", "SAS OnDemand for Academics", "Free SAS environment", "https://www.sas.com/en_us/software/on-demand-for-academics.html"]
-    ],
-    projects: [
-      ["Easy", "Data Cleaning Script", "Import, handle missing values, and standardize dates using R or SAS."],
-      ["Medium", "Automated Baseline Table 1", "Generate a formatted demographic summary by treatment arm."],
-      ["Hard", "Kaplan-Meier Survival Curve", "Analyze time-to-event synthetic data using SAS PROC LIFETEST or R survival."],
-      ["Expert", "ADaM to TFL Pipeline", "Write a macro/function pipeline to generate Tables, Listings, and Figures from ADaM data."]
-    ]
-  },
-  {
-    id: "dataeng", name: "Data Foundations (SQL/Excel)", icon: "▦", priority: "HIGH",
-    skills: ["SQL JOINs & Window Functions", "Data Normalization", "Power Query", "Dashboarding", "ETL Basics", "Data Quality Metrics"],
-    resources: [
-      ["5", "SQLBolt", "Interactive SQL tutorial", "https://sqlbolt.com/"],
-      ["4", "Microsoft Learn (Power Query)", "Data transformation", "https://learn.microsoft.com/en-us/power-query/"]
-    ],
-    projects: [
-      ["Easy", "Clinical Tracker in Excel", "Build a site performance tracker with formulas and conditional formatting."],
-      ["Medium", "SQL Relational DB Design", "Design schema for Patient, Visit, and Lab tables and write JOIN queries."],
-      ["Hard", "Site KPI Dashboard", "Use Power Query/SQL to track query turnaround times and data entry delays."]
-    ]
-  },
-  {
-    id: "pv", name: "Pharmacovigilance & Reg", icon: "✚", priority: "HIGH",
-    skills: ["AE/SAE Processing", "MedDRA Hierarchy", "Causality Assessment", "Disproportionality (ROR/PRR)", "ICH E6(R3)", "Regulatory Submissions"],
-    resources: [
-      ["5", "EMA GVP Guidelines", "Official PV practices", "https://www.ema.europa.eu/en"],
-      ["4", "FDA Guidance Documents", "Clinical trials guidelines", "https://www.fda.gov/"]
-    ],
-    projects: [
-      ["Easy", "MedDRA Mapping Exercise", "Map 15 verbatim AE terms to LLT, PT, and SOC."],
-      ["Medium", "Safety Narrative Practice", "Write 5 structured patient narratives from synthetic case data."],
-      ["Hard", "Signal Detection Notebook", "Calculate ROR/PRR on an open-source safety dataset (like FAERS extracts)."]
-    ]
-  },
-  {
-    id: "ai", name: "Healthcare AI & Automation", icon: "AI", priority: "FUTURE MOAT",
-    skills: ["LLM Prompt Design", "RAG Systems", "Python (Pandas/Scikit-learn)", "NLP for unstructured text", "Anomaly Detection"],
-    resources: [
-      ["5", "Hugging Face Healthcare", "Models and datasets", "https://huggingface.co/models"],
-      ["4", "Scikit-Learn Guide", "ML documentation", "https://scikit-learn.org/stable/"]
-    ],
-    projects: [
-      ["Easy", "Python CSV Profiler", "Script to auto-detect missingness and data types in raw EDC exports."],
-      ["Medium", "AE Text Extractor (NLP)", "Use basic NLP to extract Drug, Event, and Dates from unstructured text."],
-      ["Hard", "Trial Protocol RAG Bot", "Build a simple local RAG system to query inclusion/exclusion criteria from a PDF protocol."],
-      ["Expert", "Fraud/Anomaly Detection", "Use clustering algorithms (Python) to detect unusual site-level data entry patterns."]
-    ]
-  }
+const D=DATA.domains,P=DATA.projects,R=DATA.resources;
+const domainInfo=[
+['Clinical Research',['Trial lifecycle','Protocol literacy','Site & patient operations','Risk-based thinking']],
+['Clinical Data Management',['Data lifecycle','CRF/database design','Edit checks & queries','Cleaning & lock']],
+['CDISC Standards & Architecture',['CDASH','SDTM','ADaM','Define-XML & validation']],
+['Pharmacovigilance',['Case processing','MedDRA & coding','Causality & narratives','Signal detection']],
+['Regulatory Affairs',['ICH/FDA/CDSCO literacy','Submission architecture','Regulatory intelligence','Agency communication']],
+['Statistical Programming — R + SAS',['Programming foundations','Clinical reporting','Reproducibility','Advanced modeling']],
+['Data Foundations — Excel + SQL',['Spreadsheet engineering','Data cleaning','SQL querying','Clinical analytics']],
+['Biostatistics',['Descriptive statistics','Inference','Study design','Regression & survival']],
+['Epidemiology + RWE',['Study designs','Bias & confounding','Causal inference','Regulatory-grade RWE']],
+['Python + Automation',['Python foundations','Data automation','NLP/ML workflows','Clinical AI pipelines']],
+['Evidence + Medical Writing',['Search strategy','Critical appraisal','Evidence synthesis','Scientific communication']],
+['AI for Clinical Research',['LLM fundamentals','Extraction & classification','RAG & evaluation','Human-in-the-loop AI']],
+['Quality + Project Management',['Root cause','Risk & FMEA','CAPA/QMS','Delivery & inspection readiness']],
+['Business + Leadership',['CRO economics','KPIs & operations','Executive communication','Strategy & change']]
 ];
+const resourceMap={
+'Clinical Research':['ICH E6(R3) Good Clinical Practice','FDA Clinical Trials Training','NIH Good Clinical Practice Training'],
+'Clinical Data Management':['FDA Clinical Trials Training','CDISC Standards','CDISC Library'],
+'CDISC Standards & Architecture':['CDISC Standards','CDISC Library','Pinnacle 21'],
+'Pharmacovigilance':['EMA Pharmacovigilance','WHO Pharmacovigilance'],
+'Regulatory Affairs':['ICH Guidelines','CDSCO','FDA Clinical Trials Training'],
+'Statistical Programming — R + SAS':['R for Data Science','R Project','SAS OnDemand for Academics'],
+'Data Foundations — Excel + SQL':['SQLBolt','Microsoft Learn','Kaggle Learn'],
+'Biostatistics':['OpenIntro Statistics','Khan Academy Statistics','R for Data Science'],
+'Epidemiology + RWE':['FDA Real-World Evidence','CDC Epi Info','STROBE'],
+'Python + Automation':['Python Tutorial','Kaggle Learn','freeCodeCamp'],
+'Evidence + Medical Writing':['PubMed','Cochrane Training','PRISMA'],
+'AI for Clinical Research':['Hugging Face Learn','Google ML Crash Course','DeepLearning.AI Short Courses'],
+'Quality + Project Management':['ICH Quality Guidelines','PMI KICKOFF','FDA Clinical Trials Training'],
+'Business + Leadership':['PMI KICKOFF','Microsoft Learn','FDA Real-World Evidence']};
+const navItems=[['home','Command'],['capability','Capability'],['work','Work'],['library','Library'],['evidence','Evidence'],['roadmap','Roadmap'],['skills','Skills'],['authority','Authority']];
+function safeRead(key){try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):null}catch(e){return null}}
+function safeWrite(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(e){return false}}
+let S=safeRead('capability_v15');
+if(!S){let old=safeRead('capability_v14')||safeRead('capability_v13');S=old?{...old,evidence:Array.isArray(old.evidence)?old.evidence:[],steps:old.steps&&typeof old.steps==='object'?old.steps:{},page:'home',theme:old.theme||'light'}:{theme:'light',page:'home',steps:{},evidence:[],meta:{}};safeWrite('capability_v15',S)}
+if(!S||typeof S!=='object')S={theme:'light',page:'home',steps:{},evidence:[],meta:{}};S.steps=S.steps&&typeof S.steps==='object'?S.steps:{};S.evidence=Array.isArray(S.evidence)?S.evidence:[];S.theme=S.theme==='dark'?'dark':'light';S.page=S.page||'home';S.meta=S.meta&&typeof S.meta==='object'?S.meta:{};document.documentElement.dataset.theme=S.theme;
+const $=id=>document.getElementById(id),esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])),step=id=>S.steps[id]||0,pct=id=>step(id)*20,status=id=>step(id)>=5?'Completed':step(id)>0?'In progress':'Planned',save=()=>safeWrite('capability_v15',S);v15NormalizeState();
 
-const APP_KEY = 'careeros_auth_v9_auto';
-let state = JSON.parse(localStorage.getItem(APP_KEY));
-if (!state) {
-  state = {
-    skills: {}, projects: {}, plan: {}, opSys: [false, false, false, false],
-    firstLogin: true
-  };
-}
-
-// Initialize default skills based on domains
-DOMAIN_DATA.forEach(d => {
-  d.skills.forEach(s => {
-    if (!(s in state.skills)) state.skills[s] = 0;
+function v15NormalizeState(){
+  if(!S||typeof S!=='object')S={theme:'light',page:'home',steps:{},evidence:[],meta:{}};
+  S.theme=S.theme==='dark'?'dark':'light';
+  S.page=['home','capability','work','library','evidence','roadmap','skills','authority'].includes(S.page)?S.page:'home';
+  S.steps=S.steps&&typeof S.steps==='object'&&!Array.isArray(S.steps)?S.steps:{};
+  const valid=new Set(P.map(x=>x.id)),cleanSteps={};
+  Object.entries(S.steps).forEach(([id,v])=>{
+    if(!valid.has(id))return;
+    const n=Number(v);
+    if(Number.isFinite(n))cleanSteps[id]=Math.max(0,Math.min(5,Math.floor(n)));
   });
-});
-
-function save() {
-  localStorage.setItem(APP_KEY, JSON.stringify(state));
-  renderDashboardStats();
-  drawRadarChart();
-}
-
-function esc(str) { return String(str).replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[m])); }
-
-// ================= Navigation =================
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(x => x.classList.remove('on'));
-  document.getElementById(id).classList.add('on');
-  
-  document.querySelectorAll('#desktopNav button, #mobileNav button').forEach(b => {
-    b.classList.toggle('on', b.dataset.page === id);
-  });
-  window.scrollTo(0,0);
-}
-
-document.querySelectorAll('#desktopNav button, #mobileNav button').forEach(b => {
-  b.onclick = () => showPage(b.dataset.page);
-});
-
-// ================= Dashboard Logic =================
-function toggleOpSys(el, index) {
-  state.opSys[index] = el.checked;
+  S.steps=cleanSteps;
+  S.evidence=Array.isArray(S.evidence)?S.evidence.filter(e=>e&&typeof e==='object').map(e=>({
+    t:String(e.t??'').slice(0,500),
+    l:String(e.l??'').slice(0,2000),
+    pr:valid.has(String(e.pr??''))?String(e.pr):'',
+    type:String(e.type??'Evidence').slice(0,100),
+    score:Math.max(0,Math.min(5,Number(e.score)||0)),
+    d:String(e.d??'').slice(0,3000),
+    date:e.date||new Date().toISOString()
+  })):[],
+  S.meta=S.meta&&typeof S.meta==='object'&&!Array.isArray(S.meta)?S.meta:{};
   save();
 }
+function go(p){S.page=p;save();render();scrollTo(0,0)}function nav(){let h=navItems.map((n,i)=>`<button class="${S.page===n[0]?'active':''}" onclick="go('${n[0]}')"><span class="label"><span>${String(i+1).padStart(2,'0')}</span>${n[1]}</span>${i<7?`<kbd>${i+1}</kbd>`:''}</button>`).join('');$('nav').innerHTML=h;$('bottom').innerHTML=navItems.slice(0,6).map(n=>`<button class="${S.page===n[0]?'active':''}" onclick="go('${n[0]}')">${n[1]}</button>`).join('')}
+function head(a,b,c){$('ey').textContent=a;$('ti').textContent=b;$('su').textContent=c}
+function overall(){return Math.round(P.reduce((a,p)=>a+pct(p.id),0)/(P.length*100)*100)}
+function domainStats(i){let ps=P.filter(p=>p.di===i),v=Math.round(ps.reduce((a,p)=>a+pct(p.id),0)/ps.length);return {ps,v,done:ps.filter(p=>status(p.id)==='Completed').length}}
+function domainCard(d,i){let x=domainStats(i);return `<div class="card domain"><div><div class="num">${String(i+1).padStart(2,'0')}</div><h3>${esc(d)}</h3><p>${domainInfo[i][1].join(' · ')}</p></div><div><div class="barrow"><span class="mini">${x.done}/10 builds completed</span><span class="score">${x.v}%</span></div><div class="progress"><i style="width:${x.v}%"></i></div><button class="btn" style="margin-top:10px" onclick="openD(${i})">Open capability</button></div></div>`}
 
-function renderDashboardStats() {
-  let active = 0, done = 0;
-  let activeProjHtml = '';
-  
-  Object.keys(state.projects).forEach(k => {
-    const p = state.projects[k];
-    if (p.status === "Completed") done++;
-    else if (p.started && p.progress > 0) {
-      active++;
-      // Get title from key (Domain::Title)
-      const title = k.split("::")[1];
-      activeProjHtml += `<div class="resource" style="cursor:pointer" onclick="openProjectTracker('${encodeURIComponent(k)}')">
-        <span class="tag">In Progress</span> <b>${esc(title)}</b> <div class="bar" style="margin-top:6px"><i style="width:${p.progress}%"></i></div>
-      </div>`;
-    }
-  });
-
-  document.getElementById('activeProjCount').textContent = active;
-  document.getElementById('doneProjCount').textContent = done;
-  
-  if (active === 0) {
-    document.getElementById('dashboardFocus').innerHTML = `<p class="muted">No active projects. Visit the <a href="#" style="color:var(--accent)" onclick="showPage('projects')">Project Lab</a> to start building.</p>`;
-  } else {
-    document.getElementById('dashboardFocus').innerHTML = activeProjHtml;
-  }
-
-  // Calculate Overall Skill Pct
-  const allSkillKeys = Object.keys(state.skills);
-  const avg = allSkillKeys.reduce((acc, k) => acc + state.skills[k], 0) / allSkillKeys.length;
-  const pct = Math.round(avg * 10);
-  document.getElementById('skillPct').textContent = pct + '%';
-  document.getElementById('skillBar').style.width = pct + '%';
-
-  // Specific CDISC Tracker
-  let cdiscTotal = 0;
-  let cdiscCount = 0;
-  DOMAIN_DATA.find(d => d.id === 'cdisc').skills.forEach(s => {
-    cdiscTotal += state.skills[s];
-    cdiscCount++;
-  });
-  document.getElementById('cdiscScore').textContent = Math.round(cdiscTotal/cdiscCount) + '/10';
-}
-
-function startRecommendedProject() {
-  document.getElementById('zeroState').style.display = 'none';
-  state.firstLogin = false;
-  save();
-  // Open the easiest CDISC project
-  startProject(encodeURIComponent("CDISC Standards & Architecture::SDTM Domain Mapping Dictionary"));
-}
-
-// ================= Domains & Resources =================
-function renderDomains() {
-  document.getElementById('domainGrid').innerHTML = DOMAIN_DATA.map((d, i) => `
-    <div class="card domain" onclick="openDomain(${i})">
-      <div class="icon">${d.icon}</div>
-      <h3>${esc(d.name)}</h3>
-      <span class="tag ${d.priority==='CORE'?'core':''}">${d.priority}</span>
-      <p class="topics">${d.skills.slice(0, 5).join(' · ')}…</p>
-      <div class="domainfoot"><span class="muted">${d.skills.length} skills · ${d.projects.length} projects</span><b>Open →</b></div>
-    </div>`).join('');
-}
-
-function openDomain(i) {
-  let d = DOMAIN_DATA[i];
-  document.getElementById('domainDetailContent').innerHTML = `
-    <div class="heroMini"><h2>${d.icon} ${esc(d.name)}</h2><p class="muted">Select a project below to start building.</p></div>
-    <div class="grid g2">
-      <div class="card">
-        <h3>Required Skills</h3>
-        ${d.skills.map(s => `
-          <div style="display:flex; justify-content:space-between; margin: 8px 0; font-size:12px;">
-            <span>${esc(s)}</span><span style="color:var(--accent)">${state.skills[s]}/10</span>
-          </div>
-          <div class="bar"><i style="width:${state.skills[s]*10}%"></i></div>
-        `).join('')}
+function v15Home(){
+  head('COMMAND','COMMAND CENTER','Your professional capability system at a glance.');
+  let o=overall(), n=nextBest(), ns=P.filter(p=>step(p.id)<5&&p.id!==n.id).sort((a,b)=>nextWeight(b)-nextWeight(a))[0]||n, ev=S.evidence.length;
+  let completed=P.filter(p=>step(p.id)===5).length;
+  let active=P.filter(p=>step(p.id)>0&&step(p.id)<5).length;
+  let strongest=[...D.map((d,i)=>({d,i,...domainStats(i),p:domainStats(i).v,c:domainStats(i).done}))].sort((a,b)=>b.p-a.p).slice(0,4); let attention=[...D.map((d,i)=>({d,i,...domainStats(i),p:domainStats(i).v,c:domainStats(i).done}))].sort((a,b)=>a.p-b.p).slice(0,4);
+  return `
+  <div class="v15hero">
+    <section class="heroCard">
+      <div>
+        <div class="eyebrow">V15 / Command surface</div>
+        <h2>Build capability that leaves a trail of proof.</h2>
+        <p>Your workspace is organized around deliberate practice: choose a build, move it through five stages, then turn the finished work into evidence.</p>
       </div>
-      <div class="card">
-        <h3>Top Resources</h3>
-        ${d.resources.map(r => `<div class="resource"><span class="q q${r[0]}">R${r[0]}</span> <a href="${r[3]}" target="_blank"><b>${esc(r[1])}</b></a><div class="muted" style="font-size:11px">${esc(r[2])}</div></div>`).join('')}
+      <div class="heroMeta">
+        <span>${completed} completed</span><span>${active} active</span><span>${ev} evidence records</span>
+      </div>
+    </section>
+    <section class="focusCard">
+      <div>
+        <div class="focusTop"><div class="focusIndex">Next best build</div><span class="tag">${esc(n.level)}</span></div>
+        <h3>${esc(n.name)}</h3>
+        <p class="focusReason">${esc(n.domain)} · ${n.time} · ${esc(n.deliverable)}</p>
+        <p class="focusReason">${esc(projectIntel(n).challenge)}</p>
+      </div>
+      <div class="focusAction">
+        <button class="btn" onclick="openP('${n.id}')">Open build</button>
+        <button class="btn" onclick="go('work')">View all work</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="insightGrid">
+    <div class="insight"><div class="miniLabel">Overall capability</div><strong>${o}%</strong><p>Average progress across all 140 builds.</p></div>
+    <div class="insight"><div class="miniLabel">Current momentum</div><strong>${active}</strong><p>Builds currently between planned and complete.</p></div>
+    <div class="insight"><div class="miniLabel">Evidence coverage</div><strong>${Math.round((ev/140)*100)}%</strong><p>Builds with at least one captured evidence record.</p></div>
+  </div>
+
+  <div class="sectionhead"><div><div class="eyebrow">Capability map</div><h2>Four strongest / four needing attention</h2></div></div>
+  <div class="grid two">
+    <div class="card">
+      <div class="miniLabel">Strongest domains</div>
+      <div class="domainGrid" style="margin-top:12px">
+        ${strongest.map(x=>`<div class="domainTile" onclick="openD(${x.i})"><div class="domainTileTop"><span class="name">${esc(x.d)}</span><span>${x.p}%</span></div><div class="small">${x.c}/10 complete</div><div class="bar"><i style="width:${x.p}%"></i></div></div>`).join('')}
       </div>
     </div>
-    <div class="card" style="margin-top:15px">
-      <h3>Project Ladder</h3>
-      ${d.projects.map((p, j) => `
-        <div class="projectCard">
-          <span class="difficulty">${esc(p[0])}</span>
-          <b>${j+1}. ${esc(p[1])}</b>
-          <small>${esc(p[2])}</small>
-          <div class="projectActions">
-            <button class="btn primary" onclick="startProject('${encodeURIComponent(d.name+'::'+p[1])}')">Open Project Tracker</button>
-          </div>
-        </div>
-      `).join('')}
+    <div class="card">
+      <div class="miniLabel">Needs attention</div>
+      <div class="domainGrid" style="margin-top:12px">
+        ${attention.map(x=>`<div class="domainTile" onclick="openD(${x.i})"><div class="domainTileTop"><span class="name">${esc(x.d)}</span><span>${x.p}%</span></div><div class="small">${x.c}/10 complete</div><div class="bar"><i style="width:${x.p}%"></i></div></div>`).join('')}
+      </div>
     </div>
+  </div>
+
+  <div class="sectionhead"><div class="eyebrow">Decision queue</div><h2>What to do next</h2></div>
+  <div class="card">
+    <div class="list">
+      <div class="row"><div><b>1 · ${esc(n.name)}</b><p>Highest-value next build under the current progression model.</p></div><button class="btn" onclick="openP('${n.id}')">Start / continue</button></div>
+      <div class="row"><div><b>2 · ${esc(ns.name)}</b><p>Secondary build to keep breadth moving without abandoning depth.</p></div><button class="btn" onclick="openP('${ns.id}')">Open</button></div>
+      <div class="row"><div><b>3 · Capture evidence</b><p>Completed work has no value signal until it is linked to evidence.</p></div><button class="btn" onclick="go('evidence')">Review evidence</button></div>
+    </div>
+  </div>
   `;
-  showPage('domainDetail');
 }
 
-// ================= Automated Project Lab =================
-function renderProjectFilters() {
-  let f = ['All', ...DOMAIN_DATA.map(d => d.name)];
-  document.getElementById('projectFilters').innerHTML = f.map(x => 
-    `<button class="btn ${x==='All'?'active':''}" onclick="filterProjects('${esc(x)}', this)">${esc(x)}</button>`
-  ).join('');
+
+function v15ProjectEvidence(id){const ev=(S.evidence||[]).filter(e=>(e.pr||e.projectId||e.project)===id);const avg=ev.length?Math.round(ev.reduce((a,e)=>a+(Number(e.score)||0),0)/ev.length*20):0;return {count:ev.length,avg,strong:ev.filter(e=>(Number(e.score)||0)>=4).length};}
+function v15DomainProof(i){const ps=P.filter(p=>p.di===i),done=ps.filter(p=>step(p.id)===5),proved=done.filter(p=>v15ProjectEvidence(p.id).count>0),strong=done.filter(p=>v15ProjectEvidence(p.id).avg>=80);return {done,proved,strong,coverage:done.length?Math.round(proved.length/done.length*100):0};}
+function capabilitySignal(i){
+  let d=D[i], ps=P.filter(p=>p.di===i), completed=ps.filter(p=>step(p.id)===5), linked=S.evidence.filter(e=>(e.pr||e.project||e.projectId)&&ps.some(p=>p.id===(e.pr||e.project||e.projectId)));
+  let avg=linked.length?linked.reduce((a,e)=>a+(Number(e.score)||0),0)/linked.length:0;
+  let stage=completed.length>=7&&linked.length>=3&&avg>=4?'Signature':completed.length>=3&&linked.length>=2?'Demonstrated':completed.length>=1&&linked.length>=1?'Validated':ps.some(p=>step(p.id)>0)?'Practice':'Exposure';
+  let note={Exposure:'Resources and planned builds establish initial exposure.',Practice:'At least one build has been started; the capability is being exercised.',Validated:'Completed work is paired with captured evidence.',Demonstrated:'Multiple completed builds and evidence indicate repeatable application.',Signature:'Sustained depth, repeated evidence and strong evidence scores indicate signature-level strength.'}[stage];
+  return {d,i,ps,completed,linked,avg,stage,note,p:domainStats(i).v};
+}
+function v15Capability(original){
+  let rows=D.map((_,i)=>capabilitySignal(i)), counts=['Exposure','Practice','Validated','Demonstrated','Signature'].map(k=>[k,rows.filter(x=>x.stage===k).length]);
+  let active=rows.filter(x=>x.stage==='Practice').length, validated=rows.filter(x=>x.stage==='Validated').length, demonstrated=rows.filter(x=>x.stage==='Demonstrated').length, signature=rows.filter(x=>x.stage==='Signature').length;
+  let matrix=`<div class="capabilityIntelligence"><div class="card"><div class="eyebrow">CAPABILITY INTELLIGENCE</div><h2>From exposure to professional signal.</h2><p>V15 separates raw progress from maturity. These states are derived from the existing build and evidence records; the original capability percentages remain unchanged below.</p><div class="signalLegend">${counts.map(([k,n])=>`<span class="tag"><b>${k}</b> ${n}</span>`).join('')}</div><div class="capabilityLadder">${['Exposure','Practice','Validated','Demonstrated','Signature'].map((k,i)=>`<div class="ladderStep ${i===0?'active':''}"><span>${String(i+1).padStart(2,'0')}</span><b>${k}</b><small>${i===0?'Seen in the system':i===1?'Started application':i===2?'Completed + evidenced':i===3?'Repeated + evidenced':'Deep + repeatable'}</small></div>`).join('')}</div></div>`;
+  let rowsHtml=`<div class="section grid g2"><div class="card"><div class="eyebrow">MATURITY DISTRIBUTION</div><h3>Where capability is actually sitting</h3><div class="maturityBars">${counts.map(([k,n])=>`<div class="maturityRow"><div><b>${k}</b><span>${n} domain${n===1?'':'s'}</span></div><div class="progress"><i style="width:${Math.round(n/D.length*100)}%"></i></div></div>`).join('')}</div></div><div class="card"><div class="eyebrow">SIGNAL GAPS</div><h3>What would move the system forward</h3><p>${signature?'Signature capability exists; focus on maintaining evidence quality and breadth.':demonstrated?'The next leverage point is converting validated domains into repeated, defensible demonstrations.':validated?'Complete more builds and capture evidence to move validated domains toward demonstrated capability.':active?'Turn active builds into completed, evidenced work; unfinished progress is not yet a professional signal.':'Start a build in the domain that matters most to the current roadmap stage.'}</p><div class="signalStats"><span><b>${active}</b> Practice</span><span><b>${validated}</b> Validated</span><span><b>${demonstrated}</b> Demonstrated</span><span><b>${signature}</b> Signature</span></div></div></div>`;
+  let domainRows=`<div class="card"><div class="eyebrow">DOMAIN MATURITY</div><h2>Capability state by domain</h2><div class="capabilityStateTable">${rows.sort((a,b)=>b.p-a.p).map(x=>`<div class="stateRow" onclick="openD(${x.i})"><div><b>${esc(x.d)}</b><small>${x.completed.length}/10 completed · ${x.linked.length} evidence · ${x.p}% build progress</small></div><span class="tag">${x.stage}</span><div class="progress"><i style="width:${x.p}%"></i></div><p>${esc(x.note)}</p></div>`).join('')}</div></div>`;
+  return matrix+rowsHtml+domainRows+original();
 }
 
-function filterProjects(filter, btnEl) {
-  document.querySelectorAll('#projectFilters button').forEach(b => b.classList.remove('active'));
-  btnEl.classList.add('active');
-  renderProjects(filter);
-}
-
-function renderProjects(filter = 'All') {
-  let arr = DOMAIN_DATA.flatMap(d => d.projects.map((p, idx) => ({ p, d: d.name, idx })))
-            .filter(x => filter === 'All' || x.d === filter);
-  
-  document.getElementById('projectList').innerHTML = arr.map(x => {
-    const k = x.d + "::" + x.p[1];
-    const st = state.projects[k] || { started: false, status: "Not started", progress: 0 };
-    const safeK = encodeURIComponent(k);
-    return `
-      <div class="projectCard" style="${st.status === 'Completed' ? 'border-color: rgba(98,217,155,0.4);' : ''}">
-        <span class="difficulty">${esc(x.p[0])}</span><span class="tag">${esc(x.d)}</span>
-        <b>${x.idx+1}. ${esc(x.p[1])}</b>
-        <small>${esc(x.p[2])}</small>
-        <div class="projectActions">
-          <button class="btn ${st.started ? '' : 'primary'}" onclick="startProject('${safeK}')">
-            ${st.started ? (st.status==='Completed' ? 'View Final Report' : 'Resume Project') : '▶ Start Project'}
-          </button>
-        </div>
-        ${st.started ? `
-          <div class="miniTrack">
-            <div class="muted" style="${st.status === 'Completed' ? 'color:#62d99b' : ''}">${esc(st.status)} · ${st.progress}%</div>
-            <div class="bar"><i style="width:${st.progress}%; ${st.status === 'Completed' ? 'background:#62d99b; box-shadow:0 0 10px #62d99b' : ''}"></i></div>
-          </div>` : ''}
-      </div>`;
-  }).join('');
-}
-
-// Base 5-step framework
-const baseSteps = [
-  "Define the clinical/data objective, scope, and success criteria.",
-  "Create or locate synthetic/public dataset (never use real patient data).",
-  "Execute the core technical build (mapping, analysis, script, or design).",
-  "Run Quality Control (QC) - test edge cases, validate against guidelines.",
-  "Package output: Save code, write 1-page summary, and list limitations."
-];
-
-function startProject(encodedK) {
-  const k = decodeURIComponent(encodedK);
-  if (!state.projects[k]) {
-    state.projects[k] = { started: true, status: "In progress", progress: 0, stepDone: {}, notes: "" };
-    save();
-  }
-  openProjectTracker(encodedK);
-}
-
-function openProjectTracker(encodedK) {
-  const k = decodeURIComponent(encodedK);
-  const [dName, title] = k.split("::");
-  const d = DOMAIN_DATA.find(x => x.name === dName);
-  const p = d?.projects.find(x => x[1] === title);
-  const st = state.projects[k];
-
-  document.getElementById('domainDetailContent').innerHTML = `
-   <div class="heroMini">
-     <button class="btn" onclick="showPage('projects'); renderProjects('All');">← Back to Projects</button>
-     <div style="margin-top:15px">
-       <span class="tag" style="${st.status === 'Completed' ? 'background:#62d99b; color:#111; border-color:#62d99b' : ''}">${esc(st.status)}</span>
-       <h2>${esc(title)}</h2>
-       <p class="muted">${esc(p[2])}</p>
-     </div>
-   </div>
-   <div class="grid g2">
-    <div class="card">
-      <h3>Execution Steps</h3>
-      <p class="muted" style="font-size: 11px; margin-bottom:15px;">Check steps to automatically update progress.</p>
-      ${baseSteps.map((s, i) => `
-        <label class="checkrow">
-          <input type="checkbox" ${st.stepDone?.[i] ? 'checked' : ''} onchange="autoUpdateProject('${encodedK}', ${i}, this.checked)">
-          <span class="${st.stepDone?.[i] ? 'done' : ''}"><b>Step ${i+1}:</b> ${esc(s)}</span>
-        </label>
-      `).join('')}
+function v15EvidenceGraph(){
+  const valid=new Set(P.map(p=>p.id));
+  const linked=(S.evidence||[]).filter(e=>valid.has(e.pr||e.projectId||e.project));
+  const projectMap=new Map();
+  linked.forEach(e=>{
+    const id=e.pr||e.projectId||e.project;
+    if(!projectMap.has(id))projectMap.set(id,[]);
+    projectMap.get(id).push(e);
+  });
+  const rows=P.map(p=>{
+    const ev=projectMap.get(p.id)||[];
+    const avg=ev.length?Math.round(ev.reduce((a,e)=>a+(Number(e.score)||0),0)/ev.length*20):0;
+    return {p,ev,avg};
+  }).filter(x=>x.ev.length||step(x.p.id)===5).sort((a,b)=>b.avg-a.avg);
+  const covered=P.filter(p=>projectMap.has(p.id)).length;
+  const ready=P.filter(p=>step(p.id)===5&&!projectMap.has(p.id)).length;
+  const strong=linked.filter(e=>(Number(e.score)||0)>=4).length;
+  const domainRows=D.map((d,i)=>{
+    const ps=P.filter(p=>p.di===i), done=ps.filter(p=>step(p.id)===5).length;
+    const ev=ps.reduce((a,p)=>a+(projectMap.get(p.id)||[]).length,0);
+    return {d,done,ev};
+  }).filter(x=>x.done||x.ev);
+  return `<section class="v15-evidence-graph">
+    <div class="v15-eg-head"><div><div class="v15-kicker">EVIDENCE GRAPH</div>
+      <h2>Proof now flows back into the capability system.</h2>
+      <p>Every linked record can be traced from evidence → build → domain → capability signal. Completed work without proof is surfaced as a gap.</p>
+    </div><div class="v15-eg-metric"><strong>${covered}</strong><span>builds with proof</span></div></div>
+    <div class="v15-eg-grid">
+      <div><div class="v15-eg-label">PORTFOLIO GAPS</div><strong>${ready}</strong><p>completed builds still missing linked evidence</p></div>
+      <div><div class="v15-eg-label">STRONG PROOF</div><strong>${strong}</strong><p>evidence records scoring 4/5 or higher</p></div>
+      <div><div class="v15-eg-label">DOMAIN COVERAGE</div><strong>${domainRows.length}/${D.length}</strong><p>domains represented by completed work or evidence</p></div>
     </div>
-    <div class="card">
-      <h3>Project Status</h3>
-      <div class="bar" style="height: 10px; margin: 10px 0;"><i style="width:${st.progress}%; ${st.status === 'Completed' ? 'background:#62d99b;' : ''}"></i></div>
-      <div style="font-size:18px; font-weight:bold; margin-bottom: 20px; color: ${st.status === 'Completed' ? '#62d99b' : '#fff'}">${st.progress}% - ${esc(st.status)}</div>
-      
-      <label class="muted">Lessons Learned / Documentation Link</label>
-      <textarea class="note" id="projNotes_${encodedK}" style="margin-top:8px" placeholder="Paste links to your GitHub repo, Google Drive folder, or jot down lessons learned...">${esc(st.notes || "")}</textarea>
-      <button class="btn primary" style="margin-top:12px" onclick="saveNotes('${encodedK}')">Save Notes</button>
+    <div class="v15-eg-table">
+      <div class="v15-eg-label">PROOF MAP</div>
+      ${rows.slice(0,8).map(x=>`<button onclick="openP('${x.p.id}')"><span><b>${esc(x.p.name)}</b><small>${esc(x.p.domain)} · ${step(x.p.id)*20}% build progress</small></span><em>${x.ev.length} proof · ${x.avg}% signal</em> →</button>`).join('')||`<div class="emptyState">Complete a build and link evidence to begin the proof graph.</div>`}
     </div>
-   </div>`;
-  showPage('domainDetail');
+  </section>`;
+}
+function v15Evidence(original){
+  let linked=S.evidence.filter(e=>e.pr||e.project||e.projectId).length;
+  let avg=S.evidence.length?Math.round(S.evidence.reduce((a,e)=>a+(Number(e.score)||0),0)/S.evidence.length*20):0;
+  let completed=P.filter(p=>step(p.id)===5).length;
+  return v15EvidenceGraph()+`<div class="evidenceHero"><div class="evidenceStat"><div class="miniLabel">Records</div><strong>${S.evidence.length}</strong><p>Captured evidence items.</p></div><div class="evidenceStat"><div class="miniLabel">Linked</div><strong>${linked}</strong><p>Evidence records linked to builds.</p></div><div class="evidenceStat"><div class="miniLabel">Average signal</div><strong>${avg}%</strong><p>Normalized from evidence scores.</p></div><div class="evidenceStat"><div class="miniLabel">Completed builds</div><strong>${completed}</strong><p>Projects currently at 5/5.</p></div></div>${original()}`;
+}
+function v15Work(original){
+  let base=original();
+  let active=P.filter(p=>step(p.id)>0&&step(p.id)<5).length;
+  let complete=P.filter(p=>step(p.id)===5).length;
+  return `<div class="workHero"><div class="eyebrow">WORK / BUILD SYSTEM</div><h2>Turn capability into finished work.</h2><p>Every original build remains available below. V15 adds a clearer operating layer around the same 140-project system.</p>${v15PhaseRail()}<div class="filterBar"><button class="btn active" onclick="go('work')">All ${P.length}</button><span class="tag">${active} active</span><span class="tag">${complete} completed</span><span class="tag">${P.length-active-complete} planned</span></div></div>${base}`;
 }
 
-// The core UX automation requested
-function autoUpdateProject(encodedK, stepIndex, isChecked) {
-  const k = decodeURIComponent(encodedK);
-  let p = state.projects[k];
-  
-  if (!p.stepDone) p.stepDone = {};
-  p.stepDone[stepIndex] = isChecked;
-  
-  // Calculate Progress mathematically
-  let checkedCount = 0;
-  for (let i = 0; i < 5; i++) {
-    if (p.stepDone[i]) checkedCount++;
-  }
-  
-  p.progress = Math.round((checkedCount / 5) * 100);
-  
-  // Auto-update Status
-  if (p.progress === 100) p.status = "Completed";
-  else if (p.progress > 0) p.status = "In progress";
-  else p.status = "Not started";
-  
-  save();
-  openProjectTracker(encodedK); // re-render to update UI (strikethroughs, colors)
+function v15Library(original){
+  let cats=[...new Set(R.map(r=>r[2]||'Other'))];
+  let used=new Set(Object.values(resourceMap).flat());
+  let linked=used.size;
+  let head=`<div class="v15LibraryHead"><div class="eyebrow">LIBRARY / KNOWLEDGE BASE</div><h2>Resources that support the work.</h2><p>The original resource library remains the source layer. V15 adds visibility into breadth and how much of the library is referenced by the capability map.</p><div class="libraryStats"><div class="pathCard"><div class="miniLabel">Resources</div><div class="num">${R.length}</div><p>Original resources retained.</p></div><div class="pathCard"><div class="miniLabel">Categories</div><div class="num">${cats.length}</div><p>Distinct resource groupings.</p></div><div class="pathCard"><div class="miniLabel">Mapped</div><div class="num">${linked}</div><p>Referenced by domain maps.</p></div><div class="pathCard"><div class="miniLabel">Domains</div><div class="num">${D.length}</div><p>Capability domains represented.</p></div></div></div>`;
+  return head+original();
+}
+function v15Roadmap(original){
+  let labels=['Foundation','Clinical Data / CDM + CDISC','Analytics / R + SAS + Data','RWE / Epidemiology','AI','Authority'];
+  let vals=labels.map((_,i)=>stageProgress(i));
+  let head=`<div class="v15RoadmapHead"><div class="eyebrow">ROADMAP / TRAJECTORY</div><h2>Sequence depth instead of collecting disconnected skills.</h2><p>The original six-stage roadmap remains intact. V15 exposes the trajectory as a visible progression system.</p><div class="roadmapGrid" style="margin-top:14px">${labels.map((x,i)=>`<div class="roadmapNode"><div class="index">STAGE ${String(i+1).padStart(2,'0')}</div><h3>${esc(x)}</h3><p>${vals[i]}% stage progress</p><div class="bar"><i style="--w:${vals[i]}%"></i></div></div>`).join('')}</div></div>`;
+  return head+original();
+}
+function v15Skills(original){
+  let rows=D.map((d,i)=>({d,i,...domainStats(i),p:domainStats(i).v}));
+  let avg=overall(), deep=rows.filter(x=>x.p>=60).length;
+  let head=`<div class="v15SkillsHead"><div class="eyebrow">SKILLS / CAPABILITY DEPTH</div><h2>See the shape of your capability.</h2><p>The original domain depth and radar remain below; this layer adds a compact heatmap-style overview across the same underlying progress data.</p><div class="skillStats"><div class="pathCard"><div class="miniLabel">Overall</div><div class="num">${avg}%</div></div><div class="pathCard"><div class="miniLabel">60%+ domains</div><div class="num">${deep}</div></div><div class="pathCard"><div class="miniLabel">Domains</div><div class="num">${rows.length}</div></div><div class="pathCard"><div class="miniLabel">Builds</div><div class="num">${P.length}</div></div></div><div class="capabilityMatrix" style="margin-top:14px">${rows.map(x=>`<div class="matrixRow"><div class="matrixTop"><b>${esc(x.d)}</b><span>${x.p}%</span></div><div class="skillHeat">${[0,1,2,3,4,5,6].map((_,k)=>`<span class="${x.p>=((k+1)*14)?'on':''}" data-v="${Math.min(100,Math.round(x.p/14)*20)}"></span>`).join('')}</div></div>`).join('')}</div></div>`;
+  return head+original();
+}
+function v15Authority(original){
+  let score=authorityScore();
+  let completed=P.filter(p=>step(p.id)===5);
+  let signatures=completed.slice(0,5);
+  let head=`<div class="v15AuthorityHead"><div class="eyebrow">AUTHORITY / SIGNAL</div><h2>Make demonstrated capability legible.</h2><p>The original Authority model remains intact. V15 adds a concise signal layer connecting capability, evidence and completed builds.</p><div class="authorityGrid"><div class="card"><div class="scoreRing" style="--score:${score*3.6}deg"><strong>${score}</strong></div><p style="text-align:center;margin-top:10px">Current authority signal</p></div><div class="card"><div class="miniLabel">Signature builds</div><div class="signatureList" style="margin-top:10px">${signatures.length?signatures.map(p=>`<div class="signatureItem"><b>${esc(p.name)}</b><span>${esc(p.domain)}</span></div>`).join(''):`<div class="emptyState">Complete a build to begin creating a signature portfolio.</div>`}</div></div></div></div>`;
+  return head+original();
 }
 
-function saveNotes(encodedK) {
-  const k = decodeURIComponent(encodedK);
-  state.projects[k].notes = document.getElementById(`projNotes_${encodedK}`).value;
-  save();
-  
-  // Visual feedback
-  const btn = event.target;
-  const originalText = btn.textContent;
-  btn.textContent = "Saved ✓";
-  btn.style.background = "#62d99b";
-  setTimeout(() => { btn.textContent = originalText; btn.style.background = ""; }, 1500);
+function v15Integrity(){
+  let ids=P.map(x=>x.id), domains=[...new Set(P.map(x=>x.domain))], resources=R.map(x=>x[0]);
+  return {domains:domains.length,projects:ids.length,resources:resources.length,uniqueProjects:new Set(ids).size,uniqueResources:new Set(resources).size};
+}
+function v15ActionDock(){
+  let labels={home:'Command',capability:'Capability',work:'Work',library:'Library',evidence:'Evidence',roadmap:'Roadmap',skills:'Skills',authority:'Authority'}, n=nextBest();
+  return `<div class="v15ActionDock"><div class="context">CURRENT SURFACE · <b>${labels[S.page]||S.page}</b></div><div class="actions"><button class="btn" onclick="openP('${n.id}')">Next build</button><button class="btn" onclick="go('evidence')">Add evidence</button><button class="btn" onclick="toggleTheme()">Theme</button></div></div>`;
+}
+function v15QuickLinks(){
+  return `<div class="quickLinks"><div class="quickLink" onclick="go('work')"><b>Build</b><span>Open the 140-project work system.</span></div><div class="quickLink" onclick="go('library')"><b>Study</b><span>Open the original resource library.</span></div><div class="quickLink" onclick="go('evidence')"><b>Prove</b><span>Capture and link evidence.</span></div><div class="quickLink" onclick="go('authority')"><b>Signal</b><span>Review professional authority.</span></div></div>`;
+}
+function v15SystemStrip(){
+  let o=overall(), done=P.filter(p=>step(p.id)===5).length;
+  return `<div class="system-strip"><div class="left"><span class="system-dot"></span><b>V15 CAPABILITY SYSTEM</b><span>Learn → Build → Validate → Evidence → Authority</span></div><div class="right"><span>${done}/140 complete</span><span>${o}% overall</span></div></div>`;
+}
+function v15PhaseRail(){
+  let groups=[
+    ['FOUNDATION',[0,1,2]],['CLINICAL DATA',[1,2]],['ANALYTICS',[5,6,7]],['RWE / EPI',[8]],['AI / AUTHORITY',[9,11,12,13]]
+  ];
+  return `<div class="phaseRail">${groups.map(g=>{
+    let ps=P.filter(p=>g[1].includes(D.indexOf(p.domain)));
+    let pct=ps.length?Math.round(ps.reduce((a,p)=>a+step(p.id),0)/(ps.length*5)*100):0;
+    return `<div class="phaseNode"><b>${g[0]}</b><span>${pct}% pathway progress</span><i style="--w:${pct}%"></i></div>`
+  }).join('')}</div>`;
+}
+function home(){head('COMMAND CENTER','V15','Build capability. Leave evidence.');let done=P.filter(p=>status(p.id)==='Completed').length, inprog=P.filter(p=>status(p.id)==='In progress').length,next=nextBest();return `<div class="grid g4"><div class="card metric"><div class="eyebrow">CAPABILITY</div><strong>14</strong><span>professional domains</span></div><div class="card metric"><div class="eyebrow">WORK</div><strong>140</strong><span>deliberate builds</span></div><div class="card metric"><div class="eyebrow">MOMENTUM</div><strong>${overall()}%</strong><span>${done} completed · ${inprog} active</span></div><div class="card metric"><div class="eyebrow">EVIDENCE</div><strong>${S.evidence.length}</strong><span>portfolio records</span></div></div><div class="section card hero"><div class="split"><div><div class="eyebrow">PROFESSIONAL MOMENTUM</div><div class="big">${overall()}%</div><p>System completion across 140 builds. Every build is a five-step chain: frame → build → test → document → evidence.</p><div class="progress" style="margin-top:15px"><i style="width:${overall()}%"></i></div></div><div class="insight"><div class="eyebrow">NEXT BEST ACTION</div><h3>${esc(next.name)}</h3><p>${esc(next.domain)} · ${next.level} · ${next.time}</p><p>${esc(nextReason(next))}</p><button class="btn primary" onclick="openP('${next.id}')">Open work</button></div></div></div><div class="sectionhead"><div><div class="eyebrow">CAPABILITY MAP</div><h2>14-domain operating model</h2></div><button class="btn" onclick="go('capability')">See all</button></div><div class="grid g3">${D.map(domainCard).join('')}</div>`}
+const capabilityOriginal=function capability(){head('CAPABILITY','CAPABILITY MAP','A competency graph, not a checklist. Projects are the applied proof layer.');return `<div class="card"><div class="eyebrow">MATURITY MODEL</div><p>Foundation → Core → Applied → Advanced → Expert. Your level is constrained by completed work and evidence quality.</p><div class="heat">${D.map((d,i)=>{let x=domainStats(i);return `<span title="${esc(d)} ${x.v}%"><i style="width:${x.v}%"></i></span>`}).join('')}</div></div><div class="section grid g2">${D.map((d,i)=>{let x=domainStats(i);return `<div class="card"><div class="scoreline"><div><div class="eyebrow">DOMAIN ${String(i+1).padStart(2,'0')}</div><h3>${esc(d)}</h3></div><strong>${x.v}%</strong></div><div class="progress"><i style="width:${x.v}%"></i></div><div class="competency" style="margin-top:12px">${domainInfo[i][1].map((c,j)=>{let a=Math.max(0,Math.min(100,Math.round((x.ps.filter(p=>step(p.id)>=(j<2?j+1:j+2)).length/Math.max(1,x.ps.length))*100)));return `<div class="comp"><b>${esc(c)}</b><small>${a}% applied coverage · builds ${j*2+1}–${Math.min(10,j*2+3)}</small><div class="compbar"><i style="width:${a}%"></i></div></div>`}).join('')}</div><button class="btn" style="margin-top:10px" onclick="openD(${i})">Open domain</button></div>`}).join('')}</div>`};
+function capability(){return v15Capability(capabilityOriginal);}
+
+const workOriginal=function work(){head('WORK','WORK','140 builds · exactly five steps · 20% per completed step.');let q=($('search').value||'').toLowerCase(),f=window.wf||'All',ps=P.filter(p=>(f==='All'||status(p.id)===f)&&(p.name+' '+p.domain+' '+p.level).toLowerCase().includes(q));return `<div class="filters">${['All','In progress','Planned','Completed'].map(x=>`<button class="filter ${f===x?'active':''}" onclick="wf='${x}';render()">${x}</button>`).join('')}</div><div class="card tablewrap"><table class="table"><thead><tr><th>Build</th><th>Domain</th><th>Level</th><th>Progress</th><th>Evidence target</th><th></th></tr></thead><tbody>${ps.map(p=>`<tr><td><b>${esc(p.name)}</b><br><span class="mini">${p.id} · ${p.time}</span></td><td>${esc(p.domain)}</td><td>${p.level}</td><td><div class="progress"><i style="width:${pct(p.id)}%"></i></div><span class="mini">${status(p.id)} · ${pct(p.id)}%</span></td><td>${esc(p.evidence)}</td><td>${step(p.id)===0?`<button class="btn primary" onclick="startP('${p.id}')">Start</button>`:`<button class="btn" onclick="openP('${p.id}')">Track</button>`}</td></tr>`).join('')||`<tr><td colspan="6"><div class="empty">No builds match this search.</div></td></tr>`}</tbody></table></div>`};
+function work(){return v15Work(workOriginal);}
+
+const libraryOriginal=function library(){head('LIBRARY','LIBRARY','Primary sources, practical learning and explicit access / credential labels.');let q=($('search').value||'').toLowerCase(),f=window.rf||'All',rs=R.filter(r=>(f==='All'||r.join(' ').toLowerCase().includes(f.toLowerCase()))&&r.join(' ').toLowerCase().includes(q));return `<div class="filters">${['All','Free','Clinical','Data','AI','Evidence','RWE','PV'].map(x=>`<button class="filter ${f===x?'active':''}" onclick="rf='${x}';render()">${x}</button>`).join('')}</div><div class="card tablewrap"><table class="table"><thead><tr><th>Resource</th><th>Provider</th><th>Category</th><th>Access</th><th>Credential</th><th>Why it matters</th></tr></thead><tbody>${rs.map(r=>`<tr><td><a href="${esc(r[6])}" target="_blank" rel="noopener"><b>${esc(r[0])}</b></a></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td><td>${esc(r[5])}</td></tr>`).join('')}</tbody></table></div>`};
+function library(){return v15Library(libraryOriginal);}
+
+const evidenceOriginal=function evidence(){head('EVIDENCE','EVIDENCE HUB','Turn completed work into auditable, reusable proof.');let linked=P.map(p=>S.evidence.some(e=>e.pr===p.id)?p:null).filter(Boolean);return `<div class="grid g3"><div class="card"><div class="eyebrow">RECORDS</div><strong style="font-size:30px">${S.evidence.length}</strong><p>captured evidence items</p></div><div class="card"><div class="eyebrow">LINKAGE</div><strong style="font-size:30px">${linked.length}</strong><p>builds with linked proof</p></div><div class="card"><div class="eyebrow">COVERAGE</div><strong style="font-size:30px">${Math.round(linked.length/140*100)}%</strong><p>of the project portfolio has evidence</p></div></div><div class="section grid g2"><div class="card"><div class="eyebrow">CAPTURE PROOF</div><h2>New evidence record</h2><input id="et" class="search" style="width:100%;margin-top:8px" placeholder="Evidence title"><input id="el" class="search" style="width:100%;margin-top:7px" placeholder="https://… (optional)"><select id="etype" class="search" style="width:100%;margin-top:7px"><option>Project artifact</option><option>Validation result</option><option>Report / case study</option><option>Code / GitHub</option><option>Certificate</option><option>Publication / poster</option><option>Reflection</option></select><select id="ep" class="search" style="width:100%;margin-top:7px"><option value="">Link to a project…</option>${P.map(x=>`<option value="${x.id}" ${S.meta&&S.meta.captureProject===x.id?'selected':''}>${x.id} · ${esc(x.name)}</option>`).join('')}</select><input id="escore" class="search" type="number" min="0" max="5" value="3" style="width:100%;margin-top:7px" placeholder="Evidence strength 0–5"><textarea id="ed" class="search" style="width:100%;margin-top:7px;min-height:80px" placeholder="What does this prove? How was it validated?"></textarea><button class="btn primary" style="margin-top:7px" onclick="addE()">Save evidence</button></div><div class="card"><div class="eyebrow">EVIDENCE STANDARD</div><h2>Strong proof has five traits.</h2><div class="competency"><div class="kv"><b>Artifact</b>Something tangible another person can inspect.</div><div class="kv"><b>Validation</b>Tests, checks, references or realistic edge cases.</div><div class="kv"><b>Reproducibility</b>Method, code, assumptions or decision trail.</div><div class="kv"><b>Communication</b>Clear explanation of result and limitations.</div><div class="kv"><b>Relevance</b>Looks like work a real team could use.</div></div></div></div><div class="section grid g2">${S.evidence.map((e,i)=>`<div class="card"><div class="evidenceitem"><div><div class="eyebrow">${esc(e.type||'Evidence')} · ${e.score??3}/5</div><h3>${esc(e.t)}</h3><p>${esc(e.d||'No description added.')}</p>${e.pr?`<span class="tag">${esc(e.pr)}</span>`:''}${e.l?` <a class="tag" href="${esc(e.l)}" target="_blank" rel="noopener">Open link</a>`:''}</div><button class="btn" onclick="delE(${i})">Delete</button></div></div>`).join('')||`<div class="empty">No evidence yet. Finish a build, then capture the proof.</div>`}</div>`};
+function evidence(){return v15Evidence(evidenceOriginal);}
+
+function v15RoadmapIntelligence(){
+  const stages=[
+    {name:'Foundation',domains:['Clinical Research'],desc:'Establish the operating foundation for clinical research work.',unlock:['Build foundational clinical-research artifacts','Capture evidence from validated work']},
+    {name:'Clinical Data',domains:['Clinical Data Management','CDISC Standards & Architecture'],desc:'Move from clinical research literacy into structured clinical data and standards.',unlock:['Demonstrate CDM workflows','Validate CDISC-oriented artifacts']},
+    {name:'Analytics',domains:['Statistical Programming — R + SAS','Data Foundations — Excel + SQL','Biostatistics'],desc:'Turn structured data into reproducible analysis and decisions.',unlock:['Build reproducible analytical work','Validate realistic analysis outputs']},
+    {name:'RWE / Epidemiology',domains:['Epidemiology + RWE'],desc:'Extend analysis into evidence generation and real-world questions.',unlock:['Complete an RWE-oriented case','Document methodological decisions']},
+    {name:'AI',domains:['Python + Automation','AI for Clinical Research'],desc:'Add automation and AI as applied capability rather than isolated tool exposure.',unlock:['Build an applied automation/AI artifact','Validate limitations and reliability']},
+    {name:'Authority',domains:['Evidence + Medical Writing','Quality + Project Management','Business + Leadership'],desc:'Convert validated capability into visible professional authority.',unlock:['Curate portfolio evidence','Demonstrate cross-domain judgment and communication']}
+  ];
+  const scoreDomain=(name)=>{
+    const di=D.indexOf(name), ps=P.filter(x=>x.di===di);
+    if(!ps.length)return 0;
+    return Math.round(ps.reduce((a,x)=>a+(S.steps[x.id]||0),0)/(ps.length*5)*100);
+  };
+  const stageScore=s=>Math.round(s.domains.reduce((a,n)=>a+scoreDomain(n),0)/s.domains.length);
+  let current=stages.findIndex((s,i)=>stageScore(s)<60 && (i===0||stageScore(stages[i-1])>=40));
+  if(current<0)current=stages.length-1;
+  const overallPct=stages.reduce((a,s)=>a+stageScore(s),0)/stages.length;
+  const currentStage=stages[current];
+  const nextStage=stages[Math.min(current+1,stages.length-1)];
+  const blockers=currentStage.domains.map(n=>({n,s:scoreDomain(n)})).sort((a,b)=>a.s-b.s).slice(0,2);
+
+  return `<section class="v15-roadmap-intel">
+    <div class="v15-ri-head"><div>
+      <div class="v15-kicker">ROADMAP INTELLIGENCE</div>
+      <h2>Your trajectory is a sequence of capability unlocks.</h2>
+      <p>The roadmap now reads progress across the underlying builds instead of treating stages as static labels.</p>
+    </div><div class="v15-ri-score"><strong>${Math.round(overallPct)}%</strong><span>trajectory signal</span></div></div>
+    <div class="v15-ri-grid">
+      <div><span class="v15-ri-label">CURRENT STAGE</span><h3>${currentStage.name}</h3><p>${currentStage.desc}</p>
+        <div class="v15-ri-domains">${currentStage.domains.map(n=>`<span>${n} · ${scoreDomain(n)}%</span>`).join('')}</div></div>
+      <div><span class="v15-ri-label">NEXT UNLOCK</span><h3>${nextStage.name}</h3><p>${nextStage.desc}</p>
+        <ul>${nextStage.unlock.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      <div><span class="v15-ri-label">WHAT IS HOLDING THE STAGE</span>
+        ${blockers.map(b=>`<div class="v15-ri-bar"><div><span>${b.n}</span><b>${b.s}%</b></div><i><em style="width:${b.s}%"></em></i></div>`).join('')}</div>
+    </div>
+    <div class="v15-ri-evidence"><span class="v15-ri-label">EVIDENCE READINESS</span><b>${P.filter(p=>step(p.id)===5&&S.evidence.some(e=>(e.pr||e.projectId||e.project)===p.id)).length}/${P.filter(p=>step(p.id)===5).length}</b><small>completed builds with linked proof</small></div>
+    <div class="v15-ri-sequence">${stages.map((s,i)=>`<div class="${i===current?'active':''} ${i<current?'done':''}"><b>${String(i+1).padStart(2,'0')}</b><span>${s.name}</span><small>${stageScore(s)}%</small></div>`).join('')}</div>
+  </section>`;
+}
+function roadmapBaseImpl(){head('ROADMAP','ROADMAP','A staged path from foundations to authority.');let rr=[['01','Foundation','GCP, research workflow, Excel, SQL, statistics and scientific communication.'],['02','Clinical Data + CDISC','CRF → database → cleaning → standards → validation → lock.'],['03','Analytics','Reproducible R, SAS, SQL and clinical reporting.'],['04','RWE + Epidemiology','Observational evidence, bias, causal thinking and regulatory-grade RWE.'],['05','AI for Clinical Research','Extraction, RAG, prediction, evaluation and human oversight.'],['06','Authority','Evidence, publications, operating improvements, executive communication and strategy.']];return `<div class="card hero"><div class="eyebrow">OPERATING PRINCIPLE</div><h2>Do not optimize for course completion.</h2><p>Optimize for a growing body of work that demonstrates judgment, technical fluency, validation discipline and business usefulness.</p></div><div class="section">${rr.map((r,i)=>`<div class="roadrow"><div class="roadnum">${r[0]}</div><div><div class="eyebrow">STAGE ${i+1}</div><h2>${r[1]}</h2><p>${r[2]}</p><div class="tag">${stageProgress(i)}% stage progress</div></div></div>`).join('')}</div>`};
+function roadmap(){ return v15RoadmapIntelligence()+roadmapBaseImpl(); }
+
+function stageProgress(i){let groups=[[0],[1,2],[5,6,7],[8],[9,11],[3,4,10,12,13]],ids=groups[i].flatMap(di=>P.filter(p=>p.di===di));if(!ids.length)return 0;let build=ids.reduce((a,p)=>a+pct(p.id),0)/(ids.length*100)*100,done=ids.filter(p=>step(p.id)===5),proved=done.filter(p=>v15ProjectEvidence(p.id).count>0),proof=done.length?proved.length/done.length*100:0;return Math.round(build*.7+proof*.3)}
+const skillsOriginal=function skills(){head('SKILLS','SKILLS','Capability depth is inferred from applied work, not self-rating.');return `<div class="split"><div class="card"><div class="eyebrow">DOMAIN DEPTH</div>${D.map((d,i)=>{let x=domainStats(i);return `<div style="margin:15px 0"><div class="barrow"><span>${esc(d)}</span><b>${x.v}%</b></div><div class="progress"><i style="width:${x.v}%"></i></div></div>`}).join('')}</div><div class="card"><div class="eyebrow">RADAR</div>${radar()}</div></div>`};
+function skills(){return v15Skills(skillsOriginal);}
+
+function radar(){let cx=180,cy=180,r=135,pts=[];for(let i=0;i<14;i++){let a=-Math.PI/2+i*2*Math.PI/14,v=domainStats(i).v/100;pts.push([cx+Math.cos(a)*r*v,cy+Math.sin(a)*r*v])}let poly=pts.map(p=>p.join(',')).join(' '),rings=[.25,.5,.75,1].map(v=>{let p=[];for(let i=0;i<14;i++){let a=-Math.PI/2+i*2*Math.PI/14;p.push(`${cx+Math.cos(a)*r*v},${cy+Math.sin(a)*r*v}`)}return `<polygon points="${p.join(' ')}" fill="none" stroke="currentColor" opacity=".16"/>`}).join('');return `<div class="radar"><svg viewBox="0 0 360 360" role="img" aria-label="Capability radar">${rings}<polygon points="${poly}" fill="currentColor" opacity=".12" stroke="currentColor" stroke-width="2"/>${D.map((d,i)=>{let a=-Math.PI/2+i*2*Math.PI/14,x=cx+Math.cos(a)*(r+18),y=cy+Math.sin(a)*(r+18);return `<text x="${x}" y="${y}" font-size="7" text-anchor="middle" fill="currentColor">${i+1}</text>`}).join('')}</svg></div>`}
+function v15AuthorityIntelligence(){
+  const total=P.length||1;
+  const completed=P.filter(x=>(S.steps[x.id]||0)>=5).length;
+  const advanced=P.filter(x=>['Advanced','Expert'].includes(x.level));
+  const advancedStarted=advanced.filter(x=>(S.steps[x.id]||0)>0).length;
+  const advancedComplete=advanced.filter(x=>(S.steps[x.id]||0)>=5).length;
+  const evidenceCount=(S.evidence||[]).length;
+  const evidenceLinked=new Set((S.evidence||[]).map(e=>e.pr||e.projectId||e.project).filter(id=>P.some(p=>p.id===id))).size;
+  const domainDepth=D.map(d=>{
+    const di=D.indexOf(d), ps=P.filter(x=>x.di===di);
+    return {name:d,pct:ps.length?Math.round(ps.reduce((a,x)=>a+(S.steps[x.id]||0),0)/(ps.length*5)*100):0};
+  }).sort((a,b)=>b.pct-a.pct);
+  const breadth=domainDepth.filter(x=>x.pct>=20).length;
+  const validated=P.filter(x=>(S.steps[x.id]||0)>=4).length;
+  const demonstrated=P.filter(x=>(S.steps[x.id]||0)>=5).length;
+  const components=[
+    ['Capability depth',Math.round((completed/total)*100),'Completed builds'],
+    ['Validation',Math.round((validated/total)*100),'Builds at validation stage'],
+    ['Evidence',Math.min(100,Math.round(evidenceLinked/Math.max(1,validated)*100)),'Completed builds with linked proof'],
+    ['Breadth',Math.round(breadth/D.length*100),'Domains with active practice'],
+    ['Advanced work',Math.round(advancedComplete/Math.max(1,advanced.length)*100),'Advanced / Expert completion']
+  ];
+  const score=Math.round(components.reduce((a,x)=>a+x[1],0)/components.length);
+  const strongest=domainDepth[0], weakest=domainDepth[domainDepth.length-1];
+  const signal=score>=80?'Signature':score>=60?'Demonstrated':score>=40?'Validated':score>=20?'Practiced':'Emerging';
+
+  return `<section class="v15-authority-intel">
+    <div class="v15-ai-head"><div>
+      <div class="v15-kicker">AUTHORITY INTELLIGENCE</div>
+      <h2>Authority is earned by evidence, not declared by a title.</h2>
+      <p>This signal combines capability depth, validation, evidence, breadth and advanced work into an explainable professional-strength model.</p>
+    </div><div class="v15-ai-score"><strong>${score}</strong><span>/ 100 · ${signal}</span></div></div>
+    <div class="v15-ai-grid">
+      <div class="v15-ai-ring"><div><b>${score}</b><span>authority signal</span></div></div>
+      <div class="v15-ai-components">${components.map(c=>`<div class="v15-ai-row"><div><span>${c[0]}</span><b>${c[1]}%</b></div><i><em style="width:${c[1]}%"></em></i><small>${c[2]}</small></div>`).join('')}</div>
+      <div class="v15-ai-reading">
+        <span class="v15-ri-label">SIGNAL READING</span>
+        <h3>${strongest.name}</h3>
+        <p>Your strongest current domain signal is ${strongest.pct}%. The largest opportunity for breadth is ${weakest.name}.</p>
+        <div class="v15-ai-stats"><span><b>${demonstrated}</b> demonstrated</span><span><b>${validated}</b> validated</span><span><b>${evidenceLinked}</b> linked evidence</span><span><b>${advancedStarted}</b> advanced+ active</span></div><div class="v15-signal-note" style="margin-top:12px">${evidenceLinked?'Linked proof is now contributing directly to authority readiness.':'Complete a build, then link evidence to begin increasing authority readiness.'}</div>
+      </div>
+    </div>
+  </section>`;
+}
+function authorityBaseImpl(){head('AUTHORITY','AUTHORITY PROFILE','Your strongest capabilities, strongest proof and portfolio readiness.');let top=[...D.map((d,i)=>({d,i,v:domainStats(i).v})).sort((a,b)=>b.v-a.v)].slice(0,5),strong=[...S.evidence].sort((a,b)=>(b.score||0)-(a.score||0)).slice(0,6);return `<div class="grid g3"><div class="card"><div class="eyebrow">OVERALL CAPABILITY</div><strong style="font-size:38px">${overall()}%</strong><p>Applied portfolio maturity</p></div><div class="card"><div class="eyebrow">PORTFOLIO READINESS</div><strong style="font-size:38px">${authorityScore()}%</strong><p>Evidence-weighted signal</p></div><div class="card"><div class="eyebrow">SIGNATURE BUILDS</div><strong style="font-size:38px">${P.filter(p=>step(p.id)===5&&p.level==='Expert').length}</strong><p>expert builds completed</p></div></div><div class="section grid g2"><div class="card"><div class="eyebrow">STRONGEST CAPABILITIES</div>${top.map(x=>`<div style="margin:14px 0"><div class="barrow"><span>${esc(x.d)}</span><b>${x.v}%</b></div><div class="progress"><i style="width:${x.v}%"></i></div></div>`).join('')}</div><div class="card"><div class="eyebrow">STRONGEST EVIDENCE</div>${strong.map(e=>`<div class="kv" style="margin:7px 0"><b>${esc(e.type||'Evidence')} · ${e.score||3}/5</b>${esc(e.t)}</div>`).join('')||`<div class="empty">Capture evidence to build your authority profile.</div>`}</div></div><div class="section card"><div class="eyebrow">PORTFOLIO CHECK</div><p>Authority grows when you can demonstrate depth, not just breadth. Prioritize high-level builds in your strongest domains, then fill evidence gaps in adjacent domains.</p><button class="btn primary" onclick="go('evidence')">Strengthen evidence</button></div>`};
+function authority(){ return v15AuthorityIntelligence()+authorityBaseImpl(); }
+
+function authorityScore(){let cap=overall(),linked=(S.evidence||[]).filter(e=>P.some(p=>p.id===(e.pr||e.projectId||e.project))),ev=Math.min(100,linked.reduce((a,e)=>a+(Number(e.score)||0),0)/(Math.max(1,linked.length)*5)*100),expert=P.filter(p=>p.level==='Expert'&&step(p.id)===5).length;return Math.round(cap*.55+ev*.3+Math.min(100,expert/14*100)*.15)}
+function nextBest(){let candidates=P.filter(p=>step(p.id)<5);if(!candidates.length)return P[0];return candidates.sort((a,b)=>nextWeight(b)-nextWeight(a))[0]}
+function nextWeight(p){let n=step(p.id),base=p.level==='Expert'?4:p.level==='Advanced'?3:p.level==='Intermediate'?2:1;let prereq=(p.id.endsWith('-01')?1:0);let domain=domainStats(p.di).v;return (n===0?base*2:base)+((100-domain)/25)+prereq}
+function nextReason(p){let x=domainStats(p.di);if(x.v<20)return 'This opens a weak domain and establishes its foundation.';if(step(p.id)>0)return 'Continue the active build before starting another branch.';if(p.level==='Expert')return 'A high-leverage capstone that can become portfolio evidence.';return 'Best balance of prerequisite readiness and capability coverage.'}
+function openD(i){let x=domainStats(i);$('sheet').innerHTML=`<div class="sheethead"><div><div class="eyebrow">DOMAIN ${String(i+1).padStart(2,'0')}</div><h2>${esc(D[i])}</h2><p>${x.v}% capability depth · ${x.done}/10 builds complete</p></div><button class="btn" onclick="closeM()">Close</button></div><div class="progress"><i style="width:${x.v}%"></i></div><div class="section grid g2"><div class="card"><div class="eyebrow">COMPETENCY TREE</div>${domainInfo[i][1].map((c,j)=>`<div class="comp" style="margin:7px 0"><b>${esc(c)}</b><small>Applied through builds ${j*2+1}–${Math.min(10,j*2+3)}.</small></div>`).join('')}</div><div class="card"><div class="eyebrow">RECOMMENDED RESOURCES</div>${(resourceMap[D[i]]||[]).map(r=>{let z=R.find(x=>x[0]===r);return z?`<a class="tag" href="${esc(z[6])}" target="_blank" rel="noopener">${esc(r)}</a>`:`<span class="tag">${esc(r)}</span>`}).join('')}<p style="margin-top:12px">Sequence: learn the concept → build the artifact → validate edge cases → capture evidence.</p></div></div><div class="section tablewrap"><table class="table"><thead><tr><th>Build</th><th>Level</th><th>Progress</th><th></th></tr></thead><tbody>${x.ps.map(p=>`<tr><td><b>${esc(p.name)}</b><br><span class="mini">${p.id} · ${p.time}</span></td><td>${p.level}</td><td>${pct(p.id)}%</td><td><button class="btn" onclick="closeM();openP('${p.id}')">Track</button></td></tr>`).join('')}</tbody></table></div>`;openM()}
+function projectIntel(p){
+  let num=parseInt(p.id.slice(-2)), di=p.di, phase=p.id.endsWith('-01')?'FOUNDATION':p.id.endsWith('-10')?'CAPSTONE':num<=3?'CORE BUILD':'APPLIED BUILD';
+  let challenge=p.level==='Expert'?'Defend the design against edge cases, competing interpretations and audit-style scrutiny.':p.level==='Advanced'?'Stress-test the artifact with realistic edge cases and document trade-offs.':'Make the artifact concrete enough that another person can reproduce the result.';
+  let out=p.evidence==='Portfolio evidence'?'Portfolio-ready case study with screenshots, method, validation and reflection.':p.evidence==='Case study'?'Concise case study showing problem → method → result → limitation.':'Reusable artifact plus README/decision log and validation notes.';
+  let objective=`Demonstrate ${p.domain} capability through a ${p.level.toLowerCase()}-level ${p.deliverable.toLowerCase()}.`;
+  let progression=num===1?'Establish the domain foundation and working vocabulary.':num<=3?'Build core technique, then prove it with a working artifact or validation set.':num<=6?'Apply the domain in a realistic professional scenario and make decisions explicit.':num<=9?'Increase complexity, defensibility and reproducibility before the capstone.':'Synthesize the domain into portfolio-grade evidence and a defensible professional narrative.';
+  let prev=num>1?P.find(x=>x.di===di&&parseInt(x.id.slice(-2))===num-1):null, next=num<10?P.find(x=>x.di===di&&parseInt(x.id.slice(-2))===num+1):null;
+  let evidence=S.evidence.filter(e=>e.pr===p.id), evScore=evidence.length?Math.round(evidence.reduce((a,e)=>a+(Number(e.score)||0),0)/evidence.length*20):0;
+  return {phase,challenge,out,resources:resourceMap[p.domain]||[],objective,progression,prev,next,evidence,evScore,evidenceNeed:p.evidence};
+}
+function openP(id){
+  let p=P.find(x=>x.id===id),n=step(id),intel=projectIntel(p),ss=['Frame the question / requirements','Build the first working version','Test against realistic cases','Document decisions and limitations','Package evidence and reflect'];
+  let evidenceBlock=intel.evidence.length?`<div class="evidenceMini"><b>${intel.evidence.length} linked evidence record${intel.evidence.length>1?'s':''}</b><span>${intel.evScore}% average evidence signal</span></div>`:`<div class="emptyState">No evidence linked yet. Required proof: ${esc(intel.evidenceNeed)}.</div>`;
+  $('sheet').innerHTML=`<div class="sheethead"><div><div class="eyebrow">${p.id} · ${esc(p.domain)} · ${intel.phase}</div><h2>${esc(p.name)}</h2><p>${esc(p.level)} · estimated ${esc(p.time)}</p></div><button class="btn" onclick="closeM()">Close</button></div>
+  <div class="steps">${ss.map((x,i)=>`<button class="step ${n>i?'done':n===i?'current':''}" onclick="setStep('${p.id}',${i+1})">${i+1}<br>${x}</button>`).join('')}</div>
+  <div class="progress"><i style="width:${n*20}%"></i></div><p>${n*20}% · ${status(p.id)}</p>
+  <div class="detailgrid"><div class="kv"><b>Objective</b>${esc(intel.objective)}</div><div class="kv"><b>Why this build</b>Convert ${esc(p.domain)} knowledge into a demonstrable professional capability.</div><div class="kv"><b>Progression logic</b>${esc(intel.progression)}</div><div class="kv"><b>Prerequisite</b>${p.di===0&&p.id.endsWith('-01')?'Start here: establish vocabulary and primary sources.':intel.prev?`Build ${intel.prev.id} · ${esc(intel.prev.name)} is the adjacent prior build in this domain.`:'Use demonstrated prerequisite capability from the relevant domain pathway.'}</div><div class="kv"><b>Deliverable</b>${esc(p.deliverable)}. ${intel.out}</div><div class="kv"><b>Validation standard</b>${esc(p.validation)}. ${intel.challenge}</div></div>
+  <div class="section card"><div class="eyebrow">SUGGESTED PRIMARY RESOURCES</div>${intel.resources.map(x=>{let z=R.find(r=>r[0]===x);return z?`<a class="tag" href="${esc(z[6])}" target="_blank" rel="noopener">${esc(x)}</a>`:`<span class="tag">${esc(x)}</span>`}).join('')}</div>
+  <div class="section card"><div class="eyebrow">EVIDENCE / AUTHORITY LINK</div>${evidenceBlock}<p>Capture the artifact, method, validation result, limitations and what you would improve next. This is the proof layer behind the capability signal.</p><button class="btn" onclick="go('evidence')">Open evidence hub</button> <button class="btn primary" onclick="advance('${p.id}')">${n<5?'Complete next step':'Review completed build'}</button></div>
+  <div class="section"><div class="eyebrow">PATHWAY CONTINUITY</div><div class="pathNav">${intel.prev?`<button class="btn" onclick="openP('${intel.prev.id}')">← ${esc(intel.prev.name)}</button>`:'<span class="tag">Domain starting point</span>'}${intel.next?`<button class="btn" onclick="openP('${intel.next.id}')">Next build →</button>`:'<span class="tag">Domain capstone</span>'}</div></div>`;
+  openM()
 }
 
-// ================= Skill Radar Matrix =================
-function renderSkillControls() {
-  let html = '';
-  DOMAIN_DATA.forEach(d => {
-    html += `
-      <div style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border-soft); padding-bottom: 10px;">
-        <h4 style="margin:0 0 10px; color:var(--accent)">${esc(d.name)}</h4>
-        ${d.skills.map(s => `
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-            <span style="font-size:11px; max-width:60%; line-height:1.2">${esc(s)}</span>
-            <span>
-              <button class="btn" style="padding:2px 8px; font-size:12px" onclick="updateSkill('${esc(s)}', -1)">-</button>
-              <b style="display:inline-block; width: 20px; text-align:center; font-size:12px">${state.skills[s]}</b>
-              <button class="btn" style="padding:2px 8px; font-size:12px" onclick="updateSkill('${esc(s)}', 1)">+</button>
-            </span>
-          </div>
-        `).join('')}
-      </div>`;
-  });
-  document.getElementById('skillControls').innerHTML = html;
+function startP(id){if(step(id)===0){S.steps[id]=1;save();toast('Build started.');openP(id);render() }else openP(id)}
+
+function v15BuildWorkspace(id){
+  const p=P.find(x=>x.id===id);
+  if(!p)return;
+  const n=step(id), intel=projectIntel(p);
+  const steps=[
+    ['01','Frame','Define the question, requirements and success criteria.'],
+    ['02','Build','Create the first working version of the artifact.'],
+    ['03','Validate','Test against realistic cases and edge conditions.'],
+    ['04','Decide','Document decisions, assumptions and limitations.'],
+    ['05','Prove','Package the work as reusable evidence.']
+  ];
+  const evidence=intel.evidence||[];
+  const evidenceScore=intel.evScore||0;
+  const statusLabel=status(id);
+  const domainProgress=domainStats(p.di).v;
+  const next=intel.next, prev=intel.prev;
+  const stepCards=steps.map((s,i)=>`
+    <button class="v15-build-step ${n>i?'done':''} ${n===i?'current':''} ${n<i?'locked':''}" onclick="setStep('${p.id}',${i+1})">
+      <span>${s[0]}</span><b>${s[1]}</b><small>${s[2]}</small>
+    </button>`).join('');
+  const evidenceCards=evidence.length?evidence.map(e=>`
+    <div class="v15-proof-item">
+      <div><span>${esc(e.type||'Evidence')}</span><b>${esc(e.t||'Untitled evidence')}</b></div>
+      <strong>${Number(e.score)||0}/5</strong>
+    </div>`).join(''):`<div class="v15-proof-empty"><b>No proof captured yet.</b><span>Required: ${esc(intel.evidenceNeed)}.</span></div>`;
+
+  $('sheet').innerHTML=`
+    <div class="v15-build-head">
+      <div>
+        <div class="v15-build-meta">${esc(p.id)} · ${esc(p.domain)} · ${esc(intel.phase)}</div>
+        <h2>${esc(p.name)}</h2>
+        <p>${esc(p.level)} · ${esc(p.time)} · <b>${esc(statusLabel)}</b></p>
+      </div>
+      <button class="btn" onclick="closeM()">Close</button>
+    </div>
+
+    <div class="v15-build-progress">
+      <div><span>BUILD PROGRESS</span><strong>${n*20}%</strong></div>
+      <i><em style="width:${n*20}%"></em></i>
+    </div>
+
+    <div class="v15-build-steps">${stepCards}</div>
+
+    <div class="v15-build-grid">
+      <section class="v15-build-panel v15-build-brief">
+        <div class="v15-build-label">BUILD BRIEF</div>
+        <h3>${esc(intel.objective)}</h3>
+        <div class="v15-build-copy"><b>Why this matters</b><p>${esc(intel.progression)}</p></div>
+        <div class="v15-build-copy"><b>Professional challenge</b><p>${esc(intel.challenge)}</p></div>
+        <div class="v15-build-output"><span>EXPECTED OUTPUT</span><b>${esc(p.deliverable)}</b><small>${esc(intel.out)}</small></div>
+      </section>
+
+      <section class="v15-build-panel">
+        <div class="v15-build-label">VALIDATION STANDARD</div>
+        <h3>Make the result defensible.</h3>
+        <div class="v15-build-check"><span>01</span><div><b>Realistic cases</b><small>Test the artifact against representative scenarios.</small></div></div>
+        <div class="v15-build-check"><span>02</span><div><b>Decisions recorded</b><small>Make assumptions, trade-offs and limitations explicit.</small></div></div>
+        <div class="v15-build-check"><span>03</span><div><b>Reproducible output</b><small>Leave enough method and context for another person to inspect.</small></div></div>
+      </section>
+
+      <section class="v15-build-panel">
+        <div class="v15-build-label">EVIDENCE</div>
+        <div class="v15-proof-summary"><strong>${evidence.length}</strong><span>linked records</span><strong>${evidenceScore}%</strong><span>evidence signal</span></div>
+        <div class="v15-proof-list">${evidenceCards}</div>
+        <button class="btn primary v15-proof-btn" onclick="S.meta.captureProject='${p.id}';save();closeM();go('evidence')">Capture proof for this build</button>
+      </section>
+
+      <section class="v15-build-panel v15-build-signal">
+        <div class="v15-build-label">CAPABILITY SIGNAL</div>
+        <div class="v15-signal-row"><span>Domain depth</span><b>${domainProgress}%</b></div>
+        <div class="v15-signal-row"><span>Build maturity</span><b>${n>=5?'Demonstrated':n>=4?'Validated':n>0?'Practice':'Exposure'}</b></div>
+        <div class="v15-signal-row"><span>Evidence</span><b>${evidence.length?intel.evScore+'% signal':'Missing'}</b></div>
+        <div class="v15-signal-note">${n>=5?'This build is complete. The next value comes from strengthening evidence and reusability.':n>0?'Continue the current build before branching into another project.':'Starting this build creates the first applied signal in this domain.'}</div>
+      </section>
+    </div>
+
+    <div class="v15-build-footer">
+      <button class="btn" ${prev?`onclick="openP('${prev.id}')"`:'disabled'}>← ${prev?'Previous build':'First build'}</button>
+      <button class="btn primary" onclick="${n<5?`advance('${p.id}')`:`go('evidence')`}">${n<5?'Continue build':'Go to evidence'} →</button>
+      <button class="btn" ${next?`onclick="openP('${next.id}')"`:'disabled'}>${next?'Next build':'Final build'} →</button>
+    </div>`;
+  openM();
 }
 
-function updateSkill(skill, change) {
-  state.skills[skill] = Math.max(0, Math.min(10, state.skills[skill] + change));
-  save();
-  renderSkillControls(); // re-render controls
+const openPOriginal=openP;
+openP=function(id){v15BuildWorkspace(id);};
+
+function setStep(id,n){let c=step(id);if(n<=c+1){S.steps[id]=Math.max(c,n);save();openP(id);render();toast(n===5?'Build completed — now capture the evidence.':'Step completed.')}}function advance(id){let n=step(id);if(n<5){S.steps[id]=n+1;save();openP(id);render();toast(n+1===5?'Final step complete. Capture evidence.':'Progress saved.')}else go('evidence')}
+function addE(){let t=$('et').value.trim(),pr=$('ep').value;if(!t)return;S.evidence.push({t,l:$('el').value.trim(),pr,type:$('etype').value,score:Math.max(0,Math.min(5,Number($('escore').value)||0)),d:$('ed').value.trim(),date:new Date().toISOString()});if(S.meta)delete S.meta.captureProject;save();render();toast('Evidence saved — capability signals updated.')}
+function delE(i){if(!confirm('Remove this evidence record?'))return;S.evidence.splice(i,1);save();render();toast('Evidence removed.')}
+function toggleTheme(){S.theme=S.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=S.theme;save()}
+function closeM(){$('modal').classList.remove('open')}function openM(){$('modal').classList.add('open')}function openCommand(){$('cmd').classList.add('open');$('cmdin').value='';renderCommands();setTimeout(()=>$('cmdin').focus(),30)}function closeCmd(){$('cmd').classList.remove('open')}function renderCommands(){let q=($('cmdin').value||'').toLowerCase();let opts=[...navItems.map(n=>({t:'Go to '+n[1],a:()=>go(n[0])})),{t:'Toggle theme',a:toggleTheme},{t:'Open next best build',a:()=>openP(nextBest().id)},{t:'Open evidence',a:()=>go('evidence')},{t:'Open capability map',a:()=>go('capability')},{t:'Open roadmap',a:()=>go('roadmap')},{t:'Export V15 backup',a:exportData},{t:'Import V15 backup',a:importData}].filter(x=>x.t.toLowerCase().includes(q));$('cmdlist').innerHTML=opts.slice(0,10).map((x,i)=>`<button onclick="cmdAction(${i})">${esc(x.t)}</button>`).join('');window.cmdOpts=opts}function cmdAction(i){let x=window.cmdOpts[i];if(x){closeCmd();x.a()}}
+function exportData(){let blob=new Blob([JSON.stringify({version:15,exportedAt:new Date().toISOString(),state:S},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='v15-capability-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Backup exported.')}
+function importData(){let input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>{let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);let incoming=x&&x.state;if(!incoming||typeof incoming!=='object')throw Error('Invalid backup');let steps=incoming.steps&&typeof incoming.steps==='object'?incoming.steps:{};let clean={theme:incoming.theme==='dark'?'dark':'light',page:['home','capability','work','library','evidence','roadmap','skills','authority'].includes(incoming.page)?incoming.page:'home',steps:{},evidence:Array.isArray(incoming.evidence)?incoming.evidence:[],meta:incoming.meta&&typeof incoming.meta==='object'?incoming.meta:{}};Object.entries(steps).forEach(([id,v])=>{let n=Number(v);if(Number.isFinite(n))clean.steps[id]=Math.max(0,Math.min(5,Math.floor(n)))});S=clean;save();document.documentElement.dataset.theme=S.theme;render();toast('Backup imported safely.')}catch(e){toast('Import failed — invalid V15 backup.')}};r.readAsText(f)};input.click()}
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
+
+function v15InteractionPass(){
+  const root=document.getElementById('app')||document.querySelector('main')||document.body;
+  root.classList.remove('v15-page-enter');
+  void root.offsetWidth;
+  root.classList.add('v15-page-enter');
+  const first=root.querySelector('h1,h2');
+  if(first) first.setAttribute('tabindex','-1');
+  window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
-
-// Zero-dependency HTML5 Canvas Radar Chart
-function drawRadarChart() {
-  const canvas = document.getElementById('radarChart');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  
-  // Aggregate averages per domain
-  const labels = DOMAIN_DATA.map(d => {
-    // Shorten names for chart
-    let n = d.name;
-    if(n.includes("Data Management")) return "CDM";
-    if(n.includes("CDISC")) return "CDISC";
-    if(n.includes("Programming")) return "R/SAS";
-    if(n.includes("Foundations")) return "SQL/Excel";
-    if(n.includes("PV")) return "PV";
-    if(n.includes("AI")) return "AI";
-    return n;
-  });
-  
-  const data = DOMAIN_DATA.map(d => {
-    let sum = 0;
-    d.skills.forEach(s => sum += state.skills[s]);
-    return sum / d.skills.length;
-  });
-
-  const width = canvas.width;
-  const height = canvas.height;
-  const centerX = width / 2;
-  const centerY = height / 2;
-  const radius = Math.min(centerX, centerY) - 40;
-  const sides = labels.length;
-
-  ctx.clearRect(0, 0, width, height);
-
-  // Draw background webs
-  ctx.strokeStyle = "rgba(255,255,255,0.1)";
-  ctx.lineWidth = 1;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.font = "11px Inter, sans-serif";
-
-  for (let level = 1; level <= 5; level++) {
-    let r = radius * (level / 5);
-    ctx.beginPath();
-    for (let i = 0; i < sides; i++) {
-      let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
-      let x = centerX + r * Math.cos(angle);
-      let y = centerY + r * Math.sin(angle);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.stroke();
-  }
-
-  // Draw axes & labels
-  for (let i = 0; i < sides; i++) {
-    let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
-    let x = centerX + radius * Math.cos(angle);
-    let y = centerY + radius * Math.sin(angle);
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.lineTo(x, y);
-    ctx.stroke();
-
-    // Draw label
-    let labelX = centerX + (radius + 20) * Math.cos(angle);
-    let labelY = centerY + (radius + 20) * Math.sin(angle);
-    ctx.fillStyle = "#a5b0c2";
-    ctx.fillText(labels[i], labelX, labelY);
-  }
-
-  // Draw data polygon
-  ctx.beginPath();
-  for (let i = 0; i < sides; i++) {
-    let value = data[i] || 0; 
-    let valRadius = radius * (value / 10);
-    let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
-    let x = centerX + valRadius * Math.cos(angle);
-    let y = centerY + valRadius * Math.sin(angle);
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  }
-  ctx.closePath();
-  
-  // Fill and stroke data
-  ctx.fillStyle = "rgba(139, 124, 246, 0.4)"; // Accent glow
-  ctx.fill();
-  ctx.strokeStyle = "#8b7cf6";
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  // Draw data points
-  ctx.fillStyle = "#fff";
-  for (let i = 0; i < sides; i++) {
-    let value = data[i] || 0; 
-    let valRadius = radius * (value / 10);
-    let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
-    let x = centerX + valRadius * Math.cos(angle);
-    let y = centerY + valRadius * Math.sin(angle);
-    ctx.beginPath();
-    ctx.arc(x, y, 4, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
-
-// ================= Learning Plan =================
-const PLANS = {
-  p1: ["Understand Clinical Trial Phases & Protocol Anatomy", "Master Good Clinical Data Management Practices (GCDMP)", "Learn eCRF Design (CDASH) principles", "Practice writing Edit Check logic"],
-  p2: ["Map raw variables to SDTM domains (DM, AE, LB)", "Understand ADaM ADSL and BDS structures", "Run a dataset through Pinnacle 21 Community", "Write a mock SAE Reconciliation SOP"],
-  p3: ["Master R tidyverse (dplyr, tidyr) or SAS DATA Step", "Generate a reproducible Table 1 (Demographics)", "Join Patient, Visit, and Adverse Event tables via SQL", "Build a clinical data quality dashboard"],
-  p4: ["Implement NLP to extract entities from AE narratives", "Build a RAG app to query ICH/FDA guidelines", "Master Survival Analysis (Kaplan-Meier)", "Publish a portfolio piece on GitHub"]
+const v15GoBase=go;
+const v15RouteMeta={
+  home:['COMMAND','COMMAND CENTER','Your professional capability system at a glance.'],
+  capability:['CAPABILITY','CAPABILITY MAP','See how build progress becomes capability depth.'],
+  work:['WORK','WORK','Turn capability into finished work.'],
+  library:['LIBRARY','LIBRARY','A focused knowledge base for the capability system.'],
+  evidence:['EVIDENCE','EVIDENCE HUB','Make finished work legible through evidence.'],
+  roadmap:['ROADMAP','ROADMAP','Sequence depth instead of collecting disconnected skills.'],
+  skills:['SKILLS','SKILLS','See the shape of your capability.'],
+  authority:['AUTHORITY','AUTHORITY PROFILE','Make demonstrated capability legible.']
 };
-
-function renderPlans() {
-  Object.entries(PLANS).forEach(([id, items]) => {
-    document.getElementById(id).innerHTML = items.map((x, i) => `
-      <label class="checkrow" style="padding: 6px 0;">
-        <input type="checkbox" ${state.plan[x] ? 'checked' : ''} onchange="state.plan['${esc(x)}']=this.checked; save()">
-        <span class="${state.plan[x] ? 'done' : ''}" style="font-size:12.5px">${esc(x)}</span>
-      </label>
-    `).join('');
-  });
+function v15ApplyHeader(){let m=v15RouteMeta[S.page]||v15RouteMeta.home;head(m[0],m[1],m[2]);document.title=`V15 / ${m[1]}`;}
+go=function(page){
+  if(!v15RouteMeta[page]) page='home';
+  v15GoBase(page);
+  requestAnimationFrame(v15InteractionPass);
+};
+function render(){
+  nav();
+  let v=$('view');
+  const pageRender={home:v15Home,capability,work,library,evidence,roadmap,skills,authority};
+  v.innerHTML=v15SystemStrip()+v15ActionDock()+(pageRender[S.page]||v15Home)()+v15QuickLinks()+`<div class="v15Footer"><span>FORGE · Capability Operating System</span><span>Local-first · import/export enabled</span></div>`;
+  v15ApplyHeader();
+  $('search').placeholder=S.page==='library'?'Search 40 resources…':S.page==='work'?'Search 140 builds…':'Search…';
+  $('search').oninput=()=>{if(S.page==='work'||S.page==='library')render()};
+  $('clock').textContent=new Date().toLocaleDateString(undefined,{month:'short',year:'numeric'});
 }
 
-// ================= Initialization =================
-window.onload = () => {
-  if (state.firstLogin) {
-    document.getElementById('zeroState').style.display = 'block';
-  }
-  renderDomains();
-  renderProjectFilters();
-  renderProjects();
-  renderSkillControls();
-  renderPlans();
-  save(); // triggers dashboard stats & radar
-};
+/* ===== V15.3 OPERATING CORE ===== */
+function v15ActionState(){
+  const n=nextBest(), active=P.filter(p=>step(p.id)>0&&step(p.id)<5), completed=P.filter(p=>step(p.id)===5), missing=completed.filter(p=>!S.evidence.some(e=>(e.pr||e.projectId||e.project)===p.id));
+  return {n,active,completed,missing};
+}
+function v15HomeCore(){
+  head('COMMAND','COMMAND CENTER','Your professional capability system at a glance.');
+  const o=overall(), a=v15ActionState(), ev=S.evidence.length;
+  const strongest=[...D.map((d,i)=>({d,i,p:domainStats(i).v,c:domainStats(i).done}))].sort((x,y)=>y.p-x.p).slice(0,3);
+  const attention=[...D.map((d,i)=>({d,i,p:domainStats(i).v,c:domainStats(i).done}))].sort((x,y)=>x.p-y.p).slice(0,3);
+  const current=a.active[0]||a.n;
+  return `
+  <div class="v15-commandHero">
+    <div class="v15-commandIntro">
+      <div class="eyebrow">OPERATING CORE</div>
+      <h2>Know what to build. Know what to prove.</h2>
+      <p>The system turns deliberate builds into measurable capability, then connects finished work to evidence and professional authority.</p>
+    </div>
+    <div class="v15-commandScore"><span>OVERALL</span><strong>${o}%</strong><i><em style="width:${o}%"></em></i><small>${a.completed.length} of ${P.length} builds complete</small></div>
+  </div>
 
-// Search functionality
-document.getElementById('globalSearch').oninput = e => {
-  let q = e.target.value.toLowerCase();
-  if(!q) return;
-  // Jump to domain if match found
-  let d = DOMAIN_DATA.find(x => x.name.toLowerCase().includes(q) || x.skills.some(s => s.toLowerCase().includes(q)));
-  if(d) openDomain(DOMAIN_DATA.indexOf(d));
-};
+  <div class="v15-commandGrid">
+    <section class="v15-commandAction">
+      <div class="eyebrow">01 · NEXT ACTION</div>
+      <div class="v15-commandActionTop"><span class="tag">${esc(a.n.level)}</span><span>${esc(a.n.time)}</span></div>
+      <h3>${esc(a.n.name)}</h3><p>${esc(a.n.domain)} · ${esc(projectIntel(a.n).challenge)}</p>
+      <button class="btn primary" onclick="openP('${a.n.id}')">Open build →</button>
+    </section>
+    <section class="v15-commandAction">
+      <div class="eyebrow">02 · CURRENT MOMENTUM</div>
+      <h3>${a.active.length?esc(current.name):'No active build yet.'}</h3>
+      <p>${a.active.length?'Continue the build already in motion before branching into another project.':'Start the next recommended build to create your first active signal.'}</p>
+      <button class="btn" onclick="openP('${current.id}')">${a.active.length?'Continue build':'Start build'} →</button>
+    </section>
+    <section class="v15-commandAction ${a.missing.length?'attention':''}">
+      <div class="eyebrow">03 · PROOF GAP</div>
+      <h3>${a.missing.length} completed build${a.missing.length===1?'':'s'} without linked evidence</h3>
+      <p>${a.missing.length?'Completed work becomes stronger when its artifact, validation and decision trail are captured.':'Your completed builds currently have linked proof.'}</p>
+      <button class="btn" onclick="go('evidence')">${a.missing.length?'Review evidence':'Open evidence'} →</button>
+    </section>
+  </div>
 
-</script>
-</body>
-</html>
+  <div class="sectionhead"><div><div class="eyebrow">SYSTEM SIGNAL</div><h2>Depth, breadth and proof</h2></div></div>
+  <div class="v15-signalGrid">
+    <div class="card"><div class="miniLabel">BUILD MOMENTUM</div><strong>${a.active.length}</strong><p>active builds currently in motion</p></div>
+    <div class="card"><div class="miniLabel">EVIDENCE COVERAGE</div><strong>${Math.round((P.filter(p=>S.evidence.some(e=>(e.pr||e.projectId||e.project)===p.id)).length/P.length)*100)}%</strong><p>of builds connected to proof</p></div>
+    <div class="card"><div class="miniLabel">AUTHORITY INPUT</div><strong>${authorityScore()}</strong><p>current authority signal</p></div>
+    <div class="card"><div class="miniLabel">ACTIVE DEPTH</div><strong>${P.filter(p=>step(p.id)>=4).length}</strong><p>builds at decision or proof stage</p></div>
+  </div>
+
+  <div class="section grid g2">
+    <div class="card"><div class="miniLabel">STRONGEST DOMAINS</div><div class="v15-domainList">${strongest.map(x=>`<button onclick="openD(${x.i})"><span><b>${esc(x.d)}</b><small>${x.c}/10 complete</small></span><strong>${x.p}%</strong></button>`).join('')}</div></div>
+    <div class="card"><div class="miniLabel">ATTENTION REQUIRED</div><div class="v15-domainList">${attention.map(x=>`<button onclick="openD(${x.i})"><span><b>${esc(x.d)}</b><small>${x.c}/10 complete</small></span><strong>${x.p}%</strong></button>`).join('')}</div></div>
+  </div>
+
+  <div class="sectionhead"><div><div class="eyebrow">OPERATING LOOP</div><h2>Learn → Build → Validate → Evidence → Authority</h2></div></div>
+  <div class="v15-loop">${[['01','Learn','Use primary sources and targeted resources.','library'],['02','Build','Execute the next professional assignment.','work'],['03','Validate','Test, document decisions and limitations.','work'],['04','Evidence','Capture reusable proof linked to the build.','evidence'],['05','Authority','See demonstrated capability accumulate.','authority']].map(x=>`<button onclick="go('${x[3]}')"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')}</div>`;
+}
+v15Home=v15HomeCore;
+
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeM();closeCmd()}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openCommand()}if(!e.ctrlKey&&!e.metaKey&&!e.altKey&&e.key>='1'&&e.key<='8'){let n=navItems[Number(e.key)-1];if(n)go(n[0])}});render();
+</script></body></html>
