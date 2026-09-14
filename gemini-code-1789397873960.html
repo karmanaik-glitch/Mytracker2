@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="career-os-hosting" content="github-pages; v9-glass-glow-automated">
+<meta name="theme-color" content="#0b0c10">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>CareerOS — Pharm D Authority Lab</title>
+
+<style>
+/* Core Variables & Glassmorphism Aesthetic */
+:root {
+  --glass-bg: rgba(20, 23, 34, 0.58);
+  --glass-bg-strong: rgba(22, 25, 38, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.105);
+  --glass-border-soft: rgba(255, 255, 255, 0.065);
+  --glass-shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
+  --glow-purple: rgba(139, 124, 246, 0.18);
+  --glow-blue: rgba(90, 169, 255, 0.14);
+  --glow-cyan: rgba(72, 217, 208, 0.11);
+  --glow-amber: rgba(244, 189, 104, 0.10);
+
+  --bg: #0b0d12;
+  --panel: #12161e;
+  --line: #252b36;
+  --txt: #eef0f4;
+  --muted: #a5b0c2; /* Improved contrast from v8 */
+  --accent: #8b7cf6;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: 
+    radial-gradient(650px 430px at 7% 2%, var(--glow-purple), transparent 68%),
+    radial-gradient(600px 420px at 94% 8%, var(--glow-blue), transparent 66%),
+    radial-gradient(520px 380px at 50% 100%, var(--glow-cyan), transparent 72%),
+    #090b10;
+  background-attachment: fixed;
+  color: var(--txt);
+  font: 13.5px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  padding-bottom: 80px; /* Space for mobile nav */
+}
+
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+
+/* Layout */
+.app { display: flex; min-height: 100vh; }
+.side {
+  position: fixed; inset: 0 auto 0 0; width: 228px; padding: 20px 13px;
+  background: var(--glass-bg); border-right: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px) saturate(125%); -webkit-backdrop-filter: blur(18px) saturate(125%);
+  z-index: 20;
+}
+.brand { display: flex; align-items: center; gap: 11px; padding: 5px 9px 25px; filter: drop-shadow(0 0 18px rgba(139,124,246,.14)); }
+.mark { width: 35px; height: 35px; border-radius: 9px; background: #ded8ff; color: #17131f; display: grid; place-items: center; font-weight: 900; letter-spacing: -.04em; }
+.brand b { display: block; font-size: 14px; letter-spacing: .01em; }
+.brand small { display: block; color: var(--muted); font-size: 10.5px; margin-top: 1px; }
+
+.nav { display: grid; gap: 3px; }
+.nav button { border: 1px solid transparent; background: transparent; color: #9ca5b4; padding: 9px 10px; border-radius: 9px; text-align: left; transition: .16s; }
+.nav button:hover { background: rgba(255,255,255,.035); color: #e9ebef; }
+.nav button.on { background: linear-gradient(90deg, rgba(139,124,246,.16), rgba(90,169,255,.07)); color: #fff; border-color: rgba(139,124,246,.22); }
+
+.main { margin-left: 228px; width: calc(100% - 228px); padding: 28px 34px 60px; max-width: 1540px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+.header h1 { margin: 0; font-size: 23px; letter-spacing: -.025em; }
+.header p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+
+/* Components */
+.search {
+  width: 310px; background: rgba(7,9,14,.42); border: 1px solid var(--glass-border-soft); color: #fff; 
+  border-radius: 9px; padding: 9px 12px; outline: none; backdrop-filter: blur(10px);
+}
+.search:focus { border-color: rgba(139,124,246,.48); box-shadow: 0 0 0 3px rgba(139,124,246,.09), 0 0 22px rgba(139,124,246,.08); }
+
+.page { display: none; animation: fadeIn 0.3s ease; }
+.page.on { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.heroMini { padding: 19px 20px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); margin-bottom: 15px; box-shadow: var(--glass-shadow); backdrop-filter: blur(18px); }
+.heroMini h2 { margin: 0 0 3px; font-size: 20px; letter-spacing: -.02em; }
+.heroMini p { margin: 0; }
+
+.grid { display: grid; gap: 15px; }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.008)), var(--glass-bg);
+  border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 19px; box-shadow: var(--glass-shadow);
+  position: relative; backdrop-filter: blur(18px) saturate(125%);
+}
+.card::after { content: ""; position: absolute; pointer-events: none; left: 10%; right: 10%; top: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent); opacity: .7; }
+.card h3 { font-size: 15px; margin: 0 0 10px; letter-spacing: -.01em; }
+
+.stat { min-height: 104px; }
+.num { font-size: 27px; font-weight: 750; letter-spacing: -.03em; margin: 5px 0; color: #fff; }
+.muted { color: var(--muted); }
+
+.statgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 15px; }
+.bar { height: 5px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); }
+.bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--glow-blue)); border-radius: 99px; box-shadow: 0 0 16px rgba(90,169,255,.16); transition: width 0.3s ease; }
+
+.tag { display: inline-block; border: 1px solid rgba(139,124,246,.25); background: rgba(139,124,246,.09); padding: 2px 7px; border-radius: 999px; color: #d0c8ff; font-size: 9.5px; margin-right: 4px; text-transform: uppercase; letter-spacing: .04em; }
+
+.domain { cursor: pointer; transition: .2s ease; overflow: hidden; }
+.domain::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background: var(--accent); opacity:.85; }
+.domain:hover { transform: translateY(-2px); border-color: rgba(139,124,246,.28); box-shadow: 0 22px 60px rgba(0,0,0,.30), 0 0 35px rgba(139,124,246,.055); background: radial-gradient(350px 160px at 15% 0%,rgba(139,124,246,.075),transparent 70%), rgba(20,23,34,.66); }
+.domain h3 { margin: 7px 0 5px; }
+.domain .icon { font-size: 18px; color: var(--accent); filter: drop-shadow(0 0 8px rgba(139,124,246,.4)); }
+.domain .topics { min-height: 61px; color: var(--muted); font-size: 11.5px; margin: 10px 0; }
+.domainfoot { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 11px; }
+
+.filter { display: flex; gap: 6px; flex-wrap: wrap; margin: 11px 0; }
+.btn { border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.035); color: #dfe3e9; border-radius: 8px; padding: 7px 12px; transition: .15s; backdrop-filter: blur(10px); font-weight: 500; }
+.btn:hover { box-shadow: 0 0 22px rgba(139,124,246,.10); border-color: rgba(139,124,246,.45); }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; box-shadow: 0 8px 28px rgba(90,169,255,.10), 0 0 22px rgba(139,124,246,.07); }
+.btn.primary:hover { background: #9b8cff; }
+.btn.active { background: rgba(139,124,246,.2); border-color: var(--accent); color: #fff; }
+
+.resource { padding: 12px; border: 1px solid var(--glass-border-soft); border-radius: 10px; background: rgba(0,0,0,0.15); margin: 7px 0; }
+.resource a:hover { color: #5aa9ff; text-decoration: underline; }
+.q { font-size: 9px; font-weight: 800; border-radius: 99px; padding: 3px 5px; margin-right: 5px; }
+.q5 { background: rgba(98,217,155,0.2); border: 1px solid #62d99b; color: #62d99b; }
+
+.projectCard { padding: 15px; border: 1px solid var(--glass-border); border-radius: 10px; margin: 9px 0; background: var(--glass-bg); transition: .16s; }
+.projectCard:hover { border-color: rgba(139,124,246,.28); box-shadow: 0 12px 35px rgba(0,0,0,.18); transform: translateY(-1px); }
+.projectCard .difficulty { font-size: 9.5px; color: var(--muted); float: right; text-transform: uppercase; letter-spacing: .05em; }
+.projectCard b { display: block; margin: 6px 0 3px; font-size: 13.5px; }
+.projectCard small { display: block; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.projectActions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.miniTrack { margin-top: 12px; }
+.miniTrack .muted { font-size: 10.5px; margin-bottom: 4px; }
+
+/* Interactive Trackers */
+.checkrow { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+.checkrow:last-child { border-bottom: 0; }
+.checkrow input[type="checkbox"] { accent-color: var(--accent); width: 18px; height: 18px; margin-top: 2px; cursor: pointer; }
+.checkrow span { color: #eef0f4; line-height: 1.4; }
+.checkrow span.done { text-decoration: line-through; color: var(--muted); }
+
+.note, .input { width: 100%; background: rgba(0,0,0,.35) !important; border: 1px solid var(--glass-border-soft); color: #edf0f5; border-radius: 9px; padding: 12px; outline: none; box-shadow: inset 0 2px 6px rgba(0,0,0,0.5); }
+.note { min-height: 145px; resize: vertical; line-height: 1.5; }
+.input:focus, .note:focus { border-color: rgba(139,124,246,.48); box-shadow: inset 0 2px 6px rgba(0,0,0,0.5), 0 0 0 2px rgba(139,124,246,.15); }
+
+/* Canvas Radar */
+#radarContainer { display: flex; justify-content: center; align-items: center; padding: 20px; background: rgba(0,0,0,0.15); border-radius: 12px; border: 1px solid var(--glass-border-soft); margin-top: 15px; }
+canvas { max-width: 100%; height: auto; }
+
+/* Mobile Bottom Nav */
+.bottom-nav { display: none; }
+
+@media(max-width: 900px) {
+  .g3 { grid-template-columns: repeat(2, 1fr); }
+  .statgrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width: 700px) {
+  .side { display: none; } /* Hide sidebar on mobile */
+  .main { margin-left: 0; width: 100%; padding: 15px 15px 100px; }
+  .g3, .g2, .statgrid { grid-template-columns: 1fr; }
+  .header { display: block; }
+  .search { width: 100%; margin-top: 12px; }
+  
+  /* Bottom Mobile Nav */
+  .bottom-nav {
+    display: flex; justify-content: space-around; align-items: center;
+    position: fixed; z-index: 900; left: 10px; right: 10px; bottom: 15px;
+    padding: 10px 5px; border-radius: 18px;
+    background: var(--glass-bg-strong); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(18px); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+  .bottom-nav button {
+    background: transparent; border: none; color: var(--muted); font-size: 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 5px 10px;
+  }
+  .bottom-nav button .icon { font-size: 18px; }
+  .bottom-nav button.on { color: #fff; text-shadow: 0 0 8px rgba(139,124,246,.8); }
+  .bottom-nav button.on .icon { color: var(--accent); }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Desktop Sidebar -->
+  <aside class="side">
+    <div class="brand"><div class="mark">C</div><div><b>CareerOS</b><small>Authority Lab v9</small></div></div>
+    <nav class="nav" id="desktopNav">
+      <button class="on" data-page="home">⌂ <span>Dashboard</span></button>
+      <button data-page="domains">◈ <span>Domains</span></button>
+      <button data-page="projects">◇ <span>Project Lab</span></button>
+      <button data-page="skills">◫ <span>Skill Radar</span></button>
+      <button data-page="plan">□ <span>Learning Plan</span></button>
+    </nav>
+  </aside>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav" id="mobileNav">
+    <button class="on" data-page="home"><span class="icon">⌂</span><span>Home</span></button>
+    <button data-page="domains"><span class="icon">◈</span><span>Domains</span></button>
+    <button data-page="projects"><span class="icon">◇</span><span>Projects</span></button>
+    <button data-page="skills"><span class="icon">◫</span><span>Skills</span></button>
+  </nav>
+
+  <main class="main">
+    <header class="header">
+      <div><h1 id="title">CareerOS</h1><p id="subtitle">Clinical Data Management · CDISC · ML</p></div>
+      <input id="globalSearch" class="search" placeholder="Search domains, projects, skills...">
+    </header>
+
+    <!-- 0. Onboarding / Zero State (Injected dynamically if empty) -->
+    <div id="zeroState" style="display:none; margin-bottom: 25px;">
+      <div class="card" style="border-color: var(--accent); box-shadow: 0 0 30px rgba(139,124,246,.15);">
+        <h3>👋 Welcome to the Authority Lab</h3>
+        <p class="muted">It looks like you're starting fresh. As a Pharm.D transitioning into Clinical Data Management, your highest leverage action is mastering CDISC Standards (SDTM/ADaM) and Data Architecture.</p>
+        <button class="btn primary" onclick="startRecommendedProject()">Start Recommended Track: CDISC Foundations</button>
+      </div>
+    </div>
+
+    <!-- 1. Dashboard -->
+    <section id="home" class="page on">
+      <div class="statgrid">
+        <div class="card stat"><span class="muted">Active Projects</span><div class="num" id="activeProjCount">0</div><span class="muted">in progress</span></div>
+        <div class="card stat"><span class="muted">Completed</span><div class="num" id="doneProjCount">0</div><span class="muted">portfolio pieces</span></div>
+        <div class="card stat"><span class="muted">CDISC Capability</span><div class="num" id="cdiscScore">0/10</div><span class="muted">core moat</span></div>
+        <div class="card stat"><span class="muted">Overall Progress</span><div class="num" id="skillPct">0%</div><div class="bar"><i id="skillBar" style="width:0%"></i></div></div>
+      </div>
+      
+      <div class="grid g2">
+        <div class="card">
+          <h3>Your Current Focus</h3>
+          <div id="dashboardFocus">
+            <p class="muted">No active projects. Visit the Project Lab to start building.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Weekly Operating System</h3>
+          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 0)"><span><b>3h</b> CDISC / SDTM / ADaM mapping</span></div>
+          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 1)"><span><b>2h</b> Statistical Programming (R/SAS/SQL)</span></div>
+          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 2)"><span><b>2h</b> Project building & portfolio</span></div>
+          <div class="checkrow"><input type="checkbox" onchange="toggleOpSys(this, 3)"><span><b>1h</b> Industry intelligence (FDA/EMA/ICH)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Domains -->
+    <section id="domains" class="page">
+      <div class="heroMini"><h2>Capability Domains</h2><p class="muted">Select a domain to view skills, top resources, and a ladder of practical projects.</p></div>
+      <div class="grid g3" id="domainGrid"></div>
+    </section>
+
+    <!-- Domain Detail View -->
+    <section id="domainDetail" class="page">
+      <button class="btn" onclick="showPage('domains')">← Back to Domains</button>
+      <div id="domainDetailContent" style="margin-top:15px"></div>
+    </section>
+
+    <!-- 3. Project Lab -->
+    <section id="projects" class="page">
+      <div class="heroMini"><h2>Project Lab</h2><p class="muted">Projects are undeniable evidence of capability. Never expose confidential employer data.</p></div>
+      <div class="filter" id="projectFilters"></div>
+      <div id="projectList"></div>
+    </section>
+
+    <!-- 4. Skill Radar -->
+    <section id="skills" class="page">
+      <div class="heroMini"><h2>Skill Radar Matrix</h2><p class="muted">Visualize your technical moats and gaps. Tap the +/- buttons below to update your profile.</p></div>
+      <div class="grid g2">
+        <div id="radarContainer">
+          <canvas id="radarChart" width="400" height="400"></canvas>
+        </div>
+        <div class="card" id="skillControls" style="max-height: 440px; overflow-y: auto;">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Learning Plan -->
+    <section id="plan" class="page">
+      <div class="heroMini"><h2>Learning Plan Sprints</h2><p class="muted">A structured progression from CDM basics to AI architecture.</p></div>
+      <div class="grid g2">
+        <div class="card"><h3>0–3m · CDM & Protocol Foundations</h3><div id="p1"></div></div>
+        <div class="card"><h3>3–6m · CDISC & Data Architecture</h3><div id="p2"></div></div>
+        <div class="card"><h3>6–12m · Statistical Programming</h3><div id="p3"></div></div>
+        <div class="card"><h3>12–24m · AI & Authority Moat</h3><div id="p4"></div></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ========================================== -->
+<!-- JAVASCRIPT / DATA / LOGIC                  -->
+<!-- ========================================== -->
+<script>
+/** 
+ * DATA ARCHITECTURE 
+ * Consolidated and expanded to reflect Clinical Data Management, CDISC, and AI trajectories.
+ */
+const DOMAIN_DATA = [
+  {
+    id: "cdm", name: "Clinical Data Management", icon: "◉", priority: "CORE",
+    skills: ["eCRF Design (CDASH)", "Data Management Plan (DMP)", "Edit Check Logic", "UAT Execution", "Discrepancy / Query Management", "Medical Coding (MedDRA/WHODrug)", "SAE Reconciliation", "Database Lock (DBL)"],
+    resources: [
+      ["5", "SCDM GCDMP", "Good Clinical Data Management Practices", "https://scdm.org/gcdmp/"],
+      ["4", "Vanderbilt CDM Course", "Coursera - Free Audit", "https://www.coursera.org/learn/clinical-data-management"]
+    ],
+    projects: [
+      ["Easy", "Draft a mock DMP", "Outline sections for a Phase II oncology trial based on GCDMP."],
+      ["Medium", "Design a CDASH-compliant eCRF", "Create an Adverse Event (AE) CRF annotated with standard variable names."],
+      ["Medium", "Write Edit Check Specifications", "Draft logical checks for Demographics and Labs (e.g., age vs birth date, out-of-range limits)."],
+      ["Hard", "Mock SAE Reconciliation", "Compare synthetic EDC data against a mock Safety Database output and flag discrepancies."]
+    ]
+  },
+  {
+    id: "cdisc", name: "CDISC Standards & Architecture", icon: "▤", priority: "CORE",
+    skills: ["SDTM Domains (DM, AE, LB)", "CDASH to SDTM Mapping", "ADaM (ADSL, BDS, TTE)", "Define.xml", "Controlled Terminology", "Pinnacle 21 Validation"],
+    resources: [
+      ["5", "CDISC Official Standards", "SDTMIG, ADaMIG downloads", "https://www.cdisc.org/standards/foundational"],
+      ["5", "Pinnacle 21 Community", "Validation rules and engine", "https://www.pinnacle21.com/downloads"]
+    ],
+    projects: [
+      ["Easy", "SDTM Domain Mapping Dictionary", "Map 20 raw clinical variables to their correct SDTM domains and standard names."],
+      ["Medium", "Raw to SDTM (DM & AE)", "Transform a mock raw dataset into compliant SDTM DM and AE domains using Excel/SQL/Python."],
+      ["Hard", "Build ADSL from SDTM", "Create a Subject-Level Analysis Dataset (ADSL) deriving baseline flags and treatment groups."],
+      ["Expert", "Pinnacle 21 Validation Run", "Run an SDTM dataset through P21 Community, interpret the report, and fix the warnings."]
+    ]
+  },
+  {
+    id: "statprog", name: "Stat. Programming (R/SAS)", icon: "Σ", priority: "HIGH",
+    skills: ["Data Import/Export", "Data Manipulation (dplyr/PROC SQL)", "Table 1 Generation", "Survival Analysis", "TFL Pipelines", "pharmaverse (R) / SAS Macros"],
+    resources: [
+      ["5", "pharmaverse", "Open source R packages for clinical reporting", "https://pharmaverse.org/"],
+      ["5", "SAS OnDemand for Academics", "Free SAS environment", "https://www.sas.com/en_us/software/on-demand-for-academics.html"]
+    ],
+    projects: [
+      ["Easy", "Data Cleaning Script", "Import, handle missing values, and standardize dates using R or SAS."],
+      ["Medium", "Automated Baseline Table 1", "Generate a formatted demographic summary by treatment arm."],
+      ["Hard", "Kaplan-Meier Survival Curve", "Analyze time-to-event synthetic data using SAS PROC LIFETEST or R survival."],
+      ["Expert", "ADaM to TFL Pipeline", "Write a macro/function pipeline to generate Tables, Listings, and Figures from ADaM data."]
+    ]
+  },
+  {
+    id: "dataeng", name: "Data Foundations (SQL/Excel)", icon: "▦", priority: "HIGH",
+    skills: ["SQL JOINs & Window Functions", "Data Normalization", "Power Query", "Dashboarding", "ETL Basics", "Data Quality Metrics"],
+    resources: [
+      ["5", "SQLBolt", "Interactive SQL tutorial", "https://sqlbolt.com/"],
+      ["4", "Microsoft Learn (Power Query)", "Data transformation", "https://learn.microsoft.com/en-us/power-query/"]
+    ],
+    projects: [
+      ["Easy", "Clinical Tracker in Excel", "Build a site performance tracker with formulas and conditional formatting."],
+      ["Medium", "SQL Relational DB Design", "Design schema for Patient, Visit, and Lab tables and write JOIN queries."],
+      ["Hard", "Site KPI Dashboard", "Use Power Query/SQL to track query turnaround times and data entry delays."]
+    ]
+  },
+  {
+    id: "pv", name: "Pharmacovigilance & Reg", icon: "✚", priority: "HIGH",
+    skills: ["AE/SAE Processing", "MedDRA Hierarchy", "Causality Assessment", "Disproportionality (ROR/PRR)", "ICH E6(R3)", "Regulatory Submissions"],
+    resources: [
+      ["5", "EMA GVP Guidelines", "Official PV practices", "https://www.ema.europa.eu/en"],
+      ["4", "FDA Guidance Documents", "Clinical trials guidelines", "https://www.fda.gov/"]
+    ],
+    projects: [
+      ["Easy", "MedDRA Mapping Exercise", "Map 15 verbatim AE terms to LLT, PT, and SOC."],
+      ["Medium", "Safety Narrative Practice", "Write 5 structured patient narratives from synthetic case data."],
+      ["Hard", "Signal Detection Notebook", "Calculate ROR/PRR on an open-source safety dataset (like FAERS extracts)."]
+    ]
+  },
+  {
+    id: "ai", name: "Healthcare AI & Automation", icon: "AI", priority: "FUTURE MOAT",
+    skills: ["LLM Prompt Design", "RAG Systems", "Python (Pandas/Scikit-learn)", "NLP for unstructured text", "Anomaly Detection"],
+    resources: [
+      ["5", "Hugging Face Healthcare", "Models and datasets", "https://huggingface.co/models"],
+      ["4", "Scikit-Learn Guide", "ML documentation", "https://scikit-learn.org/stable/"]
+    ],
+    projects: [
+      ["Easy", "Python CSV Profiler", "Script to auto-detect missingness and data types in raw EDC exports."],
+      ["Medium", "AE Text Extractor (NLP)", "Use basic NLP to extract Drug, Event, and Dates from unstructured text."],
+      ["Hard", "Trial Protocol RAG Bot", "Build a simple local RAG system to query inclusion/exclusion criteria from a PDF protocol."],
+      ["Expert", "Fraud/Anomaly Detection", "Use clustering algorithms (Python) to detect unusual site-level data entry patterns."]
+    ]
+  }
+];
+
+const APP_KEY = 'careeros_auth_v9_auto';
+let state = JSON.parse(localStorage.getItem(APP_KEY));
+if (!state) {
+  state = {
+    skills: {}, projects: {}, plan: {}, opSys: [false, false, false, false],
+    firstLogin: true
+  };
+}
+
+// Initialize default skills based on domains
+DOMAIN_DATA.forEach(d => {
+  d.skills.forEach(s => {
+    if (!(s in state.skills)) state.skills[s] = 0;
+  });
+});
+
+function save() {
+  localStorage.setItem(APP_KEY, JSON.stringify(state));
+  renderDashboardStats();
+  drawRadarChart();
+}
+
+function esc(str) { return String(str).replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[m])); }
+
+// ================= Navigation =================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  
+  document.querySelectorAll('#desktopNav button, #mobileNav button').forEach(b => {
+    b.classList.toggle('on', b.dataset.page === id);
+  });
+  window.scrollTo(0,0);
+}
+
+document.querySelectorAll('#desktopNav button, #mobileNav button').forEach(b => {
+  b.onclick = () => showPage(b.dataset.page);
+});
+
+// ================= Dashboard Logic =================
+function toggleOpSys(el, index) {
+  state.opSys[index] = el.checked;
+  save();
+}
+
+function renderDashboardStats() {
+  let active = 0, done = 0;
+  let activeProjHtml = '';
+  
+  Object.keys(state.projects).forEach(k => {
+    const p = state.projects[k];
+    if (p.status === "Completed") done++;
+    else if (p.started && p.progress > 0) {
+      active++;
+      // Get title from key (Domain::Title)
+      const title = k.split("::")[1];
+      activeProjHtml += `<div class="resource" style="cursor:pointer" onclick="openProjectTracker('${encodeURIComponent(k)}')">
+        <span class="tag">In Progress</span> <b>${esc(title)}</b> <div class="bar" style="margin-top:6px"><i style="width:${p.progress}%"></i></div>
+      </div>`;
+    }
+  });
+
+  document.getElementById('activeProjCount').textContent = active;
+  document.getElementById('doneProjCount').textContent = done;
+  
+  if (active === 0) {
+    document.getElementById('dashboardFocus').innerHTML = `<p class="muted">No active projects. Visit the <a href="#" style="color:var(--accent)" onclick="showPage('projects')">Project Lab</a> to start building.</p>`;
+  } else {
+    document.getElementById('dashboardFocus').innerHTML = activeProjHtml;
+  }
+
+  // Calculate Overall Skill Pct
+  const allSkillKeys = Object.keys(state.skills);
+  const avg = allSkillKeys.reduce((acc, k) => acc + state.skills[k], 0) / allSkillKeys.length;
+  const pct = Math.round(avg * 10);
+  document.getElementById('skillPct').textContent = pct + '%';
+  document.getElementById('skillBar').style.width = pct + '%';
+
+  // Specific CDISC Tracker
+  let cdiscTotal = 0;
+  let cdiscCount = 0;
+  DOMAIN_DATA.find(d => d.id === 'cdisc').skills.forEach(s => {
+    cdiscTotal += state.skills[s];
+    cdiscCount++;
+  });
+  document.getElementById('cdiscScore').textContent = Math.round(cdiscTotal/cdiscCount) + '/10';
+}
+
+function startRecommendedProject() {
+  document.getElementById('zeroState').style.display = 'none';
+  state.firstLogin = false;
+  save();
+  // Open the easiest CDISC project
+  startProject(encodeURIComponent("CDISC Standards & Architecture::SDTM Domain Mapping Dictionary"));
+}
+
+// ================= Domains & Resources =================
+function renderDomains() {
+  document.getElementById('domainGrid').innerHTML = DOMAIN_DATA.map((d, i) => `
+    <div class="card domain" onclick="openDomain(${i})">
+      <div class="icon">${d.icon}</div>
+      <h3>${esc(d.name)}</h3>
+      <span class="tag ${d.priority==='CORE'?'core':''}">${d.priority}</span>
+      <p class="topics">${d.skills.slice(0, 5).join(' · ')}…</p>
+      <div class="domainfoot"><span class="muted">${d.skills.length} skills · ${d.projects.length} projects</span><b>Open →</b></div>
+    </div>`).join('');
+}
+
+function openDomain(i) {
+  let d = DOMAIN_DATA[i];
+  document.getElementById('domainDetailContent').innerHTML = `
+    <div class="heroMini"><h2>${d.icon} ${esc(d.name)}</h2><p class="muted">Select a project below to start building.</p></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Required Skills</h3>
+        ${d.skills.map(s => `
+          <div style="display:flex; justify-content:space-between; margin: 8px 0; font-size:12px;">
+            <span>${esc(s)}</span><span style="color:var(--accent)">${state.skills[s]}/10</span>
+          </div>
+          <div class="bar"><i style="width:${state.skills[s]*10}%"></i></div>
+        `).join('')}
+      </div>
+      <div class="card">
+        <h3>Top Resources</h3>
+        ${d.resources.map(r => `<div class="resource"><span class="q q${r[0]}">R${r[0]}</span> <a href="${r[3]}" target="_blank"><b>${esc(r[1])}</b></a><div class="muted" style="font-size:11px">${esc(r[2])}</div></div>`).join('')}
+      </div>
+    </div>
+    <div class="card" style="margin-top:15px">
+      <h3>Project Ladder</h3>
+      ${d.projects.map((p, j) => `
+        <div class="projectCard">
+          <span class="difficulty">${esc(p[0])}</span>
+          <b>${j+1}. ${esc(p[1])}</b>
+          <small>${esc(p[2])}</small>
+          <div class="projectActions">
+            <button class="btn primary" onclick="startProject('${encodeURIComponent(d.name+'::'+p[1])}')">Open Project Tracker</button>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  showPage('domainDetail');
+}
+
+// ================= Automated Project Lab =================
+function renderProjectFilters() {
+  let f = ['All', ...DOMAIN_DATA.map(d => d.name)];
+  document.getElementById('projectFilters').innerHTML = f.map(x => 
+    `<button class="btn ${x==='All'?'active':''}" onclick="filterProjects('${esc(x)}', this)">${esc(x)}</button>`
+  ).join('');
+}
+
+function filterProjects(filter, btnEl) {
+  document.querySelectorAll('#projectFilters button').forEach(b => b.classList.remove('active'));
+  btnEl.classList.add('active');
+  renderProjects(filter);
+}
+
+function renderProjects(filter = 'All') {
+  let arr = DOMAIN_DATA.flatMap(d => d.projects.map((p, idx) => ({ p, d: d.name, idx })))
+            .filter(x => filter === 'All' || x.d === filter);
+  
+  document.getElementById('projectList').innerHTML = arr.map(x => {
+    const k = x.d + "::" + x.p[1];
+    const st = state.projects[k] || { started: false, status: "Not started", progress: 0 };
+    const safeK = encodeURIComponent(k);
+    return `
+      <div class="projectCard" style="${st.status === 'Completed' ? 'border-color: rgba(98,217,155,0.4);' : ''}">
+        <span class="difficulty">${esc(x.p[0])}</span><span class="tag">${esc(x.d)}</span>
+        <b>${x.idx+1}. ${esc(x.p[1])}</b>
+        <small>${esc(x.p[2])}</small>
+        <div class="projectActions">
+          <button class="btn ${st.started ? '' : 'primary'}" onclick="startProject('${safeK}')">
+            ${st.started ? (st.status==='Completed' ? 'View Final Report' : 'Resume Project') : '▶ Start Project'}
+          </button>
+        </div>
+        ${st.started ? `
+          <div class="miniTrack">
+            <div class="muted" style="${st.status === 'Completed' ? 'color:#62d99b' : ''}">${esc(st.status)} · ${st.progress}%</div>
+            <div class="bar"><i style="width:${st.progress}%; ${st.status === 'Completed' ? 'background:#62d99b; box-shadow:0 0 10px #62d99b' : ''}"></i></div>
+          </div>` : ''}
+      </div>`;
+  }).join('');
+}
+
+// Base 5-step framework
+const baseSteps = [
+  "Define the clinical/data objective, scope, and success criteria.",
+  "Create or locate synthetic/public dataset (never use real patient data).",
+  "Execute the core technical build (mapping, analysis, script, or design).",
+  "Run Quality Control (QC) - test edge cases, validate against guidelines.",
+  "Package output: Save code, write 1-page summary, and list limitations."
+];
+
+function startProject(encodedK) {
+  const k = decodeURIComponent(encodedK);
+  if (!state.projects[k]) {
+    state.projects[k] = { started: true, status: "In progress", progress: 0, stepDone: {}, notes: "" };
+    save();
+  }
+  openProjectTracker(encodedK);
+}
+
+function openProjectTracker(encodedK) {
+  const k = decodeURIComponent(encodedK);
+  const [dName, title] = k.split("::");
+  const d = DOMAIN_DATA.find(x => x.name === dName);
+  const p = d?.projects.find(x => x[1] === title);
+  const st = state.projects[k];
+
+  document.getElementById('domainDetailContent').innerHTML = `
+   <div class="heroMini">
+     <button class="btn" onclick="showPage('projects'); renderProjects('All');">← Back to Projects</button>
+     <div style="margin-top:15px">
+       <span class="tag" style="${st.status === 'Completed' ? 'background:#62d99b; color:#111; border-color:#62d99b' : ''}">${esc(st.status)}</span>
+       <h2>${esc(title)}</h2>
+       <p class="muted">${esc(p[2])}</p>
+     </div>
+   </div>
+   <div class="grid g2">
+    <div class="card">
+      <h3>Execution Steps</h3>
+      <p class="muted" style="font-size: 11px; margin-bottom:15px;">Check steps to automatically update progress.</p>
+      ${baseSteps.map((s, i) => `
+        <label class="checkrow">
+          <input type="checkbox" ${st.stepDone?.[i] ? 'checked' : ''} onchange="autoUpdateProject('${encodedK}', ${i}, this.checked)">
+          <span class="${st.stepDone?.[i] ? 'done' : ''}"><b>Step ${i+1}:</b> ${esc(s)}</span>
+        </label>
+      `).join('')}
+    </div>
+    <div class="card">
+      <h3>Project Status</h3>
+      <div class="bar" style="height: 10px; margin: 10px 0;"><i style="width:${st.progress}%; ${st.status === 'Completed' ? 'background:#62d99b;' : ''}"></i></div>
+      <div style="font-size:18px; font-weight:bold; margin-bottom: 20px; color: ${st.status === 'Completed' ? '#62d99b' : '#fff'}">${st.progress}% - ${esc(st.status)}</div>
+      
+      <label class="muted">Lessons Learned / Documentation Link</label>
+      <textarea class="note" id="projNotes_${encodedK}" style="margin-top:8px" placeholder="Paste links to your GitHub repo, Google Drive folder, or jot down lessons learned...">${esc(st.notes || "")}</textarea>
+      <button class="btn primary" style="margin-top:12px" onclick="saveNotes('${encodedK}')">Save Notes</button>
+    </div>
+   </div>`;
+  showPage('domainDetail');
+}
+
+// The core UX automation requested
+function autoUpdateProject(encodedK, stepIndex, isChecked) {
+  const k = decodeURIComponent(encodedK);
+  let p = state.projects[k];
+  
+  if (!p.stepDone) p.stepDone = {};
+  p.stepDone[stepIndex] = isChecked;
+  
+  // Calculate Progress mathematically
+  let checkedCount = 0;
+  for (let i = 0; i < 5; i++) {
+    if (p.stepDone[i]) checkedCount++;
+  }
+  
+  p.progress = Math.round((checkedCount / 5) * 100);
+  
+  // Auto-update Status
+  if (p.progress === 100) p.status = "Completed";
+  else if (p.progress > 0) p.status = "In progress";
+  else p.status = "Not started";
+  
+  save();
+  openProjectTracker(encodedK); // re-render to update UI (strikethroughs, colors)
+}
+
+function saveNotes(encodedK) {
+  const k = decodeURIComponent(encodedK);
+  state.projects[k].notes = document.getElementById(`projNotes_${encodedK}`).value;
+  save();
+  
+  // Visual feedback
+  const btn = event.target;
+  const originalText = btn.textContent;
+  btn.textContent = "Saved ✓";
+  btn.style.background = "#62d99b";
+  setTimeout(() => { btn.textContent = originalText; btn.style.background = ""; }, 1500);
+}
+
+// ================= Skill Radar Matrix =================
+function renderSkillControls() {
+  let html = '';
+  DOMAIN_DATA.forEach(d => {
+    html += `
+      <div style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border-soft); padding-bottom: 10px;">
+        <h4 style="margin:0 0 10px; color:var(--accent)">${esc(d.name)}</h4>
+        ${d.skills.map(s => `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span style="font-size:11px; max-width:60%; line-height:1.2">${esc(s)}</span>
+            <span>
+              <button class="btn" style="padding:2px 8px; font-size:12px" onclick="updateSkill('${esc(s)}', -1)">-</button>
+              <b style="display:inline-block; width: 20px; text-align:center; font-size:12px">${state.skills[s]}</b>
+              <button class="btn" style="padding:2px 8px; font-size:12px" onclick="updateSkill('${esc(s)}', 1)">+</button>
+            </span>
+          </div>
+        `).join('')}
+      </div>`;
+  });
+  document.getElementById('skillControls').innerHTML = html;
+}
+
+function updateSkill(skill, change) {
+  state.skills[skill] = Math.max(0, Math.min(10, state.skills[skill] + change));
+  save();
+  renderSkillControls(); // re-render controls
+}
+
+// Zero-dependency HTML5 Canvas Radar Chart
+function drawRadarChart() {
+  const canvas = document.getElementById('radarChart');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  // Aggregate averages per domain
+  const labels = DOMAIN_DATA.map(d => {
+    // Shorten names for chart
+    let n = d.name;
+    if(n.includes("Data Management")) return "CDM";
+    if(n.includes("CDISC")) return "CDISC";
+    if(n.includes("Programming")) return "R/SAS";
+    if(n.includes("Foundations")) return "SQL/Excel";
+    if(n.includes("PV")) return "PV";
+    if(n.includes("AI")) return "AI";
+    return n;
+  });
+  
+  const data = DOMAIN_DATA.map(d => {
+    let sum = 0;
+    d.skills.forEach(s => sum += state.skills[s]);
+    return sum / d.skills.length;
+  });
+
+  const width = canvas.width;
+  const height = canvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const radius = Math.min(centerX, centerY) - 40;
+  const sides = labels.length;
+
+  ctx.clearRect(0, 0, width, height);
+
+  // Draw background webs
+  ctx.strokeStyle = "rgba(255,255,255,0.1)";
+  ctx.lineWidth = 1;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = "11px Inter, sans-serif";
+
+  for (let level = 1; level <= 5; level++) {
+    let r = radius * (level / 5);
+    ctx.beginPath();
+    for (let i = 0; i < sides; i++) {
+      let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
+      let x = centerX + r * Math.cos(angle);
+      let y = centerY + r * Math.sin(angle);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // Draw axes & labels
+  for (let i = 0; i < sides; i++) {
+    let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
+    let x = centerX + radius * Math.cos(angle);
+    let y = centerY + radius * Math.sin(angle);
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
+    // Draw label
+    let labelX = centerX + (radius + 20) * Math.cos(angle);
+    let labelY = centerY + (radius + 20) * Math.sin(angle);
+    ctx.fillStyle = "#a5b0c2";
+    ctx.fillText(labels[i], labelX, labelY);
+  }
+
+  // Draw data polygon
+  ctx.beginPath();
+  for (let i = 0; i < sides; i++) {
+    let value = data[i] || 0; 
+    let valRadius = radius * (value / 10);
+    let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
+    let x = centerX + valRadius * Math.cos(angle);
+    let y = centerY + valRadius * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  
+  // Fill and stroke data
+  ctx.fillStyle = "rgba(139, 124, 246, 0.4)"; // Accent glow
+  ctx.fill();
+  ctx.strokeStyle = "#8b7cf6";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Draw data points
+  ctx.fillStyle = "#fff";
+  for (let i = 0; i < sides; i++) {
+    let value = data[i] || 0; 
+    let valRadius = radius * (value / 10);
+    let angle = (Math.PI * 2 * i / sides) - (Math.PI / 2);
+    let x = centerX + valRadius * Math.cos(angle);
+    let y = centerY + valRadius * Math.sin(angle);
+    ctx.beginPath();
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+// ================= Learning Plan =================
+const PLANS = {
+  p1: ["Understand Clinical Trial Phases & Protocol Anatomy", "Master Good Clinical Data Management Practices (GCDMP)", "Learn eCRF Design (CDASH) principles", "Practice writing Edit Check logic"],
+  p2: ["Map raw variables to SDTM domains (DM, AE, LB)", "Understand ADaM ADSL and BDS structures", "Run a dataset through Pinnacle 21 Community", "Write a mock SAE Reconciliation SOP"],
+  p3: ["Master R tidyverse (dplyr, tidyr) or SAS DATA Step", "Generate a reproducible Table 1 (Demographics)", "Join Patient, Visit, and Adverse Event tables via SQL", "Build a clinical data quality dashboard"],
+  p4: ["Implement NLP to extract entities from AE narratives", "Build a RAG app to query ICH/FDA guidelines", "Master Survival Analysis (Kaplan-Meier)", "Publish a portfolio piece on GitHub"]
+};
+
+function renderPlans() {
+  Object.entries(PLANS).forEach(([id, items]) => {
+    document.getElementById(id).innerHTML = items.map((x, i) => `
+      <label class="checkrow" style="padding: 6px 0;">
+        <input type="checkbox" ${state.plan[x] ? 'checked' : ''} onchange="state.plan['${esc(x)}']=this.checked; save()">
+        <span class="${state.plan[x] ? 'done' : ''}" style="font-size:12.5px">${esc(x)}</span>
+      </label>
+    `).join('');
+  });
+}
+
+// ================= Initialization =================
+window.onload = () => {
+  if (state.firstLogin) {
+    document.getElementById('zeroState').style.display = 'block';
+  }
+  renderDomains();
+  renderProjectFilters();
+  renderProjects();
+  renderSkillControls();
+  renderPlans();
+  save(); // triggers dashboard stats & radar
+};
+
+// Search functionality
+document.getElementById('globalSearch').oninput = e => {
+  let q = e.target.value.toLowerCase();
+  if(!q) return;
+  // Jump to domain if match found
+  let d = DOMAIN_DATA.find(x => x.name.toLowerCase().includes(q) || x.skills.some(s => s.toLowerCase().includes(q)));
+  if(d) openDomain(DOMAIN_DATA.indexOf(d));
+};
+
+</script>
+</body>
+</html>
